@@ -1,0 +1,5 @@
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\BaseDatos\bin\Debug\BaseDatos.exe.config
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\BaseDatos\bin\Debug\BaseDatos.exe
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\BaseDatos\bin\Debug\BaseDatos.pdb
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\BaseDatos\obj\Debug\BaseDatos.exe
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\BaseDatos\obj\Debug\BaseDatos.pdb

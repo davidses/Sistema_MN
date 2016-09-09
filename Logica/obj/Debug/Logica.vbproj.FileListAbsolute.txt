@@ -1,0 +1,8 @@
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\Logica.exe.config
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\Logica.exe
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\Logica.pdb
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\BaseDatos.exe
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\BaseDatos.pdb
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\obj\Debug\Logica.vbprojResolveAssemblyReference.cache
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\obj\Debug\Logica.exe
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\obj\Debug\Logica.pdb
