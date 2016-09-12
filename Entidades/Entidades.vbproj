@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F6C911CA-72ED-4B5C-B991-E5A2D7966758}</ProjectGuid>
+    <ProjectGuid>{D62CD57A-7740-4BD3-A517-72A82E908978}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>BaseDatos</RootNamespace>
-    <AssemblyName>BaseDatos</AssemblyName>
+    <RootNamespace>Entidades</RootNamespace>
+    <AssemblyName>Entidades</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Empty</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -55,19 +55,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="eClientes.vb" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="My Project\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BaseDatos.vb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Data" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Entidades\Entidades.vbproj">
-      <Project>{d62cd57a-7740-4bd3-a517-72a82e908978}</Project>
-      <Name>Entidades</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
