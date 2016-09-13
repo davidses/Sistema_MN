@@ -25,6 +25,20 @@ Public Class frmPrincipal
     End Sub
 
     Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim Log As New Logica.Class1
+        Dim Log As New Logica.Clase_logica
+    End Sub
+
+    Private Sub ToolStripButton4_Click(sender As Object, e As EventArgs) Handles ToolStripButton4.Click
+        For Each f As Form In Me.MdiChildren
+            If f.Name = "frmCliente" Then
+                f.Activate()
+                Exit Sub
+            End If
+        Next
+
+        Dim frmCliente As New frmCliente
+        frmCliente.MdiParent = Me
+        frmCliente.WindowState = FormWindowState.Normal
+        frmCliente.Show()
     End Sub
 End Class

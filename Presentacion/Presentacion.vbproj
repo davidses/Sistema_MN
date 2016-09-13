@@ -66,12 +66,22 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.vbproj">
+      <Project>{d62cd57a-7740-4bd3-a517-72a82e908978}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logica\Logica.vbproj">
       <Project>{ccf25917-246f-48a8-9eb9-59c73e115e9c}</Project>
       <Name>Logica</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCliente.Designer.vb">
+      <DependentUpon>frmCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmIngreso.designer.vb">
       <DependentUpon>frmIngreso.vb</DependentUpon>
     </Compile>
@@ -86,6 +96,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmCliente.resx">
+      <DependentUpon>frmCliente.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIngreso.resx">
       <DependentUpon>frmIngreso.vb</DependentUpon>
     </EmbeddedResource>

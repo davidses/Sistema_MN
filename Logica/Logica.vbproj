@@ -58,12 +58,16 @@
     <Folder Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
+    <Compile Include="Clase_logica.vb" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseDatos\BaseDatos.vbproj">
       <Project>{f6c911ca-72ed-4b5c-b991-e5a2d7966758}</Project>
       <Name>BaseDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.vbproj">
+      <Project>{d62cd57a-7740-4bd3-a517-72a82e908978}</Project>
+      <Name>Entidades</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

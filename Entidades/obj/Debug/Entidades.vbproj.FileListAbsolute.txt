@@ -1,0 +1,5 @@
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Entidades\bin\Debug\Entidades.exe.config
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Entidades\bin\Debug\Entidades.exe
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Entidades\bin\Debug\Entidades.pdb
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Entidades\obj\Debug\Entidades.exe
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Entidades\obj\Debug\Entidades.pdb

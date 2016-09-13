@@ -9,5 +9,8 @@ C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\bin\Debug\Logica
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\obj\Debug\Presentacion.vbprojResolveAssemblyReference.cache
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\obj\Debug\Presentacion.exe
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\obj\Debug\Presentacion.pdb
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\bin\Debug\Entidades.exe
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\bin\Debug\BaseDatos.exe
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\bin\Debug\Entidades.pdb
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\bin\Debug\BaseDatos.pdb
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\obj\Debug\Presentacion.frmCliente.resources

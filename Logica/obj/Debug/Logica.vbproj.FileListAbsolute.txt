@@ -6,3 +6,5 @@ C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\BaseDatos.pd
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\obj\Debug\Logica.vbprojResolveAssemblyReference.cache
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\obj\Debug\Logica.exe
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\obj\Debug\Logica.pdb
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\Entidades.exe
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\Entidades.pdb

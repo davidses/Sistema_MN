@@ -3,3 +3,6 @@ C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\BaseDatos\bin\Debug\BaseDatos
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\BaseDatos\bin\Debug\BaseDatos.pdb
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\BaseDatos\obj\Debug\BaseDatos.exe
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\BaseDatos\obj\Debug\BaseDatos.pdb
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\BaseDatos\bin\Debug\Entidades.exe
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\BaseDatos\bin\Debug\Entidades.pdb
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\BaseDatos\obj\Debug\BaseDatos.vbprojResolveAssemblyReference.cache
