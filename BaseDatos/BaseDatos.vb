@@ -3,54 +3,24 @@ Imports System.Collections.Generic
 Imports System.Data
 Imports System.Data.OleDb
 
-
 Public Class BaseDatos
-
     ' http://pabletoreto.blogspot.com.ar/2012/12/tres-capas-en-vbnet.html
-
     Private sNombreBd As String = "bd.mdb"
     Private sConString As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data source=""" & sNombreBd & """"
-    'Dim conexion As String = ConfigurationManager.ConnectionStrings("cnn").ConnectionString
-
-    'Private oCon As OleDbConnection = Nothing
-    'Private oComm As OleDbCommand = Nothing
-    'Private oTrans As OleDbTransaction = Nothing
-    'Private oParam() As OleDbParameter = Nothing
-
-    'Public Sub Conectar()
-    '    Try
-    '        If Not Me.oCon Is Nothing Then
-    '            If Me.oCon.State.Equals(ConnectionState.Closed) Then
-    '                ' La base de datos ya se encuentra abierta
-    '            End If
-    '        End If
-
-    '        If Me.oCon Is Nothing Then
-    '            oCon = New OleDbConnection
-    '            Me.oCon.ConnectionString = sConString
-    '        End If
-
-    '        Me.oCon.Open()
-
-    '        If Me.oCon.State <> ConnectionState.Open Then
-    '            MsgBox("Error al conectar con la base de datos" & Me.oCon.Database)
-    '        End If
-    '    Catch ex As Exception
-    '        MsgBox(ex.Message)
-    '    End Try
-    'End Sub
 
     Public Function MostrarDatos() As List(Of Entidades.eClientes)
         Dim lista As New List(Of Entidades.eClientes)
         Dim dr As OleDbDataReader = Nothing
-        Using Sql As New OleDbConnection(sConString)
-            Sql.Open()
-            Using cmd As New OleDbCommand("SeleccionarDatos", Sql)
-                cmd.Connection = Sql
-                cmd.CommandType = CommandType.StoredProcedure
+        Using oCon As New OleDbConnection(sConString)
+            oCon.Open()
+            Using cmd As New OleDbCommand("SELECT * FROM Clientes", oCon)
+                cmd.Connection = oCon
+                cmd.CommandType = CommandType.Text
                 dr = cmd.ExecuteReader
+
                 While dr.Read
                     Dim list As New Entidades.eClientes
+
                     list.Id = dr.Item("Id")
                     list.Nombre = dr.Item("Nombre")
                     list.Direccion = dr.Item("Direccion")
@@ -60,38 +30,39 @@ Public Class BaseDatos
                 End While
             End Using
         End Using
+
         Return lista
     End Function
 
     Public Function IngresarDatos(datos As eClientes) As Boolean
-
+        ' Si no recibe datos, crea una excepcion
         If datos Is Nothing Then
-            Throw New ArgumentException("no se recibieron datos en InsertarDatos")
+            Throw New ArgumentException("No se recibieron datos en InsertarDatos")
         End If
 
-        Dim trans As OleDbTransaction = Nothing
-
-        Dim Id As String = datos.Id
+        Dim oTrans As OleDbTransaction = Nothing
         Dim Nombre As String = datos.Nombre
         Dim Direccion As String = datos.Direccion
         Dim Telefono As String = datos.Telefono
         Dim Observacion As String = datos.Observacion
 
         Try
+            Using oCon As New OleDbConnection(sConString)
+                oCon.Open()
+                oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
 
-            Using Sql As New OleDbConnection(sConString)
-                Sql.Open()
-                trans = Sql.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using cmd As New OleDbCommand("InsertarDatos", Sql, trans)
-                    cmd.Transaction = trans
-                    cmd.CommandType = CommandType.StoredProcedure
-                    cmd.Parameters.AddWithValue("@id", Id)
-                    cmd.Parameters.AddWithValue("@nombre", Nombre)
-                    cmd.Parameters.AddWithValue("@direccion", Direccion)
-                    cmd.Parameters.AddWithValue("@telefono", Telefono)
-                    cmd.Parameters.AddWithValue("@Observacion", Observacion)
-                    If (cmd.ExecuteNonQuery = 1) Then
-                        trans.Commit()
+                Using oCmd As New OleDbCommand("INSERT INTO Clientes (Nombre,Direccion,Telefono,Observacion) VALUES (@nombre, @direccion, @telefono, @observacion)", oCon, oTrans)
+                    oCmd.Transaction = oTrans
+                    oCmd.CommandType = CommandType.Text
+
+                    oCmd.Parameters.AddWithValue("@nombre", Nombre)
+                    oCmd.Parameters.AddWithValue("@direccion", Direccion)
+                    oCmd.Parameters.AddWithValue("@telefono", Telefono)
+                    oCmd.Parameters.AddWithValue("@observacion", Observacion)
+
+                    ' ejecuta la consulta y verifica que se haya afectado un registro
+                    If (oCmd.ExecuteNonQuery = 1) Then
+                        oTrans.Commit()
                         Return True
                     Else
                         Return False
@@ -99,7 +70,13 @@ Public Class BaseDatos
                 End Using
             End Using
         Catch ex As Exception
-            trans.Rollback()
+            ' Controlamos la excepcion del rollback
+            Try
+                oTrans.Rollback()
+            Catch
+                ' Aca no escribimos nada.
+            End Try
+
             Return False
             Throw New ArgumentException("Verificar InsertarDatos")
         End Try
@@ -111,7 +88,7 @@ Public Class BaseDatos
             Throw New ArgumentException("no se recibieron datos en ModificarDatos")
         End If
 
-        Dim trans As OleDbTransaction = Nothing
+        Dim oTrans As OleDbTransaction = Nothing
         Dim Id As String = datos.Id
         Dim Nombre As String = datos.Nombre
         Dim Direccion As String = datos.Direccion
@@ -120,19 +97,31 @@ Public Class BaseDatos
 
         Try
 
-            Using Sql As New OleDbConnection(sConString)
-                Sql.Open()
-                trans = Sql.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using cmd As New OleDbCommand("ModificarDatos", Sql, trans)
-                    cmd.Transaction = trans
-                    cmd.CommandType = CommandType.StoredProcedure
+
+            'Sql = "UPDATE TABLA SET CAMPO1 = @Val1, CAMPO2 = @Val2 WHERE CODIGO = @Cod"
+            'Dim Cmd As New OleDbCommand(Sql, Cnn)
+            'Cmd.Parameters.AddWithValue("@Val1", txtValor1.Text)
+            'Cmd.Parameters.AddWithValue("@Val2", txtValor2.Text)
+            'Cmd.Parameters.AddWithValue("@Cod", txtCodigo.Text)
+            'Cmd.Connection.Open()
+            'Dim r As Integer = Cmd.ExecuteNonQuery
+            'Cmd.Connection.Close()
+            'Messagebox.Show("Registros actualizados: " & r)
+
+            Using oCon As New OleDbConnection(sConString)
+                oCon.Open()
+                oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
+                Using cmd As New OleDbCommand("UPDATE Clientes SET Nombre = @nombre, Direccion = @direccion, Telefono = @telefono, Observacion = @observacion WHERE ID = @id", oCon, oTrans)
+                    cmd.Transaction = oTrans
+                    'cmd.CommandType = CommandType.StoredProcedure
+                    cmd.CommandType = CommandType.Text
                     cmd.Parameters.AddWithValue("@id", Id)
                     cmd.Parameters.AddWithValue("@nombre", Nombre)
                     cmd.Parameters.AddWithValue("@direccion", Direccion)
                     cmd.Parameters.AddWithValue("@telefono", Telefono)
                     cmd.Parameters.AddWithValue("@observacion", Observacion)
                     If (cmd.ExecuteNonQuery = 1) Then
-                        trans.Commit()
+                        oTrans.Commit()
                         Return True
                     Else
                         Return False
@@ -140,7 +129,12 @@ Public Class BaseDatos
                 End Using
             End Using
         Catch ex As Exception
-            trans.Rollback()
+            Try
+                oTrans.Rollback()
+            Catch
+
+            End Try
+
             Return False
             Throw New ArgumentException("Verificar ModificarDatos")
         End Try
@@ -168,7 +162,6 @@ Public Class BaseDatos
             Throw New ArgumentException("Error en BorrarDatos")
         End Try
     End Function
-
 
     Public Shared Sub Main()
 

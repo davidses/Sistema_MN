@@ -30,15 +30,15 @@ Public Class frmPrincipal
 
     Private Sub ToolStripButton4_Click(sender As Object, e As EventArgs) Handles ToolStripButton4.Click
         For Each f As Form In Me.MdiChildren
-            If f.Name = "frmCliente" Then
+            If f.Name = "frmClientes" Then
                 f.Activate()
                 Exit Sub
             End If
         Next
 
-        Dim frmCliente As New frmCliente
-        frmCliente.MdiParent = Me
-        frmCliente.WindowState = FormWindowState.Normal
-        frmCliente.Show()
+        Dim frmClientes As New frmClientes
+        frmClientes.MdiParent = Me
+        frmClientes.WindowState = FormWindowState.Normal
+        frmClientes.Show()
     End Sub
 End Class

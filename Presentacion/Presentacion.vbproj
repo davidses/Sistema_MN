@@ -76,10 +76,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmCliente.Designer.vb">
-      <DependentUpon>frmCliente.vb</DependentUpon>
+    <Compile Include="frmCliente2.Designer.vb">
+      <DependentUpon>frmCliente2.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCliente.vb">
+    <Compile Include="frmCliente2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClientes.Designer.vb">
+      <DependentUpon>frmClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmClientes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmIngreso.designer.vb">
@@ -96,8 +102,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmCliente.resx">
-      <DependentUpon>frmCliente.vb</DependentUpon>
+    <EmbeddedResource Include="frmCliente2.resx">
+      <DependentUpon>frmCliente2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClientes.resx">
+      <DependentUpon>frmClientes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIngreso.resx">
       <DependentUpon>frmIngreso.vb</DependentUpon>

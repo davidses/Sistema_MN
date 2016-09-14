@@ -13,4 +13,5 @@ C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\bin\Debug\Entida
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\bin\Debug\BaseDatos.exe
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\bin\Debug\Entidades.pdb
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\bin\Debug\BaseDatos.pdb
-C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\obj\Debug\Presentacion.frmCliente.resources
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\obj\Debug\Presentacion.frmCliente2.resources
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Presentacion\obj\Debug\Presentacion.frmClientes.resources
