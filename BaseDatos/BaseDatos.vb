@@ -97,23 +97,11 @@ Public Class BaseDatos
 
         Try
 
-
-            'Sql = "UPDATE TABLA SET CAMPO1 = @Val1, CAMPO2 = @Val2 WHERE CODIGO = @Cod"
-            'Dim Cmd As New OleDbCommand(Sql, Cnn)
-            'Cmd.Parameters.AddWithValue("@Val1", txtValor1.Text)
-            'Cmd.Parameters.AddWithValue("@Val2", txtValor2.Text)
-            'Cmd.Parameters.AddWithValue("@Cod", txtCodigo.Text)
-            'Cmd.Connection.Open()
-            'Dim r As Integer = Cmd.ExecuteNonQuery
-            'Cmd.Connection.Close()
-            'Messagebox.Show("Registros actualizados: " & r)
-
             Using oCon As New OleDbConnection(sConString)
                 oCon.Open()
                 oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
                 Using cmd As New OleDbCommand("UPDATE Clientes SET Nombre = @nombre, Direccion = @direccion, Telefono = @telefono, Observacion = @observacion WHERE ID = @id", oCon, oTrans)
                     cmd.Transaction = oTrans
-                    'cmd.CommandType = CommandType.StoredProcedure
                     cmd.CommandType = CommandType.Text
                     cmd.Parameters.AddWithValue("@id", Id)
                     cmd.Parameters.AddWithValue("@nombre", Nombre)
