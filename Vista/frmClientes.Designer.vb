@@ -78,7 +78,7 @@ Partial Class frmClientes
         'txtNombre
         '
         Me.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtNombre.Location = New System.Drawing.Point(119, 55)
+        Me.txtNombre.Location = New System.Drawing.Point(91, 0)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(207, 20)
         Me.txtNombre.TabIndex = 4
@@ -167,7 +167,7 @@ Partial Class frmClientes
         'cboNombre
         '
         Me.cboNombre.FormattingEnabled = True
-        Me.cboNombre.Location = New System.Drawing.Point(119, 28)
+        Me.cboNombre.Location = New System.Drawing.Point(119, 55)
         Me.cboNombre.Name = "cboNombre"
         Me.cboNombre.Size = New System.Drawing.Size(207, 21)
         Me.cboNombre.TabIndex = 14
