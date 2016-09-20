@@ -9,58 +9,31 @@ Public Class frmClientes
         Call Autocompletar_txtnombre()
         Estado("NADA")
         txtNombre.Focus()
-
-    End Sub
-
-    Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        Select Case btnGuardar.Text
-            Case "Guardar"
-                Dim lista As New eClientes
-
-                lista.Nombre = Trim(txtNombre.Text)
-                lista.Direccion = Trim(txtDireccion.Text)
-                lista.Telefono = Trim(txtTelefono.Text)
-                lista.Observacion = Trim(txtObservacion.Text)
-
-                If objLogica.IngresarDatos(lista) = True Then
-                    MessageBox.Show("Registro ingresado")
-                Else
-                    MessageBox.Show("Ocurrio un problema al ingresar los datos")
-                End If
-
-            Case "Modificar"
-                Dim lista As New eClientes
-
-                lista.Id = "2"
-                lista.Nombre = Trim(txtNombre.Text)
-                lista.Direccion = Trim(txtDireccion.Text)
-                lista.Telefono = Trim(txtTelefono.Text)
-                lista.Observacion = Trim(txtObservacion.Text)
-
-                If objLogica.ModificarDatos(lista) = True Then
-                    MessageBox.Show("Registro modificado")
-                Else
-                    MessageBox.Show("Ocurrio un problema al modificar lo datos.")
-                End If
-        End Select
     End Sub
 
     Private Sub txtNombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown
         If e.KeyCode = 13 Then
-            Dim list As New List(Of eClientes)
-            list = objLogica.BuscaCliente(, txtNombre.Text)
-
-            Call CargaDatos(list)
+            Call BuscaClientes()
         End If
     End Sub
 
     Private Sub txtId_KeyDown(sender As Object, e As KeyEventArgs) Handles txtId.KeyDown
         If e.KeyCode = 13 Then
-            Dim list As New List(Of eClientes)
-            list = objLogica.BuscaCliente(txtId.Text)
-
-            Call CargaDatos(list)
+            Call BuscaClientes(True) ' le pasamos el parametro true para indicar que se dio enter en el control TXTID
         End If
+    End Sub
+
+    Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+        Select Case btnGuardar.Text
+            Case "Guardar"
+                Call IngresaCliente()
+            Case "Modificar"
+                Call ModificaCliente()
+        End Select
+    End Sub
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        Call EliminaCliente()
     End Sub
 
     Private Sub Estado(Est As String)
@@ -72,8 +45,7 @@ Public Class frmClientes
                 Me.txtObservacion.Enabled = False
                 Me.btnGuardar.Enabled = False
                 Me.btnEliminar.Enabled = False
-                Me.lblInfo.Text = "F3 = Busca"
-                Me.lblInfo.ForeColor = Color.Black
+                Me.lblInfo.Text = ""
                 Call limpiaTxt()
                 Me.txtNombre.Focus()
             Case "NUEVO" ' estado del abm en el que esta creando un nuevo registro
@@ -85,6 +57,7 @@ Public Class frmClientes
                 Me.btnGuardar.Text = "Guardar"
                 Me.lblInfo.Text = "NUEVO"
                 Me.lblInfo.ForeColor = Color.Green
+                Me.txtDireccion.Focus()
             Case "EDITANDO" ' estado del abm en el que esta editando un registro
                 Me.txtId.Enabled = False
                 Me.txtDireccion.Enabled = True
@@ -94,20 +67,81 @@ Public Class frmClientes
                 Me.btnGuardar.Text = "Modificar"
                 Me.btnEliminar.Enabled = True
                 Me.lblInfo.Text = "EDITANDO"
-                Me.lblInfo.ForeColor = Color.LightSkyBlue
+                Me.lblInfo.ForeColor = Color.SteelBlue
+                Me.txtDireccion.Focus()
         End Select
     End Sub
 
-    Private Sub CargaDatos(ByVal datos As List(Of eClientes))
-        txtId.Text = datos(0).Id
-        txtNombre.Text = datos(0).Nombre
-        txtDireccion.Text = datos(0).Direccion
-        txtTelefono.Text = datos(0).Telefono
-        txtObservacion.Text = datos(0).Observacion
+    Private Sub BuscaClientes(Optional ByVal desde_txtid As Boolean = False)
+        Dim objCliente As New eClientes
+        ' Pasamos como parametro el ID o el NOMBRE del Cliente, la funcion busca segun que parametro le pasamos de los dos.
+        objCliente = objLogica.BuscaCliente(txtId.Text, txtNombre.Text)
+
+        ' Si encuentra un cliente lo carga sino, prepara el form para la carga de uno nuevo.
+        If objCliente.Id <> "" Then
+            Call CargaDatos(objCliente)
+            Call Estado("EDITANDO")
+        Else
+            If Not desde_txtid Then
+                Call Estado("NUEVO")
+            End If
+        End If
+    End Sub
+
+    Private Sub IngresaCliente()
+        Dim Cli As New eClientes
+        Cli.Nombre = Trim(txtNombre.Text)
+        Cli.Direccion = Trim(txtDireccion.Text)
+        Cli.Telefono = Trim(txtTelefono.Text)
+        Cli.Observacion = Trim(txtObservacion.Text)
+
+        If objLogica.IngresarCliente(Cli) = True Then
+            Call Autocompletar_txtnombre()
+            Call Estado("NADA")
+        Else
+            MessageBox.Show("Ocurrio un problema al ingresar los datos", "Ingresar datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub ModificaCliente()
+        Dim Cli As New eClientes
+
+        Cli.Id = Trim(txtId.Text)
+        Cli.Nombre = Trim(txtNombre.Text)
+        Cli.Direccion = Trim(txtDireccion.Text)
+        Cli.Telefono = Trim(txtTelefono.Text)
+        Cli.Observacion = Trim(txtObservacion.Text)
+
+        If objLogica.ModificarCliente(Cli) = True Then
+            Call Autocompletar_txtnombre()
+            Call Estado("NADA")
+        Else
+            MessageBox.Show("Ocurrio un problema al modificar los datos.", "Modificar datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub EliminaCliente()
+        If MessageBox.Show("¿Seguro que desea eliminar el cliente?", "Eliminar cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            If objLogica.EliminarCliente(txtId.Text) Then
+                Call Autocompletar_txtnombre()
+                Call Estado("NADA")
+            Else
+                MessageBox.Show("Ocurrio un problema al eliminar el cliente.", "Eliminar datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
+    End Sub
+
+    Private Sub CargaDatos(ByVal datos As eClientes)
+        txtId.Text = datos.Id
+        txtNombre.Text = datos.Nombre
+        txtDireccion.Text = datos.Direccion
+        txtTelefono.Text = datos.Telefono
+        txtObservacion.Text = datos.Observacion
     End Sub
     Private Sub Autocompletar_txtnombre()
         Dim list = objLogica.Autocompletar_txtNombreCliente
 
+        txtNombre.AutoCompleteCustomSource.Clear()
         For Each item In list
             txtNombre.AutoCompleteCustomSource.Add(item.Nombre)
         Next
@@ -125,7 +159,8 @@ Public Class frmClientes
         Call Estado("NADA")
     End Sub
 
-   
-   
-    
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        Me.Close()
+    End Sub
+
 End Class

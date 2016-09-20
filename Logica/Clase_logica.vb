@@ -7,7 +7,7 @@ Imports System.Data
 Public Class Clase_logica
     Dim objDatos As New BaseDatos.BaseDatos
 
-    Public Function BuscaCliente(Optional ByVal Id As String = "", Optional ByVal Nombre As String = "") As List(Of eClientes)
+    Public Function BuscaCliente(Optional ByVal Id As String = "", Optional ByVal Nombre As String = "") As eClientes
         Return objDatos.BuscaCliente(Id, Nombre)
     End Function
 
@@ -18,16 +18,16 @@ Public Class Clase_logica
         Return objDatos.MostrarDatos
     End Function
 
-    Public Function IngresarDatos(datos As eClientes) As Boolean
-        Return objDatos.IngresarDatos(datos)
+    Public Function IngresarCliente(Cli As eClientes) As Boolean
+        Return objDatos.IngresarCliente(Cli)
     End Function
 
-    Public Function ModificarDatos(datos As eClientes) As Boolean
-        Return objDatos.ModificarDatos(datos)
+    Public Function ModificarCliente(Cli As eClientes) As Boolean
+        Return objDatos.ModificarCliente(Cli)
     End Function
 
-    Public Function EliminarDatos(id As String) As Boolean
-        Return objDatos.EliminarDatos(id)
+    Public Function EliminarCliente(id As String) As Boolean
+        Return objDatos.EliminarCliente(id)
     End Function
     Public Function ObtenerClientes() As DataSet
         Return objDatos.ObtenerClientes
