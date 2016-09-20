@@ -26,7 +26,6 @@ Partial Class frmClientes
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.txtTelefono = New System.Windows.Forms.TextBox()
         Me.txtObservacion = New System.Windows.Forms.TextBox()
@@ -35,14 +34,16 @@ Partial Class frmClientes
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.lblInfo = New System.Windows.Forms.Label()
-        Me.lblId = New System.Windows.Forms.Label()
-        Me.cboNombre = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtId = New System.Windows.Forms.TextBox()
+        Me.txtNombre = New System.Windows.Forms.TextBox()
+        Me.btnEsc = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(57, 58)
+        Me.Label1.Location = New System.Drawing.Point(57, 71)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(44, 13)
         Me.Label1.TabIndex = 0
@@ -51,7 +52,7 @@ Partial Class frmClientes
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(52, 81)
+        Me.Label2.Location = New System.Drawing.Point(52, 94)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(49, 13)
         Me.Label2.TabIndex = 1
@@ -60,7 +61,7 @@ Partial Class frmClientes
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(23, 127)
+        Me.Label3.Location = New System.Drawing.Point(23, 140)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(78, 13)
         Me.Label3.TabIndex = 2
@@ -69,78 +70,70 @@ Partial Class frmClientes
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(52, 104)
+        Me.Label4.Location = New System.Drawing.Point(52, 117)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(49, 13)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Telefono"
         '
-        'txtNombre
-        '
-        Me.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtNombre.Location = New System.Drawing.Point(91, 0)
-        Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(207, 20)
-        Me.txtNombre.TabIndex = 4
-        '
         'txtDireccion
         '
-        Me.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtDireccion.Location = New System.Drawing.Point(119, 78)
+        Me.txtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtDireccion.Location = New System.Drawing.Point(119, 91)
         Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(246, 20)
-        Me.txtDireccion.TabIndex = 5
+        Me.txtDireccion.Size = New System.Drawing.Size(334, 20)
+        Me.txtDireccion.TabIndex = 3
         '
         'txtTelefono
         '
-        Me.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtTelefono.Location = New System.Drawing.Point(119, 101)
+        Me.txtTelefono.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtTelefono.Location = New System.Drawing.Point(119, 114)
         Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.Size = New System.Drawing.Size(111, 20)
-        Me.txtTelefono.TabIndex = 6
+        Me.txtTelefono.Size = New System.Drawing.Size(149, 20)
+        Me.txtTelefono.TabIndex = 4
         '
         'txtObservacion
         '
-        Me.txtObservacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtObservacion.Location = New System.Drawing.Point(119, 124)
+        Me.txtObservacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtObservacion.Location = New System.Drawing.Point(119, 137)
         Me.txtObservacion.Multiline = True
         Me.txtObservacion.Name = "txtObservacion"
-        Me.txtObservacion.Size = New System.Drawing.Size(246, 65)
-        Me.txtObservacion.TabIndex = 7
+        Me.txtObservacion.Size = New System.Drawing.Size(334, 65)
+        Me.txtObservacion.TabIndex = 5
         '
         'btnGuardar
         '
-        Me.btnGuardar.Location = New System.Drawing.Point(119, 218)
+        Me.btnGuardar.Location = New System.Drawing.Point(153, 219)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(67, 42)
-        Me.btnGuardar.TabIndex = 8
+        Me.btnGuardar.TabIndex = 6
         Me.btnGuardar.Text = "Modificar"
         Me.btnGuardar.UseVisualStyleBackColor = True
         '
         'btnEliminar
         '
-        Me.btnEliminar.Location = New System.Drawing.Point(214, 218)
+        Me.btnEliminar.Location = New System.Drawing.Point(275, 219)
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(67, 42)
-        Me.btnEliminar.TabIndex = 9
+        Me.btnEliminar.TabIndex = 7
         Me.btnEliminar.Text = "Eliminar"
         Me.btnEliminar.UseVisualStyleBackColor = True
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(333, 237)
+        Me.btnSalir.Location = New System.Drawing.Point(378, 238)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
-        Me.btnSalir.TabIndex = 10
+        Me.btnSalir.TabIndex = 8
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(-3, 0)
+        Me.Label5.Location = New System.Drawing.Point(2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(443, 32)
+        Me.Label5.Size = New System.Drawing.Size(462, 32)
         Me.Label5.TabIndex = 11
         Me.Label5.Text = "Clientes"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -149,45 +142,67 @@ Partial Class frmClientes
         '
         Me.lblInfo.AutoSize = True
         Me.lblInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblInfo.Location = New System.Drawing.Point(372, 58)
+        Me.lblInfo.Location = New System.Drawing.Point(116, 53)
         Me.lblInfo.Name = "lblInfo"
         Me.lblInfo.Size = New System.Drawing.Size(50, 13)
         Me.lblInfo.TabIndex = 12
         Me.lblInfo.Text = "NUEVO"
         '
-        'lblId
+        'Label6
         '
-        Me.lblId.AutoSize = True
-        Me.lblId.Location = New System.Drawing.Point(330, 58)
-        Me.lblId.Name = "lblId"
-        Me.lblId.Size = New System.Drawing.Size(31, 13)
-        Me.lblId.TabIndex = 13
-        Me.lblId.Text = "1234"
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(388, 71)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(17, 13)
+        Me.Label6.TabIndex = 15
+        Me.Label6.Text = "iD"
         '
-        'cboNombre
+        'txtId
         '
-        Me.cboNombre.FormattingEnabled = True
-        Me.cboNombre.Location = New System.Drawing.Point(119, 55)
-        Me.cboNombre.Name = "cboNombre"
-        Me.cboNombre.Size = New System.Drawing.Size(207, 21)
-        Me.cboNombre.TabIndex = 14
+        Me.txtId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtId.Location = New System.Drawing.Point(411, 68)
+        Me.txtId.Name = "txtId"
+        Me.txtId.Size = New System.Drawing.Size(42, 20)
+        Me.txtId.TabIndex = 2
+        '
+        'txtNombre
+        '
+        Me.txtNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.txtNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+        Me.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtNombre.Location = New System.Drawing.Point(119, 69)
+        Me.txtNombre.Name = "txtNombre"
+        Me.txtNombre.Size = New System.Drawing.Size(263, 20)
+        Me.txtNombre.TabIndex = 1
+        '
+        'btnEsc
+        '
+        Me.btnEsc.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnEsc.Location = New System.Drawing.Point(12, 0)
+        Me.btnEsc.Name = "btnEsc"
+        Me.btnEsc.Size = New System.Drawing.Size(36, 23)
+        Me.btnEsc.TabIndex = 18
+        Me.btnEsc.Text = "ESC"
+        Me.btnEsc.UseVisualStyleBackColor = True
         '
         'frmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(434, 272)
-        Me.Controls.Add(Me.cboNombre)
-        Me.Controls.Add(Me.lblId)
-        Me.Controls.Add(Me.lblInfo)
+        Me.CancelButton = Me.btnEsc
+        Me.ClientSize = New System.Drawing.Size(462, 273)
         Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.btnEsc)
+        Me.Controls.Add(Me.txtNombre)
+        Me.Controls.Add(Me.txtId)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.lblInfo)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnEliminar)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.txtObservacion)
         Me.Controls.Add(Me.txtTelefono)
         Me.Controls.Add(Me.txtDireccion)
-        Me.Controls.Add(Me.txtNombre)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -205,7 +220,6 @@ Partial Class frmClientes
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents txtNombre As System.Windows.Forms.TextBox
     Friend WithEvents txtDireccion As System.Windows.Forms.TextBox
     Friend WithEvents txtTelefono As System.Windows.Forms.TextBox
     Friend WithEvents txtObservacion As System.Windows.Forms.TextBox
@@ -214,6 +228,8 @@ Partial Class frmClientes
     Friend WithEvents btnSalir As System.Windows.Forms.Button
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents lblInfo As System.Windows.Forms.Label
-    Friend WithEvents lblId As System.Windows.Forms.Label
-    Friend WithEvents cboNombre As System.Windows.Forms.ComboBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents txtId As System.Windows.Forms.TextBox
+    Friend WithEvents txtNombre As System.Windows.Forms.TextBox
+    Friend WithEvents btnEsc As System.Windows.Forms.Button
 End Class

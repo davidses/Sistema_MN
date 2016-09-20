@@ -8,6 +8,92 @@ Public Class BaseDatos
     Private sNombreBd As String = "bd.mdb"
     Private sConString As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data source=""" & sNombreBd & """"
 
+    ' FUNCION DE AUTOCOMPLETADO DE NOMBRE DE CLIENTES
+    Function Autocompletar_txtNombreCliente() As List(Of eClientes)
+        Dim lista As New List(Of eClientes)
+        Dim dr As OleDbDataReader = Nothing
+        Using oCon As New OleDbConnection(sConString)
+            oCon.Open()
+            Using oCmd As New OleDbCommand("SELECT * FROM Clientes", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                dr = oCmd.ExecuteReader
+                While dr.Read
+                    Dim list As New Entidades.eClientes
+                    list.Id = dr.Item("Id")
+                    list.Nombre = dr.Item("Nombre")
+                    list.Direccion = dr.Item("Direccion")
+                    list.Telefono = dr.Item("Telefono")
+                    list.Observacion = dr.Item("Observacion")
+                    lista.Add(list)
+                End While
+            End Using
+        End Using
+
+        Return lista
+    End Function
+
+    Public Function BuscaCliente(Optional ByVal Id As String = "", Optional ByVal Nombre As String = "") As List(Of eClientes)
+        Dim lCliente As New List(Of eClientes)
+        Dim dr As OleDbDataReader = Nothing
+
+        Using oCon As New OleDbConnection(sConString)
+            oCon.Open()
+            If Id <> "" Then
+                ' BUSCA EL CLIENTE POR ID
+                Using oCmd As New OleDbCommand("SELECT * FROM Clientes WHERE Id = " & Id, oCon)
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    dr = oCmd.ExecuteReader
+                    While dr.Read
+                        Dim list As New eClientes
+                        list.Id = dr.Item("Id")
+                        list.Nombre = dr.Item("Nombre")
+                        list.Direccion = dr.Item("Direccion")
+                        list.Telefono = dr.Item("Telefono")
+                        list.Observacion = dr.Item("Observacion")
+                        lCliente.Add(list)
+                    End While
+                End Using
+
+            ElseIf Nombre <> "" Then
+                ' BUSCA EL CLIENTE POR NOMBRE
+                Using oCmd As New OleDbCommand("SELECT * FROM Clientes WHERE Nombre = """ & Nombre & """", oCon)
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    dr = oCmd.ExecuteReader
+                    While dr.Read
+                        Dim list As New eClientes
+                        list.Id = dr.Item("Id")
+                        list.Nombre = dr.Item("Nombre")
+                        list.Direccion = dr.Item("Direccion")
+                        list.Telefono = dr.Item("Telefono")
+                        list.Observacion = dr.Item("Observacion")
+                        lCliente.Add(list)
+                    End While
+                End Using
+            End If
+        End Using
+
+        Return lCliente
+
+    End Function
+
+    ' FUNCION QUE DEVUELVE TODOS LOS CLIENTES
+    Public Function ObtenerClientes() As DataSet
+        Dim ds As New DataSet
+        Dim da As OleDbDataAdapter
+        Using oCon As New OleDbConnection(sConString)
+            oCon.Open()
+            da = New OleDbDataAdapter("SELECT Id, Nombre FROM Clientes ORDER BY Nombre ASC", oCon)
+            da.Fill(ds, "Clientes")
+        End Using
+
+        Return ds
+    End Function
+
+   
+
     Public Function MostrarDatos() As List(Of Entidades.eClientes)
         Dim lista As New List(Of Entidades.eClientes)
         Dim dr As OleDbDataReader = Nothing

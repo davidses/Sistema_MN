@@ -8,3 +8,12 @@ C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\obj\Debug\Logica.exe
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\obj\Debug\Logica.pdb
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\Entidades.exe
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\Entidades.pdb
+C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Logica\bin\Debug\Logica.exe
+C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Logica\bin\Debug\Logica.pdb
+C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Logica\bin\Debug\BaseDatos.exe
+C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Logica\bin\Debug\Entidades.exe
+C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Logica\bin\Debug\BaseDatos.pdb
+C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Logica\bin\Debug\Entidades.pdb
+C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Logica\obj\Debug\Logica.vbprojResolveAssemblyReference.cache
+C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Logica\obj\Debug\Logica.exe
+C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Logica\obj\Debug\Logica.pdb

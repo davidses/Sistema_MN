@@ -52,9 +52,6 @@
     <Import Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="eClientes.vb" />
   </ItemGroup>
   <ItemGroup>

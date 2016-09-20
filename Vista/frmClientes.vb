@@ -6,8 +6,10 @@ Public Class frmClientes
     Dim objLogica As New Logica.Clase_logica
 
     Private Sub frmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call CargaCbolientes()
+        Call Autocompletar_txtnombre()
         Estado("NADA")
+        txtNombre.Focus()
+
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
@@ -40,73 +42,90 @@ Public Class frmClientes
                 Else
                     MessageBox.Show("Ocurrio un problema al modificar lo datos.")
                 End If
-
         End Select
+    End Sub
+
+    Private Sub txtNombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown
+        If e.KeyCode = 13 Then
+            Dim list As New List(Of eClientes)
+            list = objLogica.BuscaCliente(, txtNombre.Text)
+
+            Call CargaDatos(list)
+        End If
+    End Sub
+
+    Private Sub txtId_KeyDown(sender As Object, e As KeyEventArgs) Handles txtId.KeyDown
+        If e.KeyCode = 13 Then
+            Dim list As New List(Of eClientes)
+            list = objLogica.BuscaCliente(txtId.Text)
+
+            Call CargaDatos(list)
+        End If
     End Sub
 
     Private Sub Estado(Est As String)
         Select Case Est
             Case "NADA" ' estando en el que el abm no esta pediente de ninguna accion
+                Me.txtId.Enabled = True
                 Me.txtDireccion.Enabled = False
                 Me.txtTelefono.Enabled = False
                 Me.txtObservacion.Enabled = False
                 Me.btnGuardar.Enabled = False
                 Me.btnEliminar.Enabled = False
+                Me.lblInfo.Text = "F3 = Busca"
+                Me.lblInfo.ForeColor = Color.Black
+                Call limpiaTxt()
+                Me.txtNombre.Focus()
             Case "NUEVO" ' estado del abm en el que esta creando un nuevo registro
+                Me.txtId.Enabled = False
                 Me.txtDireccion.Enabled = True
                 Me.txtTelefono.Enabled = True
                 Me.txtObservacion.Enabled = True
                 Me.btnGuardar.Enabled = True
                 Me.btnGuardar.Text = "Guardar"
+                Me.lblInfo.Text = "NUEVO"
+                Me.lblInfo.ForeColor = Color.Green
             Case "EDITANDO" ' estado del abm en el que esta editando un registro
+                Me.txtId.Enabled = False
                 Me.txtDireccion.Enabled = True
                 Me.txtTelefono.Enabled = True
                 Me.txtObservacion.Enabled = True
                 Me.btnGuardar.Enabled = True
                 Me.btnGuardar.Text = "Modificar"
                 Me.btnEliminar.Enabled = True
+                Me.lblInfo.Text = "EDITANDO"
+                Me.lblInfo.ForeColor = Color.LightSkyBlue
         End Select
     End Sub
 
-    Private Sub CargaCbolientes()
-        Dim bsClientes As New BindingSource
-        bsClientes.DataSource = objLogica.Mostrar
-
-        bsClientes.Sort = "Nombre Desc"
-
-        If Not bsClientes.IsSorted = True Then
-            bsClientes.Sort = "Nombre Asc"
-        End If
-
-        If bsClientes.IsSorted = True Then
-            Me.cboNombre.DataSource = bsClientes
-            Me.cboNombre.DisplayMember = "Nombre"
-        End If
-
-        ''CARGA EL COMBOBOX CON LOS CLIENTES 
-        'Dim oDvProveedores As DataView = New DataView(frmRetenciones.oDsProveedores.Tables(0))
-
-        'oDvProveedores.Sort = "Nombre"
-        'frmRetenciones.cboProveedores.DataSource = oDvProveedores
-        'frmRetenciones.cboProveedores.DisplayMember = "Nombre"
-        'frmRetenciones.cboProveedores.ValueMember = "CUIT"
-
-        'Private Sub cargar()
-        '    Dim bs As New BindingSource
-        '    bs.DataSource = objnegocio.Mostrar
-        '    DataGridView1.DataSource = bs
-        '    BindingNavigator1.BindingSource = bs
-        '    TCodigo.DataBindings.Clear()
-        '    TCodigo.DataBindings.Add(New Binding("text", bs, "codigo"))
-        '    TNombres.DataBindings.Clear()
-        '    TNombres.DataBindings.Add(New Binding("text", bs, "nombres"))
-        '    TCargo.DataBindings.Clear()
-        '    TCargo.DataBindings.Add(New Binding("text", bs, "cargo"))
-        '    TJefe.DataBindings.Clear()
-        '    TJefe.DataBindings.Add(New Binding("text", bs, "jefe"))
-        '    TDepartamento.DataBindings.Clear()
-        '    TDepartamento.DataBindings.Add(New Binding("text", bs, "departamento"))
-        'End Sub
-
+    Private Sub CargaDatos(ByVal datos As List(Of eClientes))
+        txtId.Text = datos(0).Id
+        txtNombre.Text = datos(0).Nombre
+        txtDireccion.Text = datos(0).Direccion
+        txtTelefono.Text = datos(0).Telefono
+        txtObservacion.Text = datos(0).Observacion
     End Sub
+    Private Sub Autocompletar_txtnombre()
+        Dim list = objLogica.Autocompletar_txtNombreCliente
+
+        For Each item In list
+            txtNombre.AutoCompleteCustomSource.Add(item.Nombre)
+        Next
+    End Sub
+
+    Private Sub limpiaTxt()
+        txtId.Text = ""
+        txtNombre.Text = ""
+        txtDireccion.Text = ""
+        txtTelefono.Text = ""
+        txtObservacion.Text = ""
+    End Sub
+
+    Private Sub btnEsc_Click(sender As Object, e As EventArgs) Handles btnEsc.Click
+        Call Estado("NADA")
+    End Sub
+
+   
+   
+    
 End Class
