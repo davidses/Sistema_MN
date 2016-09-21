@@ -1,4 +1,3 @@
-C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\Logica.exe.config
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\Logica.exe
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\Logica.pdb
 C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Logica\bin\Debug\BaseDatos.exe

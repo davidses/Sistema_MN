@@ -36,3 +36,4 @@ C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Vista\obj\Debug\Vi
 C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Vista\obj\Debug\Vista.frmPrincipal.resources
 C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Vista\obj\Debug\Vista.Resources.resources
 C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Vista\obj\Debug\Vista.vbproj.GenerateResource.Cache
+C:\Users\ST\Documents\PROYECTOS\EmpresaInformatica\Vista\obj\Debug\Vista.frmEquipos.resources

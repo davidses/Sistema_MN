@@ -10,6 +10,21 @@ Public Class BaseDatos
     Private sNombreBd As String = "bd.mdb"
     Private sConString As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data source=""" & sNombreBd & """"
 
+    ' ----------------------------- E Q U I P O S ------------------------------------------
+
+    Function IngresaEquipo(Equi As eEquipos) As Boolean
+        Try
+
+        Catch ex As Exception
+
+        End Try
+    End Function
+
+
+    ' ----------- FIN EQUIPOS --------------------------------------------------------------
+
+    '----------------------------- C L I E N T E S     -------------------------------------
+
     ' FUNCION DE AUTOCOMPLETADO DE NOMBRE DE CLIENTES
     Function Autocompletar_txtNombreCliente() As List(Of eClientes)
         Try
@@ -37,7 +52,7 @@ Public Class BaseDatos
         Catch ex As Exception
 
         End Try
-        
+
     End Function
 
     Public Function BuscaCliente(Optional ByVal Id As String = "", Optional ByVal Nombre As String = "") As eClientes
@@ -102,38 +117,7 @@ Public Class BaseDatos
         Catch ex As Exception
 
         End Try
-        
-    End Function
 
-    Public Function MostrarDatos() As List(Of Entidades.eClientes)
-        Try
-            Dim lista As New List(Of Entidades.eClientes)
-            Dim dr As OleDbDataReader = Nothing
-            Using oCon As New OleDbConnection(sConString)
-                oCon.Open()
-                Using cmd As New OleDbCommand("SELECT * FROM Clientes", oCon)
-                    cmd.Connection = oCon
-                    cmd.CommandType = CommandType.Text
-                    dr = cmd.ExecuteReader
-
-                    While dr.Read
-                        Dim list As New Entidades.eClientes
-
-                        list.Id = dr.Item("Id")
-                        list.Nombre = dr.Item("Nombre")
-                        list.Direccion = dr.Item("Direccion")
-                        list.Telefono = dr.Item("Telefono")
-                        list.Observacion = dr.Item("Observacion")
-                        lista.Add(list)
-                    End While
-                End Using
-            End Using
-
-            Return lista
-        Catch ex As Exception
-
-        End Try
-        
     End Function
 
     Public Function IngresarCliente(Cli As eClientes) As Boolean
@@ -240,6 +224,8 @@ Public Class BaseDatos
             'Throw New ArgumentException("Error en BorrarDatos")
         End Try
     End Function
+
+    '------- FIN CLIENTES -----------------------------------------------------------------
 
     Public Shared Sub Main()
 

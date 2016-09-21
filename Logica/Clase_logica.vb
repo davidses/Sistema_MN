@@ -3,7 +3,6 @@ Imports Entidades
 Imports System.Collections.Generic
 Imports System.Data
 
-
 Public Class Clase_logica
     Dim objDatos As New BaseDatos.BaseDatos
 
@@ -13,9 +12,6 @@ Public Class Clase_logica
 
     Public Function Autocompletar_txtNombreCliente() As List(Of eClientes)
         Return objDatos.Autocompletar_txtNombreCliente
-    End Function
-    Public Function Mostrar() As List(Of eClientes)
-        Return objDatos.MostrarDatos
     End Function
 
     Public Function IngresarCliente(Cli As eClientes) As Boolean
