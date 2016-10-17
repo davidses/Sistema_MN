@@ -3,7 +3,7 @@ Imports System.Windows.Forms
 
 Public Class frmClientes
 
-    Dim objLogica As New Logica.Clase_logica
+    Dim objLogica As New Logica.nClientes
 
     Private Sub frmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call Autocompletar_txtnombre()
@@ -162,5 +162,6 @@ Public Class frmClientes
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Me.Close()
     End Sub
+
 
 End Class

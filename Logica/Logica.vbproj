@@ -55,7 +55,8 @@
     <Folder Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clase_logica.vb" />
+    <Compile Include="nClientes.vb" />
+    <Compile Include="nEquipos.vb" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseDatos\BaseDatos.vbproj">

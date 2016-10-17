@@ -43,7 +43,7 @@ Partial Class frmClientes
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(57, 74)
+        Me.Label1.Location = New System.Drawing.Point(46, 78)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(44, 13)
         Me.Label1.TabIndex = 0
@@ -52,7 +52,7 @@ Partial Class frmClientes
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(52, 101)
+        Me.Label2.Location = New System.Drawing.Point(41, 102)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(49, 13)
         Me.Label2.TabIndex = 1
@@ -61,7 +61,7 @@ Partial Class frmClientes
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(23, 155)
+        Me.Label3.Location = New System.Drawing.Point(12, 150)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(78, 13)
         Me.Label3.TabIndex = 2
@@ -70,7 +70,7 @@ Partial Class frmClientes
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(52, 128)
+        Me.Label4.Location = New System.Drawing.Point(41, 126)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(49, 13)
         Me.Label4.TabIndex = 3
@@ -80,7 +80,7 @@ Partial Class frmClientes
         '
         Me.txtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDireccion.Location = New System.Drawing.Point(119, 96)
+        Me.txtDireccion.Location = New System.Drawing.Point(108, 97)
         Me.txtDireccion.MaxLength = 50
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.Size = New System.Drawing.Size(345, 21)
@@ -90,7 +90,7 @@ Partial Class frmClientes
         '
         Me.txtTelefono.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTelefono.Location = New System.Drawing.Point(119, 123)
+        Me.txtTelefono.Location = New System.Drawing.Point(108, 121)
         Me.txtTelefono.MaxLength = 25
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(149, 21)
@@ -100,7 +100,7 @@ Partial Class frmClientes
         '
         Me.txtObservacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtObservacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtObservacion.Location = New System.Drawing.Point(119, 150)
+        Me.txtObservacion.Location = New System.Drawing.Point(108, 145)
         Me.txtObservacion.MaxLength = 150
         Me.txtObservacion.Multiline = True
         Me.txtObservacion.Name = "txtObservacion"
@@ -137,7 +137,7 @@ Partial Class frmClientes
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Trajan Pro", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(2, 0)
+        Me.Label5.Location = New System.Drawing.Point(-4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(476, 32)
         Me.Label5.TabIndex = 11
@@ -149,7 +149,7 @@ Partial Class frmClientes
         Me.lblInfo.AutoSize = True
         Me.lblInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblInfo.ForeColor = System.Drawing.Color.SteelBlue
-        Me.lblInfo.Location = New System.Drawing.Point(116, 53)
+        Me.lblInfo.Location = New System.Drawing.Point(105, 57)
         Me.lblInfo.Name = "lblInfo"
         Me.lblInfo.Size = New System.Drawing.Size(50, 13)
         Me.lblInfo.TabIndex = 12
@@ -158,7 +158,7 @@ Partial Class frmClientes
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(388, 74)
+        Me.Label6.Location = New System.Drawing.Point(377, 78)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(18, 13)
         Me.Label6.TabIndex = 15
@@ -168,7 +168,7 @@ Partial Class frmClientes
         '
         Me.txtId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtId.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtId.Location = New System.Drawing.Point(411, 69)
+        Me.txtId.Location = New System.Drawing.Point(400, 73)
         Me.txtId.MaxLength = 5
         Me.txtId.Name = "txtId"
         Me.txtId.Size = New System.Drawing.Size(53, 21)
@@ -180,7 +180,7 @@ Partial Class frmClientes
         Me.txtNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNombre.Location = New System.Drawing.Point(119, 69)
+        Me.txtNombre.Location = New System.Drawing.Point(108, 73)
         Me.txtNombre.MaxLength = 50
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(263, 21)

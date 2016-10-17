@@ -1,7 +1,7 @@
 ﻿Public Class eEquipos
 
     Private Id_ As String
-    Private IdCliente_ As Integer
+    Private IdCliente_ As String
     Private Tipo_ As String
     Private Nombre_ As String
     Private Observacion_ As String

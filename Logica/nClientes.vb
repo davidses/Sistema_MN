@@ -3,7 +3,7 @@ Imports Entidades
 Imports System.Collections.Generic
 Imports System.Data
 
-Public Class Clase_logica
+Public Class nClientes
     Dim objDatos As New BaseDatos.BaseDatos
 
     Public Function BuscaCliente(Optional ByVal Id As String = "", Optional ByVal Nombre As String = "") As eClientes
