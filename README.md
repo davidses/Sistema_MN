@@ -5,7 +5,7 @@ Sistema de administracion para talleres informaticos y demas.
 Compilado en Visual Studio 2022
 
 ### Base de datos
-Base de datos en Access 2007
+MySQL 8.0
 
 ### Dependecias
 - NET Framework 4.8
