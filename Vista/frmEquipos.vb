@@ -20,6 +20,27 @@ Public Class frmEquipos
         Me.Close()
     End Sub
 
+    Private Sub btnEsc_Click(sender As Object, e As EventArgs) Handles btnEsc.Click
+        Call Estado("NADA")
+    End Sub
+
+    Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+        Select Case btnGuardar.Text
+            Case "Guardar"
+                Call IngresaEquipo()
+            Case "Modificar"
+                Call ModificaEquipo()
+        End Select
+    End Sub
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        Call EliminaEquipo()
+    End Sub
+
+    Private Sub txtId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtId.KeyPress
+        Call SoloNumeros(e)
+    End Sub
+
     Private Sub IngresaEquipo()
         Dim Equipo As New eEquipos
 
@@ -27,9 +48,9 @@ Public Class frmEquipos
         Equipo.IdCliente = cboCliente.SelectedValue.ToString
         Equipo.Tipo = Trim(cboTipo.Text)
         Equipo.Nombre = Trim(txtNombre.Text)
-        Equipo.Observacion = Trim(txtObservacion.Text)
+        Equipo.Observaciones = Trim(txtObservaciones.Text)
 
-        If objLogica.IngresarEqupo(Equipo) Then
+        If objLogica.IngresarEquipo(Equipo) Then
             Call Estado("NADA")
         Else
             MessageBox.Show("Ocurrio un problema al ingresar los datos", "Ingresar datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -44,7 +65,7 @@ Public Class frmEquipos
         Equipo.IdCliente = cboCliente.SelectedValue.ToString
         Equipo.Tipo = Trim(cboTipo.Text)
         Equipo.Nombre = Trim(txtNombre.Text)
-        Equipo.Observacion = Trim(txtObservacion.Text)
+        Equipo.Observaciones = Trim(txtObservaciones.Text)
 
         If objLogica.ModificaEquipo(Equipo) Then
             Call Estado("NADA")
@@ -60,18 +81,18 @@ Public Class frmEquipos
                 Me.cboCliente.Enabled = False
                 Me.cboTipo.Enabled = False
                 Me.txtNombre.Enabled = False
-                Me.txtObservacion.Enabled = False
+                Me.txtObservaciones.Enabled = False
                 Me.btnGuardar.Enabled = False
                 Me.btnEliminar.Enabled = False
                 Me.lblInfo.Text = ""
-                Call limpiaTxt()
+                Call LimpiaTxt()
                 Me.txtId.Focus()
             Case "NUEVO" ' estado del abm en el que esta creando un nuevo registro
                 Me.txtId.Enabled = False
                 Me.cboCliente.Enabled = True
                 Me.cboTipo.Enabled = True
                 Me.txtNombre.Enabled = True
-                Me.txtObservacion.Enabled = True
+                Me.txtObservaciones.Enabled = True
                 Me.btnGuardar.Enabled = True
                 Me.btnGuardar.Text = "Guardar"
                 Me.lblInfo.Text = "NUEVO"
@@ -82,7 +103,7 @@ Public Class frmEquipos
                 Me.cboCliente.Enabled = True
                 Me.cboTipo.Enabled = True
                 Me.txtNombre.Enabled = True
-                Me.txtObservacion.Enabled = True
+                Me.txtObservaciones.Enabled = True
                 Me.btnGuardar.Enabled = True
                 Me.btnGuardar.Text = "Modificar"
                 Me.btnEliminar.Enabled = True
@@ -99,7 +120,7 @@ Public Class frmEquipos
         cboCliente.SelectedValue = 0
         cboTipo.Text = ""
         txtNombre.Text = ""
-        txtObservacion.Text = ""
+        txtObservaciones.Text = ""
     End Sub
 
     Sub LlenarComboClientes()
@@ -114,8 +135,7 @@ Public Class frmEquipos
         Dim objEquipos As New eEquipos
         objEquipos = objLogica.BuscaEquipo(txtId.Text)
 
-        ' Si encuentra un equipo lo carga, sino, prepara el form para la carga de uno nuevo.
-        If objEquipos.Id <> "" Then
+        If objEquipos.Id <> "" Then   ' Si encuentra un equipo lo carga, sino, prepara el form para la carga de uno nuevo.
             Call CargaDatos(objEquipos)
             Call Estado("EDITANDO")
         Else
@@ -128,19 +148,41 @@ Public Class frmEquipos
         cboCliente.SelectedValue = datos.IdCliente
         cboTipo.Text = datos.Tipo
         txtNombre.Text = datos.Nombre
-        txtObservacion.Text = datos.Observacion
+        txtObservaciones.Text = datos.Observaciones
     End Sub
 
-    Private Sub btnEsc_Click(sender As Object, e As EventArgs) Handles btnEsc.Click
-        Call Estado("NADA")
+    Private Sub EliminaEquipo()
+        If MessageBox.Show("¿Seguro que desea eliminar el equipo?", "Eliminar equipo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            If objLogica.EliminarEquipo(txtId.Text) Then
+                Call Estado("NADA")
+            Else
+                MessageBox.Show("Ocurrio un problema al eliminar el equipo.", "Eliminar datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
     End Sub
 
-    Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        Select Case btnGuardar.Text
-            Case "Guardar"
-                Call IngresaEquipo()
-            Case "Modificar"
-                Call ModificaEquipo()
-        End Select
+    'Funcion para que solo permite el ingreso de caracteres tipo numerico
+    Sub SoloNumeros(ByRef e As System.Windows.Forms.KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub cboCliente_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cboCliente.KeyPress
+        ' CONVIERTE LO INGRESADO EN MAYUSCULAS
+        If Char.IsLetter(e.KeyChar) Then
+            e.KeyChar = Char.ToUpper(e.KeyChar)
+        End If
+    End Sub
+
+    Private Sub cboTipo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cboTipo.KeyPress
+        ' CONVIERTE LO INGRESADO EN MAYUSCULAS
+        If Char.IsLetter(e.KeyChar) Then
+            e.KeyChar = Char.ToUpper(e.KeyChar)
+        End If
     End Sub
 End Class

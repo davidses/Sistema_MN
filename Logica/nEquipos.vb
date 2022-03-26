@@ -10,7 +10,7 @@ Public Class nEquipos
         Return objDatos.LlenarComboClientes
     End Function
 
-    Public Function IngresarEqupo(Equipo As eEquipos) As Boolean
+    Public Function IngresarEquipo(Equipo As eEquipos) As Boolean
         Return objDatos.IngresaEquipo(Equipo)
     End Function
 
@@ -22,9 +22,10 @@ Public Class nEquipos
         Return objDatos.ModificaEquipo(Equipo)
     End Function
 
-    'Public Function EliminarEquipo(id As String) As Boolean
-    '    Return objDatos.EliminarCliente(id)
-    'End Function
+    Public Function EliminarEquipo(id As String) As Boolean
+        Return objDatos.EliminarEquipo(id)
+    End Function
+
     'Public Function ObtenerEquipo() As DataSet
     '    Return objDatos.ObtenerClientes
     'End Function

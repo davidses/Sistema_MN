@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="nClientes.vb" />
     <Compile Include="nEquipos.vb" />
+    <Compile Include="nGeneral.vb" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseDatos\BaseDatos.vbproj">

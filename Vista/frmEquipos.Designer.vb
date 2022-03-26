@@ -29,7 +29,7 @@ Partial Class frmEquipos
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
-        Me.txtObservacion = New System.Windows.Forms.TextBox()
+        Me.txtObservaciones = New System.Windows.Forms.TextBox()
         Me.cboCliente = New System.Windows.Forms.ComboBox()
         Me.cboTipo = New System.Windows.Forms.ComboBox()
         Me.btnSalir = New System.Windows.Forms.Button()
@@ -87,6 +87,7 @@ Partial Class frmEquipos
         '
         'txtId
         '
+        Me.txtId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtId.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtId.Location = New System.Drawing.Point(97, 55)
         Me.txtId.Name = "txtId"
@@ -95,20 +96,22 @@ Partial Class frmEquipos
         '
         'txtNombre
         '
+        Me.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.Location = New System.Drawing.Point(97, 131)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(355, 21)
         Me.txtNombre.TabIndex = 4
         '
-        'txtObservacion
+        'txtObservaciones
         '
-        Me.txtObservacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtObservacion.Location = New System.Drawing.Point(97, 155)
-        Me.txtObservacion.Multiline = True
-        Me.txtObservacion.Name = "txtObservacion"
-        Me.txtObservacion.Size = New System.Drawing.Size(355, 70)
-        Me.txtObservacion.TabIndex = 5
+        Me.txtObservaciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtObservaciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtObservaciones.Location = New System.Drawing.Point(97, 155)
+        Me.txtObservaciones.Multiline = True
+        Me.txtObservaciones.Name = "txtObservaciones"
+        Me.txtObservaciones.Size = New System.Drawing.Size(355, 70)
+        Me.txtObservaciones.TabIndex = 5
         '
         'cboCliente
         '
@@ -125,6 +128,7 @@ Partial Class frmEquipos
         '
         Me.cboTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboTipo.FormattingEnabled = True
+        Me.cboTipo.Items.AddRange(New Object() {"NOTEBOOK", "CPU", "AIO", "MONITOR", "CELULAR", "OTRO"})
         Me.cboTipo.Location = New System.Drawing.Point(97, 105)
         Me.cboTipo.Name = "cboTipo"
         Me.cboTipo.Size = New System.Drawing.Size(191, 23)
@@ -159,7 +163,7 @@ Partial Class frmEquipos
         '
         'Label6
         '
-        Me.Label6.Font = New System.Drawing.Font("Trajan Pro", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(-3, -1)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(471, 32)
@@ -201,7 +205,7 @@ Partial Class frmEquipos
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.cboTipo)
         Me.Controls.Add(Me.cboCliente)
-        Me.Controls.Add(Me.txtObservacion)
+        Me.Controls.Add(Me.txtObservaciones)
         Me.Controls.Add(Me.txtNombre)
         Me.Controls.Add(Me.txtId)
         Me.Controls.Add(Me.Label5)
@@ -210,8 +214,12 @@ Partial Class frmEquipos
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnEsc)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmEquipos"
-        Me.Text = "frmEquipos"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "EQUIPOS"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -223,7 +231,7 @@ Partial Class frmEquipos
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtId As System.Windows.Forms.TextBox
     Friend WithEvents txtNombre As System.Windows.Forms.TextBox
-    Friend WithEvents txtObservacion As System.Windows.Forms.TextBox
+    Friend WithEvents txtObservaciones As System.Windows.Forms.TextBox
     Friend WithEvents cboCliente As System.Windows.Forms.ComboBox
     Friend WithEvents cboTipo As System.Windows.Forms.ComboBox
     Friend WithEvents btnSalir As System.Windows.Forms.Button
