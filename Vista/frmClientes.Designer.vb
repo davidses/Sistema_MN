@@ -28,7 +28,7 @@ Partial Class frmClientes
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.txtTelefono = New System.Windows.Forms.TextBox()
-        Me.txtObservacion = New System.Windows.Forms.TextBox()
+        Me.txtObservaciones = New System.Windows.Forms.TextBox()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
@@ -96,20 +96,20 @@ Partial Class frmClientes
         Me.txtTelefono.Size = New System.Drawing.Size(149, 21)
         Me.txtTelefono.TabIndex = 4
         '
-        'txtObservacion
+        'txtObservaciones
         '
-        Me.txtObservacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtObservacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtObservacion.Location = New System.Drawing.Point(108, 145)
-        Me.txtObservacion.MaxLength = 150
-        Me.txtObservacion.Multiline = True
-        Me.txtObservacion.Name = "txtObservacion"
-        Me.txtObservacion.Size = New System.Drawing.Size(345, 65)
-        Me.txtObservacion.TabIndex = 5
+        Me.txtObservaciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtObservaciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtObservaciones.Location = New System.Drawing.Point(108, 145)
+        Me.txtObservaciones.MaxLength = 150
+        Me.txtObservaciones.Multiline = True
+        Me.txtObservaciones.Name = "txtObservaciones"
+        Me.txtObservaciones.Size = New System.Drawing.Size(345, 87)
+        Me.txtObservaciones.TabIndex = 5
         '
         'btnGuardar
         '
-        Me.btnGuardar.Location = New System.Drawing.Point(158, 229)
+        Me.btnGuardar.Location = New System.Drawing.Point(158, 251)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(67, 42)
         Me.btnGuardar.TabIndex = 6
@@ -118,7 +118,7 @@ Partial Class frmClientes
         '
         'btnEliminar
         '
-        Me.btnEliminar.Location = New System.Drawing.Point(258, 229)
+        Me.btnEliminar.Location = New System.Drawing.Point(258, 251)
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(67, 42)
         Me.btnEliminar.TabIndex = 7
@@ -127,7 +127,7 @@ Partial Class frmClientes
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(386, 248)
+        Me.btnSalir.Location = New System.Drawing.Point(378, 270)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 8
@@ -136,7 +136,7 @@ Partial Class frmClientes
         '
         'Label5
         '
-        Me.Label5.Font = New System.Drawing.Font("Trajan Pro", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(-4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(476, 32)
@@ -201,7 +201,7 @@ Partial Class frmClientes
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnEsc
-        Me.ClientSize = New System.Drawing.Size(473, 282)
+        Me.ClientSize = New System.Drawing.Size(461, 305)
         Me.ControlBox = False
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.btnEsc)
@@ -212,17 +212,18 @@ Partial Class frmClientes
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnEliminar)
         Me.Controls.Add(Me.btnGuardar)
-        Me.Controls.Add(Me.txtObservacion)
+        Me.Controls.Add(Me.txtObservaciones)
         Me.Controls.Add(Me.txtTelefono)
         Me.Controls.Add(Me.txtDireccion)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmClientes"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "CLIENTES"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -234,7 +235,7 @@ Partial Class frmClientes
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtDireccion As System.Windows.Forms.TextBox
     Friend WithEvents txtTelefono As System.Windows.Forms.TextBox
-    Friend WithEvents txtObservacion As System.Windows.Forms.TextBox
+    Friend WithEvents txtObservaciones As System.Windows.Forms.TextBox
     Friend WithEvents btnGuardar As System.Windows.Forms.Button
     Friend WithEvents btnEliminar As System.Windows.Forms.Button
     Friend WithEvents btnSalir As System.Windows.Forms.Button

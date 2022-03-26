@@ -6,3 +6,11 @@ C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Entidades\bin\Debu
 C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Entidades\bin\Debug\Entidades.pdb
 C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Entidades\obj\Debug\Entidades.exe
 C:\Users\Adrian\Documents\PROYECTOS\Admin_Empresa_informatica\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\Entidades\bin\Debug\Entidades.exe.config
+C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\Entidades\bin\Debug\Entidades.exe
+C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\Entidades\obj\Debug\Entidades.vbproj.AssemblyReference.cache
+C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\Entidades\obj\Debug\Entidades.vbproj.SuggestedBindingRedirects.cache
+C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\Entidades\obj\Debug\Entidades.vbproj.CoreCompileInputs.cache
+C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\Entidades\obj\Debug\Entidades.exe
+C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\Entidades\obj\Debug\Entidades.pdb

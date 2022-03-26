@@ -4,7 +4,7 @@
     Private Nombre_ As String
     Private Direccion_ As String
     Private Telefono_ As String
-    Private Observacion_ As String
+    Private Observaciones_ As String
 
     Public Property Id() As String
         Get
@@ -42,12 +42,12 @@
         End Set
     End Property
 
-    Public Property Observacion() As String
+    Public Property Observaciones() As String
         Get
-            Return Observacion_
+            Return Observaciones_
         End Get
         Set(ByVal value As String)
-            Observacion_ = value
+            Observaciones_ = value
         End Set
     End Property
 

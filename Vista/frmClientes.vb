@@ -42,7 +42,7 @@ Public Class frmClientes
                 Me.txtId.Enabled = True
                 Me.txtDireccion.Enabled = False
                 Me.txtTelefono.Enabled = False
-                Me.txtObservacion.Enabled = False
+                Me.txtObservaciones.Enabled = False
                 Me.btnGuardar.Enabled = False
                 Me.btnEliminar.Enabled = False
                 Me.lblInfo.Text = ""
@@ -52,7 +52,7 @@ Public Class frmClientes
                 Me.txtId.Enabled = False
                 Me.txtDireccion.Enabled = True
                 Me.txtTelefono.Enabled = True
-                Me.txtObservacion.Enabled = True
+                Me.txtObservaciones.Enabled = True
                 Me.btnGuardar.Enabled = True
                 Me.btnGuardar.Text = "Guardar"
                 Me.lblInfo.Text = "NUEVO"
@@ -62,7 +62,7 @@ Public Class frmClientes
                 Me.txtId.Enabled = False
                 Me.txtDireccion.Enabled = True
                 Me.txtTelefono.Enabled = True
-                Me.txtObservacion.Enabled = True
+                Me.txtObservaciones.Enabled = True
                 Me.btnGuardar.Enabled = True
                 Me.btnGuardar.Text = "Modificar"
                 Me.btnEliminar.Enabled = True
@@ -93,7 +93,7 @@ Public Class frmClientes
         Cli.Nombre = Trim(txtNombre.Text)
         Cli.Direccion = Trim(txtDireccion.Text)
         Cli.Telefono = Trim(txtTelefono.Text)
-        Cli.Observacion = Trim(txtObservacion.Text)
+        Cli.Observaciones = Trim(txtObservaciones.Text)
 
         If objLogica.IngresarCliente(Cli) = True Then
             Call Autocompletar_txtnombre()
@@ -110,7 +110,7 @@ Public Class frmClientes
         Cli.Nombre = Trim(txtNombre.Text)
         Cli.Direccion = Trim(txtDireccion.Text)
         Cli.Telefono = Trim(txtTelefono.Text)
-        Cli.Observacion = Trim(txtObservacion.Text)
+        Cli.Observaciones = Trim(txtObservaciones.Text)
 
         If objLogica.ModificarCliente(Cli) = True Then
             Call Autocompletar_txtnombre()
@@ -136,7 +136,7 @@ Public Class frmClientes
         txtNombre.Text = datos.Nombre
         txtDireccion.Text = datos.Direccion
         txtTelefono.Text = datos.Telefono
-        txtObservacion.Text = datos.Observacion
+        txtObservaciones.Text = datos.Observaciones
     End Sub
     Private Sub Autocompletar_txtnombre()
         Dim list = objLogica.Autocompletar_txtNombreCliente
@@ -152,7 +152,7 @@ Public Class frmClientes
         txtNombre.Text = ""
         txtDireccion.Text = ""
         txtTelefono.Text = ""
-        txtObservacion.Text = ""
+        txtObservaciones.Text = ""
     End Sub
 
     Private Sub btnEsc_Click(sender As Object, e As EventArgs) Handles btnEsc.Click

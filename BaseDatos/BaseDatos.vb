@@ -4,13 +4,18 @@ Imports Entidades
 Imports System.Collections.Generic
 Imports System.Data
 Imports System.Data.OleDb
+Imports MySql.Data.MySqlClient
 
 Public Class BaseDatos
 
-    Private sNombreBd As String = "bd.mdb"
-    Private sConString As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data source=""" & sNombreBd & """"
+    Private sConString As String = "Server=localhost; Database=siscontrol; User=root; Password=rootroot"
+
+
+
 
     ' ----------------------------- E Q U I P O S ------------------------------------------
+
+
     Function LlenarComboClientes() As List(Of eClientes)
         Try
             Dim lista As New List(Of eClientes)
@@ -27,7 +32,7 @@ Public Class BaseDatos
                         list.Nombre = dr.Item("Nombre")
                         list.Direccion = dr.Item("Direccion")
                         list.Telefono = dr.Item("Telefono")
-                        list.Observacion = dr.Item("Observacion")
+                        list.Observaciones = dr.Item("Observacion")
                         lista.Add(list)
                     End While
                 End Using
@@ -154,32 +159,33 @@ Public Class BaseDatos
             Throw New ArgumentException("Verificar ModificarDatos")
         End Try
     End Function
+    ' ------------------------------- FIN EQUIPOS ------------------------------------------
 
 
 
-    ' ----------- FIN EQUIPOS --------------------------------------------------------------
+
 
 
     '----------------------------- C L I E N T E S     -------------------------------------
 
-    ' FUNCION DE AUTOCOMPLETADO DE NOMBRE DE CLIENTES
-    Function Autocompletar_txtNombreCliente() As List(Of eClientes)
+
+    Function Autocompletar_txtNombreCliente() As List(Of eClientes)   ' FUNCION DE AUTOCOMPLETADO DEL CAMPO  NOMBRE DE CLIENTES.
         Try
             Dim lista As New List(Of eClientes)
-            Dim dr As OleDbDataReader = Nothing
-            Using oCon As New OleDbConnection(sConString)
+            Dim dr As MySqlDataReader = Nothing
+            Using oCon As New MySqlConnection(sConString)
                 oCon.Open()
-                Using oCmd As New OleDbCommand("SELECT * FROM Clientes", oCon)
+                Using oCmd As New MySqlCommand("SELECT * FROM Clientes", oCon)
                     oCmd.Connection = oCon
                     oCmd.CommandType = CommandType.Text
                     dr = oCmd.ExecuteReader
                     While dr.Read
                         Dim list As New Entidades.eClientes
-                        list.Id = dr.Item("Id")
+                        list.Id = dr.Item("IdClientes")
                         list.Nombre = dr.Item("Nombre")
                         list.Direccion = dr.Item("Direccion")
                         list.Telefono = dr.Item("Telefono")
-                        list.Observacion = dr.Item("Observacion")
+                        list.Observaciones = dr.Item("Observaciones")
                         lista.Add(list)
                     End While
                 End Using
@@ -195,37 +201,35 @@ Public Class BaseDatos
     Public Function BuscaCliente(Optional ByVal Id As String = "", Optional ByVal Nombre As String = "") As eClientes
         Try
             Dim lCliente As New eClientes
-            Dim dr As OleDbDataReader = Nothing
+            Dim dr As MySqlDataReader = Nothing
 
-            Using oCon As New OleDbConnection(sConString)
+            Using oCon As New MySqlConnection(sConString)
                 oCon.Open()
-                If Id <> "" Then
-                    ' BUSCA EL CLIENTE POR ID
-                    Using oCmd As New OleDbCommand("SELECT * FROM Clientes WHERE Id = " & Id, oCon)
+                If Id <> "" Then    ' BUSCA EL CLIENTE POR ID
+                    Using oCmd As New MySqlCommand("SELECT * FROM Clientes WHERE IdClientes = " & Id, oCon)
                         oCmd.Connection = oCon
                         oCmd.CommandType = CommandType.Text
                         dr = oCmd.ExecuteReader
                         While dr.Read
-                            lCliente.Id = dr.Item("Id")
+                            lCliente.Id = dr.Item("IdClientes")
                             lCliente.Nombre = dr.Item("Nombre")
                             lCliente.Direccion = dr.Item("Direccion")
                             lCliente.Telefono = dr.Item("Telefono")
-                            lCliente.Observacion = dr.Item("Observacion")
+                            lCliente.Observaciones = dr.Item("Observaciones")
                         End While
                     End Using
 
-                ElseIf Nombre <> "" Then
-                    ' BUSCA EL CLIENTE POR NOMBRE
-                    Using oCmd As New OleDbCommand("SELECT * FROM Clientes WHERE Nombre = """ & Nombre & """", oCon)
+                ElseIf Nombre <> "" Then  ' BUSCA EL CLIENTE POR NOMBRE
+                    Using oCmd As New MySqlCommand("SELECT * FROM Clientes WHERE Nombre = """ & Nombre & """", oCon)
                         oCmd.Connection = oCon
                         oCmd.CommandType = CommandType.Text
                         dr = oCmd.ExecuteReader
                         While dr.Read
-                            lCliente.Id = dr.Item("Id")
+                            lCliente.Id = dr.Item("IdClientes")
                             lCliente.Nombre = dr.Item("Nombre")
                             lCliente.Direccion = dr.Item("Direccion")
                             lCliente.Telefono = dr.Item("Telefono")
-                            lCliente.Observacion = dr.Item("Observacion")
+                            lCliente.Observaciones = dr.Item("Observaciones")
                         End While
                     End Using
                 End If
@@ -239,14 +243,14 @@ Public Class BaseDatos
 
     End Function
 
-    ' FUNCION QUE DEVUELVE TODOS LOS CLIENTES
-    Public Function ObtenerClientes() As DataSet
+
+    Public Function ObtenerClientes() As DataSet    ' FUNCION QUE DEVUELVE TODOS LOS CLIENTES
         Try
             Dim ds As New DataSet
-            Dim da As OleDbDataAdapter
-            Using oCon As New OleDbConnection(sConString)
+            Dim da As MySqlDataAdapter
+            Using oCon As New MySqlConnection(sConString)
                 oCon.Open()
-                da = New OleDbDataAdapter("SELECT Id, Nombre FROM Clientes ORDER BY Nombre ASC", oCon)
+                da = New MySqlDataAdapter("SELECT IdClientes, Nombre FROM Clientes ORDER BY Nombre ASC", oCon)
                 da.Fill(ds, "Clientes")
             End Using
 
@@ -258,27 +262,25 @@ Public Class BaseDatos
     End Function
 
     Public Function IngresarCliente(Cli As eClientes) As Boolean
-        ' Si no recibe datos, crea una excepcion
-        If Cli Is Nothing Then
+        If Cli Is Nothing Then      ' SI NO RECIBE DATOS CREA UNA EXCEPCION
             Throw New ArgumentException("No se recibieron datos en InsertarDatos")
         End If
 
-        Dim oTrans As OleDbTransaction = Nothing
+        Dim oTrans As MySqlTransaction = Nothing
 
         Try
-            Using oCon As New OleDbConnection(sConString)
+            Using oCon As New MySqlConnection(sConString)
                 oCon.Open()
                 oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using oCmd As New OleDbCommand("INSERT INTO Clientes (Nombre,Direccion,Telefono,Observacion) VALUES (@nombre, @direccion, @telefono, @observacion)", oCon, oTrans)
+                Using oCmd As New MySqlCommand("INSERT INTO Clientes (Nombre,Direccion,Telefono,Observaciones) VALUES (@nombre, @direccion, @telefono, @observaciones)", oCon, oTrans)
                     oCmd.Transaction = oTrans
                     oCmd.CommandType = CommandType.Text
                     oCmd.Parameters.AddWithValue("@nombre", Cli.Nombre)
                     oCmd.Parameters.AddWithValue("@direccion", Cli.Direccion)
                     oCmd.Parameters.AddWithValue("@telefono", Cli.Telefono)
-                    oCmd.Parameters.AddWithValue("@observacion", Cli.Observacion)
+                    oCmd.Parameters.AddWithValue("@observaciones", Cli.Observaciones)
 
-                    ' Ejecuta la consulta y verifica que se haya afectado un registro
-                    If (oCmd.ExecuteNonQuery = 1) Then
+                    If (oCmd.ExecuteNonQuery = 1) Then  ' EJECUTA LA CONSULTA Y VERIFICA QUE SE HAYA AFECTADO UN REGISTRO 
                         oTrans.Commit()
                         Return True
                     Else
@@ -286,8 +288,7 @@ Public Class BaseDatos
                     End If
                 End Using
             End Using
-        Catch ex As Exception
-            ' Controlamos la excepcion del rollback
+        Catch ex As Exception  ' CONTROLAMOS LA EXCEPCION DE ROLLBACK
             Try
                 oTrans.Rollback()
             Catch
@@ -300,22 +301,21 @@ Public Class BaseDatos
     End Function
 
     Public Function ModificarCliente(Cli As eClientes) As Boolean
-        ' Si no recibe datos, crea una excepcion
-        If Cli Is Nothing Then
+        If Cli Is Nothing Then    ' SI NO RECIBE DATOS, CREA UNA EXCEPCION
             Throw New ArgumentException("no se recibieron datos en ModificarDatos")
         End If
 
-        Dim oTrans As OleDbTransaction = Nothing
+        Dim oTrans As MySqlTransaction = Nothing
 
         Try
-            Using oCon As New OleDbConnection(sConString)
+            Using oCon As New MySqlConnection(sConString)
                 oCon.Open()
                 oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using cmd As New OleDbCommand("UPDATE Clientes SET Nombre = '" & Cli.Nombre & _
-                                              "', Direccion = '" & Cli.Direccion & _
-                                              "', Telefono = '" & Cli.Telefono & _
-                                              "', Observacion = '" & Cli.Observacion & _
-                                              "' WHERE Id = " & Cli.Id, oCon, oTrans)
+                Using cmd As New MySqlCommand("UPDATE Clientes SET Nombre = '" & Cli.Nombre &
+                                              "', Direccion = '" & Cli.Direccion &
+                                              "', Telefono = '" & Cli.Telefono &
+                                              "', Observaciones = '" & Cli.Observaciones &
+                                              "' WHERE IdClientes = " & Cli.Id, oCon, oTrans)
                     cmd.Transaction = oTrans
                     cmd.CommandType = CommandType.Text
 
@@ -340,12 +340,12 @@ Public Class BaseDatos
     End Function
 
     Public Function EliminarCliente(ByVal id As String) As Boolean
-        Dim trans As OleDbTransaction = Nothing
+        Dim trans As MySqlTransaction = Nothing
         Try
-            Using Sql As New OleDbConnection(sConString)
+            Using Sql As New MySqlConnection(sConString)
                 Sql.Open()
                 trans = Sql.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using cmd As New OleDbCommand("DELETE FROM Clientes WHERE Id = " & id, Sql, trans)
+                Using cmd As New MySqlCommand("DELETE FROM Clientes WHERE IdClientes = " & id, Sql, trans)
                     cmd.CommandType = CommandType.Text
                     'cmd.Parameters.AddWithValue("@id", param)
                     If (cmd.ExecuteNonQuery = 1) Then
@@ -362,7 +362,11 @@ Public Class BaseDatos
         End Try
     End Function
 
-    '------- FIN CLIENTES -----------------------------------------------------------------
+    '--------------------------------- FIN CLIENTES ---------------------------------------------
+
+
+
+
 
     Public Shared Sub Main()
 
