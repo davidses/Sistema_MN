@@ -43,45 +43,50 @@ Partial Class frmEquipos
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(68, 60)
+        Me.Label1.Location = New System.Drawing.Point(91, 74)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(18, 13)
+        Me.Label1.Size = New System.Drawing.Size(20, 16)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "ID"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(47, 84)
+        Me.Label2.Location = New System.Drawing.Point(63, 103)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(39, 13)
+        Me.Label2.Size = New System.Drawing.Size(48, 16)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Cliente"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(58, 110)
+        Me.Label3.Location = New System.Drawing.Point(77, 135)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(28, 13)
+        Me.Label3.Size = New System.Drawing.Size(35, 16)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Tipo"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(42, 136)
+        Me.Label4.Location = New System.Drawing.Point(56, 167)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(44, 13)
+        Me.Label4.Size = New System.Drawing.Size(56, 16)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Nombre"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(19, 160)
+        Me.Label5.Location = New System.Drawing.Point(25, 197)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(67, 13)
+        Me.Label5.Size = New System.Drawing.Size(84, 16)
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "Observacion"
         '
@@ -89,28 +94,31 @@ Partial Class frmEquipos
         '
         Me.txtId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtId.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtId.Location = New System.Drawing.Point(97, 55)
+        Me.txtId.Location = New System.Drawing.Point(129, 68)
+        Me.txtId.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtId.Name = "txtId"
-        Me.txtId.Size = New System.Drawing.Size(58, 21)
+        Me.txtId.Size = New System.Drawing.Size(76, 21)
         Me.txtId.TabIndex = 1
         '
         'txtNombre
         '
         Me.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNombre.Location = New System.Drawing.Point(97, 131)
+        Me.txtNombre.Location = New System.Drawing.Point(129, 161)
+        Me.txtNombre.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(355, 21)
+        Me.txtNombre.Size = New System.Drawing.Size(472, 21)
         Me.txtNombre.TabIndex = 4
         '
         'txtObservaciones
         '
         Me.txtObservaciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtObservaciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtObservaciones.Location = New System.Drawing.Point(97, 155)
+        Me.txtObservaciones.Location = New System.Drawing.Point(129, 191)
+        Me.txtObservaciones.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtObservaciones.Multiline = True
         Me.txtObservaciones.Name = "txtObservaciones"
-        Me.txtObservaciones.Size = New System.Drawing.Size(355, 70)
+        Me.txtObservaciones.Size = New System.Drawing.Size(472, 85)
         Me.txtObservaciones.TabIndex = 5
         '
         'cboCliente
@@ -119,9 +127,10 @@ Partial Class frmEquipos
         Me.cboCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cboCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboCliente.FormattingEnabled = True
-        Me.cboCliente.Location = New System.Drawing.Point(97, 79)
+        Me.cboCliente.Location = New System.Drawing.Point(129, 97)
+        Me.cboCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cboCliente.Name = "cboCliente"
-        Me.cboCliente.Size = New System.Drawing.Size(290, 23)
+        Me.cboCliente.Size = New System.Drawing.Size(385, 23)
         Me.cboCliente.TabIndex = 2
         '
         'cboTipo
@@ -129,34 +138,38 @@ Partial Class frmEquipos
         Me.cboTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboTipo.FormattingEnabled = True
         Me.cboTipo.Items.AddRange(New Object() {"NOTEBOOK", "CPU", "AIO", "MONITOR", "CELULAR", "OTRO"})
-        Me.cboTipo.Location = New System.Drawing.Point(97, 105)
+        Me.cboTipo.Location = New System.Drawing.Point(129, 129)
+        Me.cboTipo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cboTipo.Name = "cboTipo"
-        Me.cboTipo.Size = New System.Drawing.Size(191, 23)
+        Me.cboTipo.Size = New System.Drawing.Size(253, 23)
         Me.cboTipo.TabIndex = 3
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(377, 255)
+        Me.btnSalir.Location = New System.Drawing.Point(503, 314)
+        Me.btnSalir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.Size = New System.Drawing.Size(100, 28)
         Me.btnSalir.TabIndex = 8
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
         'btnEliminar
         '
-        Me.btnEliminar.Location = New System.Drawing.Point(247, 236)
+        Me.btnEliminar.Location = New System.Drawing.Point(329, 290)
+        Me.btnEliminar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(67, 42)
+        Me.btnEliminar.Size = New System.Drawing.Size(89, 52)
         Me.btnEliminar.TabIndex = 7
         Me.btnEliminar.Text = "Eliminar"
         Me.btnEliminar.UseVisualStyleBackColor = True
         '
         'btnGuardar
         '
-        Me.btnGuardar.Location = New System.Drawing.Point(147, 236)
+        Me.btnGuardar.Location = New System.Drawing.Point(196, 290)
+        Me.btnGuardar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(67, 42)
+        Me.btnGuardar.Size = New System.Drawing.Size(89, 52)
         Me.btnGuardar.TabIndex = 6
         Me.btnGuardar.Text = "Modificar"
         Me.btnGuardar.UseVisualStyleBackColor = True
@@ -164,9 +177,10 @@ Partial Class frmEquipos
         'Label6
         '
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(-3, -1)
+        Me.Label6.Location = New System.Drawing.Point(-4, -1)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(471, 32)
+        Me.Label6.Size = New System.Drawing.Size(628, 39)
         Me.Label6.TabIndex = 15
         Me.Label6.Text = "Equipos"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -176,7 +190,8 @@ Partial Class frmEquipos
         Me.lblInfo.AutoSize = True
         Me.lblInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblInfo.ForeColor = System.Drawing.Color.SteelBlue
-        Me.lblInfo.Location = New System.Drawing.Point(161, 60)
+        Me.lblInfo.Location = New System.Drawing.Point(215, 74)
+        Me.lblInfo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblInfo.Name = "lblInfo"
         Me.lblInfo.Size = New System.Drawing.Size(50, 13)
         Me.lblInfo.TabIndex = 16
@@ -185,19 +200,20 @@ Partial Class frmEquipos
         'btnEsc
         '
         Me.btnEsc.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnEsc.Location = New System.Drawing.Point(12, 8)
+        Me.btnEsc.Location = New System.Drawing.Point(16, 10)
+        Me.btnEsc.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnEsc.Name = "btnEsc"
-        Me.btnEsc.Size = New System.Drawing.Size(36, 23)
+        Me.btnEsc.Size = New System.Drawing.Size(48, 28)
         Me.btnEsc.TabIndex = 99
         Me.btnEsc.Text = "ESC"
         Me.btnEsc.UseVisualStyleBackColor = True
         '
         'frmEquipos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnEsc
-        Me.ClientSize = New System.Drawing.Size(467, 290)
+        Me.ClientSize = New System.Drawing.Size(623, 357)
         Me.Controls.Add(Me.lblInfo)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.btnSalir)
@@ -214,7 +230,9 @@ Partial Class frmEquipos
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnEsc)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmEquipos"

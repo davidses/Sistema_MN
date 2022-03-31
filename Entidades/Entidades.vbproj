@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="eClientes.vb" />
     <Compile Include="eEquipos.vb" />
+    <Compile Include="eFichas.vb" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="My Project\" />

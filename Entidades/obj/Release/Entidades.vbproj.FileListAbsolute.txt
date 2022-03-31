@@ -1,0 +1,8 @@
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Entidades\bin\Release\Entidades.exe.config
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Entidades\bin\Release\Entidades.exe
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Entidades\bin\Release\Entidades.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Entidades\obj\Release\Entidades.vbproj.AssemblyReference.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Entidades\obj\Release\Entidades.vbproj.SuggestedBindingRedirects.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Entidades\obj\Release\Entidades.vbproj.CoreCompileInputs.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Entidades\obj\Release\Entidades.exe
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Entidades\obj\Release\Entidades.pdb

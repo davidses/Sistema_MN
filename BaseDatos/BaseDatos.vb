@@ -379,8 +379,186 @@ Public Class BaseDatos
         End Try
     End Function
 
-
     ' ------------------------------- FIN EQUIPOS ------------------------------------------
+
+
+
+
+
+    ' ------------------------------- F I C H A S ------------------------------------------
+
+    Public Function UltimoIdFicha() As eFichas
+        Try
+            Dim lFichas As New eFichas
+            Dim drFichas As MySqlDataReader = Nothing
+
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                Using oCmd As New MySqlCommand("SELECT idFichas FROM Fichas ORDER BY idFichas DESC", oCon)
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    drFichas = oCmd.ExecuteReader
+
+                    drFichas.Read()
+                    lFichas.Id = drFichas.Item("idFichas")
+                End Using
+            End Using
+
+            Return lFichas
+        Catch ex As Exception
+
+        End Try
+    End Function
+
+    Public Function BuscaFicha(ByVal Id As String) As eFichas
+        Try
+            Dim lFicha As New eFichas
+            Dim drFichas As MySqlDataReader = Nothing
+
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                If Id <> "" Then   ' BUSCA LA FICHA POR ID
+                    Using oCmd As New MySqlCommand("SELECT * FROM Fichas WHERE idFichas = " & Id, oCon)
+                        oCmd.Connection = oCon
+                        oCmd.CommandType = CommandType.Text
+                        drFichas = oCmd.ExecuteReader
+                        While drFichas.Read
+                            lFicha.Id = drFichas.Item("idFichas")
+                            lFicha.Fecha = drFichas.Item("Fecha")
+                            lFicha.Realizar = drFichas.Item("Realizar")
+                            lFicha.Realizado = drFichas.Item("Realizado")
+                            lFicha.Importe = drFichas.Item("Importe")
+                            lFicha.Observaciones = drFichas.Item("Observaciones")
+                            lFicha.Equipos_IdEquipos = drFichas.Item("Equipos_idEquipos")
+                            lFicha.Estado = drFichas.Item("Estado")
+                        End While
+                    End Using
+                End If
+            End Using
+
+            Return lFicha
+
+        Catch ex As Exception
+
+        End Try
+    End Function
+
+    Function IngresaFicha(Ficha As eFichas) As Boolean
+        If Ficha Is Nothing Then  ' SI NO RECIBE DATOS, CREA UNA EXCEPCION
+            Throw New ArgumentException("No se recibieron datos en InsertarDatos")
+        End If
+
+        Dim oTrans As MySqlTransaction = Nothing
+
+        Try
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
+                Using oCmd As New MySqlCommand("INSERT INTO Fichas (IdFichas,Fecha,Realizar,Realizado,Importe,Observaciones,Equipos_IdEquipos,Estado) VALUES (@IdFichas, @Fecha, @Realizar, @Realizado, @Importe, @Observaciones, @Equipos_IdEquipos, @Estado)", oCon, oTrans)
+                    oCmd.Transaction = oTrans
+                    oCmd.CommandType = CommandType.Text
+                    oCmd.Parameters.AddWithValue("@IdFichas", Ficha.Id)
+                    oCmd.Parameters.AddWithValue("@Fecha", Ficha.Fecha)
+                    oCmd.Parameters.AddWithValue("@Realizar", Ficha.Realizar)
+                    oCmd.Parameters.AddWithValue("@Realizado", Ficha.Realizado)
+                    If Ficha.Importe = "" Then
+                        oCmd.Parameters.AddWithValue("@Importe", "0")
+                    Else
+                        oCmd.Parameters.AddWithValue("@Importe", Ficha.Importe)
+                    End If
+                    oCmd.Parameters.AddWithValue("@Observaciones", Ficha.Observaciones)
+                    oCmd.Parameters.AddWithValue("@Equipos_IdEquipos", Ficha.Equipos_IdEquipos)
+                    oCmd.Parameters.AddWithValue("@Estado", Ficha.Estado)
+
+                    If (oCmd.ExecuteNonQuery = 1) Then  ' EJECUTA LA CONSULTA Y VERIFICA QUE SE HAYA AFECTADO UN REGISTRO
+                        oTrans.Commit()
+                        Return True
+                    Else
+                        Return False
+                    End If
+                End Using
+            End Using
+
+        Catch ex As Exception
+            Try ' Controlamos la excepcion del rollback
+                oTrans.Rollback()
+            Catch
+                ' Aca no escribimos nada.
+            End Try
+
+            Return False
+            'Throw New ArgumentException("Verificar InsertarDatos")
+        End Try
+    End Function
+
+    Public Function ModificarFicha(Ficha As eFichas) As Boolean
+        If Ficha Is Nothing Then    ' SI NO RECIBE DATOS, CREA UNA EXCEPCION
+            Throw New ArgumentException("no se recibieron datos en ModificarDatos")
+        End If
+
+        Dim oTrans As MySqlTransaction = Nothing
+
+        Try
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
+                Using cmd As New MySqlCommand("UPDATE Fichas SET Fecha = '" & Ficha.Fecha &
+                                              "', Realizar = '" & Ficha.Realizar &
+                                              "', Realizado = '" & Ficha.Realizado &
+                                              "', Importe = '" & Ficha.Importe &
+                                              "', Observaciones = '" & Ficha.Observaciones &
+                                              "', Equipos_idEquipos = '" & Ficha.Equipos_IdEquipos &
+                                              "', Estado = '" & Ficha.Estado &
+                                              "' WHERE IdClientes = " & Ficha.Id, oCon, oTrans)
+                    cmd.Transaction = oTrans
+                    cmd.CommandType = CommandType.Text
+
+                    If (cmd.ExecuteNonQuery = 1) Then
+                        oTrans.Commit()
+                        Return True
+                    Else
+                        Return False
+                    End If
+                End Using
+            End Using
+
+        Catch ex As Exception
+            Try
+                oTrans.Rollback()
+            Catch
+
+            End Try
+
+            Return False
+            Throw New ArgumentException("Verificar ModificarDatos")
+        End Try
+    End Function
+
+    Public Function EliminarFicha(ByVal id As String) As Boolean
+        Dim trans As MySqlTransaction = Nothing
+        Try
+            Using Sql As New MySqlConnection(sConString)
+                Sql.Open()
+                trans = Sql.BeginTransaction(IsolationLevel.ReadCommitted)
+                Using cmd As New MySqlCommand("DELETE FROM fichas WHERE idFichas = " & id, Sql, trans)
+                    cmd.CommandType = CommandType.Text
+                    If (cmd.ExecuteNonQuery = 1) Then
+                        trans.Commit()
+                        Return True
+                    Else
+                        Return False
+                    End If
+                End Using
+            End Using
+
+        Catch ex As Exception
+            trans.Rollback()
+            Return False
+            'Throw New ArgumentException("Error en BorrarDatos")
+        End Try
+    End Function
+
+
 
 
     Public Shared Sub Main()

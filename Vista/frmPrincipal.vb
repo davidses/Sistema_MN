@@ -64,4 +64,18 @@ Public Class frmPrincipal
         frmequipos.WindowState = FormWindowState.Normal
         frmequipos.Show()
     End Sub
+
+    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+        For Each f As Form In Me.MdiChildren
+            If f.Name = "frmFichas" Then
+                f.Activate()
+                Exit Sub
+            End If
+        Next
+
+        Dim frmFichas As New frmFichas
+        frmFichas.MdiParent = Me
+        frmFichas.WindowState = FormWindowState.Normal
+        frmFichas.Show()
+    End Sub
 End Class

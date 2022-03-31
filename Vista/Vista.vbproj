@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>Vista.My.MyApplication</StartupObject>
     <RootNamespace>Vista</RootNamespace>
-    <AssemblyName>Vista</AssemblyName>
+    <AssemblyName>Sistema de control ELCATECH</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Vista.xml</DocumentationFile>
+    <DocumentationFile>Sistema de control ELCATECH.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -30,8 +30,8 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Vista.xml</DocumentationFile>
+    <OutputPath>..\</OutputPath>
+    <DocumentationFile>Sistema de control ELCATECH.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -45,6 +45,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -83,6 +86,12 @@
     <Compile Include="frmEquipos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmFichas.Designer.vb">
+      <DependentUpon>frmFichas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFichas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmIngreso.designer.vb">
       <DependentUpon>frmIngreso.vb</DependentUpon>
     </Compile>
@@ -119,6 +128,9 @@
     <EmbeddedResource Include="frmEquipos.resx">
       <DependentUpon>frmEquipos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFichas.resx">
+      <DependentUpon>frmFichas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIngreso.resx">
       <DependentUpon>frmIngreso.vb</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +145,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

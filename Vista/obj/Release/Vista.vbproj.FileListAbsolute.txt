@@ -1,0 +1,19 @@
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Vista.vbproj.AssemblyReference.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Vista.vbproj.SuggestedBindingRedirects.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Sistema de control ELCATECH.exe.config
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Vista.frmClientes.resources
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Vista.frmEquipos.resources
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Vista.frmFichas.resources
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Vista.frmIngreso.resources
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Vista.frmPrincipal.resources
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Vista.Resources.resources
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Vista.vbproj.GenerateResource.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Vista.vbproj.CoreCompileInputs.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Vista.vbproj.CopyComplete
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Sistema de control ELCATECH.exe.config
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Sistema de control ELCATECH.exe
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Sistema de control ELCATECH.xml
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Release\Sistema de control ELCATECH.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Sistema de control ELCATECH.exe
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Sistema de control ELCATECH.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Sistema de control ELCATECH.xml
