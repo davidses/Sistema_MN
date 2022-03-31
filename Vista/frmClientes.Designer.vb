@@ -170,7 +170,7 @@ Partial Class frmClientes
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(503, 96)
+        Me.Label6.Location = New System.Drawing.Point(504, 93)
         Me.Label6.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(20, 16)

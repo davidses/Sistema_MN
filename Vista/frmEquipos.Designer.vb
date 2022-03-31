@@ -95,7 +95,7 @@ Partial Class frmEquipos
         Me.txtId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtId.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtId.Location = New System.Drawing.Point(129, 68)
-        Me.txtId.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtId.Margin = New System.Windows.Forms.Padding(4)
         Me.txtId.Name = "txtId"
         Me.txtId.Size = New System.Drawing.Size(76, 21)
         Me.txtId.TabIndex = 1
@@ -105,7 +105,7 @@ Partial Class frmEquipos
         Me.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.Location = New System.Drawing.Point(129, 161)
-        Me.txtNombre.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(472, 21)
         Me.txtNombre.TabIndex = 4
@@ -115,7 +115,7 @@ Partial Class frmEquipos
         Me.txtObservaciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtObservaciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtObservaciones.Location = New System.Drawing.Point(129, 191)
-        Me.txtObservaciones.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtObservaciones.Margin = New System.Windows.Forms.Padding(4)
         Me.txtObservaciones.Multiline = True
         Me.txtObservaciones.Name = "txtObservaciones"
         Me.txtObservaciones.Size = New System.Drawing.Size(472, 85)
@@ -128,7 +128,7 @@ Partial Class frmEquipos
         Me.cboCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboCliente.FormattingEnabled = True
         Me.cboCliente.Location = New System.Drawing.Point(129, 97)
-        Me.cboCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cboCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.cboCliente.Name = "cboCliente"
         Me.cboCliente.Size = New System.Drawing.Size(385, 23)
         Me.cboCliente.TabIndex = 2
@@ -139,15 +139,15 @@ Partial Class frmEquipos
         Me.cboTipo.FormattingEnabled = True
         Me.cboTipo.Items.AddRange(New Object() {"NOTEBOOK", "CPU", "AIO", "MONITOR", "CELULAR", "OTRO"})
         Me.cboTipo.Location = New System.Drawing.Point(129, 129)
-        Me.cboTipo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cboTipo.Margin = New System.Windows.Forms.Padding(4)
         Me.cboTipo.Name = "cboTipo"
-        Me.cboTipo.Size = New System.Drawing.Size(253, 23)
+        Me.cboTipo.Size = New System.Drawing.Size(136, 23)
         Me.cboTipo.TabIndex = 3
         '
         'btnSalir
         '
         Me.btnSalir.Location = New System.Drawing.Point(503, 314)
-        Me.btnSalir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSalir.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(100, 28)
         Me.btnSalir.TabIndex = 8
@@ -157,7 +157,7 @@ Partial Class frmEquipos
         'btnEliminar
         '
         Me.btnEliminar.Location = New System.Drawing.Point(329, 290)
-        Me.btnEliminar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnEliminar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(89, 52)
         Me.btnEliminar.TabIndex = 7
@@ -167,7 +167,7 @@ Partial Class frmEquipos
         'btnGuardar
         '
         Me.btnGuardar.Location = New System.Drawing.Point(196, 290)
-        Me.btnGuardar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnGuardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(89, 52)
         Me.btnGuardar.TabIndex = 6
@@ -201,7 +201,7 @@ Partial Class frmEquipos
         '
         Me.btnEsc.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnEsc.Location = New System.Drawing.Point(16, 10)
-        Me.btnEsc.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnEsc.Margin = New System.Windows.Forms.Padding(4)
         Me.btnEsc.Name = "btnEsc"
         Me.btnEsc.Size = New System.Drawing.Size(48, 28)
         Me.btnEsc.TabIndex = 99
@@ -232,7 +232,7 @@ Partial Class frmEquipos
         Me.Controls.Add(Me.btnEsc)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmEquipos"

@@ -163,4 +163,17 @@ Public Class frmClientes
         Me.Close()
     End Sub
 
+    Sub SoloNumeros(ByRef e As System.Windows.Forms.KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefono.KeyPress
+        Call SoloNumeros(e)
+    End Sub
 End Class

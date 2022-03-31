@@ -76,6 +76,7 @@ Public Class frmFichas
 
         If objEquipos.Id <> "" Then   ' Si encuentra un equipo lo carga, sino, prepara el form para la carga de uno nuevo.
             Call CargaDatosEquipos(objEquipos)
+            txtRealizar.Focus()
         Else
             ' crea qel euipo ***************
         End If
@@ -244,5 +245,9 @@ Public Class frmFichas
         End If
     End Sub
 
-
+    Private Sub txtIdEquipo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtIdEquipo.KeyPress
+        If Asc(e.KeyChar) = Keys.Enter Then 'ELIMINA BEEP
+            e.Handled = True
+        End If
+    End Sub
 End Class

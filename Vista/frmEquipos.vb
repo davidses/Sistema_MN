@@ -15,6 +15,13 @@ Public Class frmEquipos
             Call BuscaEquipos()
         End If
     End Sub
+    Private Sub txtId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtId.KeyPress
+        Call SoloNumeros(e)
+
+        If Asc(e.KeyChar) = Keys.Enter Then 'ELIMINA BEEP
+            e.Handled = True
+        End If
+    End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Me.Close()
@@ -35,10 +42,6 @@ Public Class frmEquipos
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         Call EliminaEquipo()
-    End Sub
-
-    Private Sub txtId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtId.KeyPress
-        Call SoloNumeros(e)
     End Sub
 
     Private Sub IngresaEquipo()
@@ -185,4 +188,6 @@ Public Class frmEquipos
             e.KeyChar = Char.ToUpper(e.KeyChar)
         End If
     End Sub
+
+
 End Class
