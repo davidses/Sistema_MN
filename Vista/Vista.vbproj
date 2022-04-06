@@ -80,6 +80,12 @@
     <Compile Include="frmClientes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmConexionBD.Designer.vb">
+      <DependentUpon>frmConexionBD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConexionBD.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmEquipos.Designer.vb">
       <DependentUpon>frmEquipos.vb</DependentUpon>
     </Compile>
@@ -96,6 +102,12 @@
       <DependentUpon>frmIngreso.vb</DependentUpon>
     </Compile>
     <Compile Include="frmIngreso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIngresos.Designer.vb">
+      <DependentUpon>frmIngresos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmIngresos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPrincipal.designer.vb">
@@ -125,6 +137,9 @@
     <EmbeddedResource Include="frmClientes.resx">
       <DependentUpon>frmClientes.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmConexionBD.resx">
+      <DependentUpon>frmConexionBD.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEquipos.resx">
       <DependentUpon>frmEquipos.vb</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmIngreso.resx">
       <DependentUpon>frmIngreso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIngresos.resx">
+      <DependentUpon>frmIngresos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.vb</DependentUpon>

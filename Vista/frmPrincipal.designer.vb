@@ -26,6 +26,7 @@ Partial Class frmPrincipal
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrincipal))
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tssInfoDB = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -43,9 +44,11 @@ Partial Class frmPrincipal
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConfiguracionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConexionBDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tmrHoraFecha = New System.Windows.Forms.Timer(Me.components)
+        Me.ESPACIADO = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -53,7 +56,7 @@ Partial Class frmPrincipal
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ESPACIADO, Me.tssInfoDB})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 880)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1314, 22)
@@ -66,6 +69,13 @@ Partial Class frmPrincipal
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(200, 17)
         Me.ToolStripStatusLabel1.Text = "Desarrollado por ElcaTech - 2022"
+        '
+        'tssInfoDB
+        '
+        Me.tssInfoDB.Name = "tssInfoDB"
+        Me.tssInfoDB.Size = New System.Drawing.Size(119, 17)
+        Me.tssInfoDB.Text = "ToolStripStatusLabel2"
+        Me.tssInfoDB.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'ToolStrip1
         '
@@ -201,9 +211,16 @@ Partial Class frmPrincipal
         '
         'ConfiguracionToolStripMenuItem
         '
+        Me.ConfiguracionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConexionBDToolStripMenuItem})
         Me.ConfiguracionToolStripMenuItem.Name = "ConfiguracionToolStripMenuItem"
         Me.ConfiguracionToolStripMenuItem.Size = New System.Drawing.Size(95, 20)
         Me.ConfiguracionToolStripMenuItem.Text = "Configuracion"
+        '
+        'ConexionBDToolStripMenuItem
+        '
+        Me.ConexionBDToolStripMenuItem.Name = "ConexionBDToolStripMenuItem"
+        Me.ConexionBDToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.ConexionBDToolStripMenuItem.Text = "Conexion BD"
         '
         'AyudaToolStripMenuItem
         '
@@ -222,6 +239,12 @@ Partial Class frmPrincipal
         '
         Me.tmrHoraFecha.Enabled = True
         Me.tmrHoraFecha.Interval = 1000
+        '
+        'ESPACIADO
+        '
+        Me.ESPACIADO.AutoSize = False
+        Me.ESPACIADO.Name = "ESPACIADO"
+        Me.ESPACIADO.Size = New System.Drawing.Size(979, 17)
         '
         'frmPrincipal
         '
@@ -270,5 +293,7 @@ Partial Class frmPrincipal
     Friend WithEvents AcercaDeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsbSalir As System.Windows.Forms.ToolStripButton
     Friend WithEvents tmrHoraFecha As System.Windows.Forms.Timer
-
+    Friend WithEvents ConexionBDToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents tssInfoDB As ToolStripStatusLabel
+    Friend WithEvents ESPACIADO As ToolStripStatusLabel
 End Class

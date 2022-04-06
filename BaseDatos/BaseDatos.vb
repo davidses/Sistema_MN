@@ -1,6 +1,4 @@
-﻿' http://pabletoreto.blogspot.com.ar/2012/12/tres-capas-en-vbnet.html
-
-Imports Entidades
+﻿Imports Entidades
 Imports System.Collections.Generic
 Imports System.Data
 Imports System.Data.OleDb
@@ -8,7 +6,58 @@ Imports MySql.Data.MySqlClient
 
 Public Class BaseDatos
 
-    Private sConString As String = "Server=localhost; Database=siscontrol; User=root; Password=rootroot"
+    Public sConString As String
+
+    Public Sub New()
+        If sConString = Nothing Then
+            Call ConfigBD()
+        End If
+    End Sub
+
+
+    Sub ConfigBD()
+        Dim TextoConfig As String = System.IO.File.ReadAllText("DatosBD.cfg")
+        Dim strConfig() As String = Split(TextoConfig, ",")
+
+        Dim lastNonEmpty As Integer = -1
+        For i As Integer = 0 To strConfig.Length - 1
+            If strConfig(i) <> "" Then
+                lastNonEmpty += 1
+                strConfig(lastNonEmpty) = strConfig(i)
+            End If
+        Next
+        ReDim Preserve strConfig(lastNonEmpty)
+
+        sConString = "Server=" & strConfig(0) & " ;Port=" & strConfig(1) & " ;Database=" & strConfig(2) & " ;Uid=" & strConfig(3) & " ;Pwd=" & strConfig(4)
+
+    End Sub
+
+    Function PruebaConexion() As Boolean
+        Try
+            Dim dr As MySqlDataReader = Nothing
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                Using oCmd As New MySqlCommand("SELECT * FROM Clientes", oCon)
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    dr = oCmd.ExecuteReader
+                    dr.Read()
+
+                    If dr.Item("IdClientes") = Nothing Then
+                        Return False
+                    Else
+                        Return True
+                    End If
+
+                End Using
+            End Using
+        Catch ex As Exception
+
+        End Try
+    End Function
+
+
+
 
 
     '----------------------------- C L I E N T E S     -------------------------------------
@@ -509,7 +558,7 @@ Public Class BaseDatos
                                               "', Observaciones = '" & Ficha.Observaciones &
                                               "', Equipos_idEquipos = '" & Ficha.Equipos_IdEquipos &
                                               "', Estado = '" & Ficha.Estado &
-                                              "' WHERE IdClientes = " & Ficha.Id, oCon, oTrans)
+                                              "' WHERE idFichas = " & Ficha.Id, oCon, oTrans)
                     cmd.Transaction = oTrans
                     cmd.CommandType = CommandType.Text
 
@@ -558,10 +607,10 @@ Public Class BaseDatos
         End Try
     End Function
 
-
-
-
     Public Shared Sub Main()
 
+
     End Sub
+
+
 End Class

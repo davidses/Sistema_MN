@@ -76,3 +76,5 @@ C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Debug\Sistema d
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Debug\Sistema de control ELCATECH.exe
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Debug\Sistema de control ELCATECH.xml
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Debug\Sistema de control ELCATECH.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Debug\Vista.frmIngresos.resources
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica\Vista\obj\Debug\Vista.frmConexionBD.resources
