@@ -13,6 +13,10 @@ Public Class nFichas
         Return objDatos.BuscaFicha(Id)
     End Function
 
+    Public Function BuscaFichasPorEquipo(ByVal id As String) As List(Of eFichas)
+        Return objDatos.BuscaFichaPorEquipo(id)
+    End Function
+
     Public Function IngresaFicha(Ficha As eFichas) As Boolean
         Return objDatos.IngresaFicha(Ficha)
     End Function

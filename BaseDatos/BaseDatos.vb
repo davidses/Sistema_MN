@@ -492,6 +492,44 @@ Public Class BaseDatos
         End Try
     End Function
 
+    Public Function BuscaFichaPorEquipo(ByVal IdEquipo As String) As List(Of eFichas)
+        Try
+            Dim lFichas As New List(Of eFichas)
+            Dim drFichas As MySqlDataReader = Nothing
+
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                If IdEquipo <> "" Then   ' BUSCA LAs FICHAS POR IDEQUIPO
+                    Using oCmd As New MySqlCommand("SELECT * FROM Fichas WHERE Equipos_idEquipos = " & IdEquipo, oCon)
+                        oCmd.Connection = oCon
+                        oCmd.CommandType = CommandType.Text
+                        drFichas = oCmd.ExecuteReader
+                        While drFichas.Read
+                            Dim Ficha As New eFichas
+
+                            Ficha.Id = drFichas.Item("idFichas")
+                            Ficha.Fecha = drFichas.Item("Fecha")
+                            Ficha.Realizar = drFichas.Item("Realizar")
+                            Ficha.Realizado = drFichas.Item("Realizado")
+                            Ficha.Importe = drFichas.Item("Importe")
+                            Ficha.Observaciones = drFichas.Item("Observaciones")
+                            Ficha.Equipos_IdEquipos = drFichas.Item("Equipos_idEquipos")
+                            Ficha.Estado = drFichas.Item("Estado")
+
+                            lFichas.Add(Ficha)
+                        End While
+                    End Using
+                End If
+            End Using
+
+            Return lFichas
+
+        Catch ex As Exception
+
+        End Try
+    End Function
+
+
     Function IngresaFicha(Ficha As eFichas) As Boolean
         If Ficha Is Nothing Then  ' SI NO RECIBE DATOS, CREA UNA EXCEPCION
             Throw New ArgumentException("No se recibieron datos en InsertarDatos")
@@ -606,6 +644,23 @@ Public Class BaseDatos
             'Throw New ArgumentException("Error en BorrarDatos")
         End Try
     End Function
+
+    ' ------------------------------- FIN FICHAS ------------------------------------------
+
+
+
+
+
+    ' ---------------------------- I N G R E S O S  ---------------------------------------
+
+
+
+
+
+
+
+
+
 
     Public Shared Sub Main()
 

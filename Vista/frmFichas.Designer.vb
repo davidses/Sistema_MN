@@ -52,10 +52,10 @@ Partial Class frmFichas
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(0, 11)
+        Me.Label5.Location = New System.Drawing.Point(130, 11)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(616, 39)
+        Me.Label5.Size = New System.Drawing.Size(486, 39)
         Me.Label5.TabIndex = 12
         Me.Label5.Text = "Fichas"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
