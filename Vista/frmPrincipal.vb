@@ -1,31 +1,20 @@
 ﻿
+Imports Entidades
+
 Public Class frmPrincipal
     Dim objLogica As New Logica.nGeneral
+    Dim objLogicaOrdenes As New Logica.nOrdenes
 
     Private Sub tsbSalir_Click(sender As Object, e As EventArgs) Handles tsbSalir.Click
         Me.Close()
     End Sub
 
-    Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs) Handles ToolStripButton5.Click
-        For Each f As Form In Me.MdiChildren
-            If f.Name = "frmIngresos" Then
-                f.Activate()
-                Exit Sub
-            End If
-        Next
-
-        Dim frmIngresos As New frmIngresos
-        frmIngresos.MdiParent = Me
-        frmIngresos.WindowState = FormWindowState.Normal
-        frmIngresos.Show()
-    End Sub
 
     Private Sub tmrHoraFecha_Tick(sender As Object, e As EventArgs) Handles tmrHoraFecha.Tick
         tslHoraFecha.Text = Format(Date.Now, "HH:mm - dddd dd/MM/yyyy")
     End Sub
 
     Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim Log As New Logica.nClientes
 
         objLogica.ConfigurarBD()
 
@@ -37,48 +26,9 @@ Public Class frmPrincipal
             tssInfoDB.ForeColor = Color.Red
         End If
 
-    End Sub
+        lblEquiposEnVentas.Text = objLogicaOrdenes.ObtenerStockEquipos.stockVentas
+        lblEquiposEnTaller.Text = objLogicaOrdenes.ObtenerStockEquipos.stockTaller
 
-    Private Sub ToolStripButton4_Click(sender As Object, e As EventArgs) Handles ToolStripButton4.Click
-        For Each f As Form In Me.MdiChildren
-            If f.Name = "frmClientes" Then
-                f.Activate()
-                Exit Sub
-            End If
-        Next
-
-        Dim frmClientes As New frmClientes
-        frmClientes.MdiParent = Me
-        frmClientes.WindowState = FormWindowState.Normal
-        frmClientes.Show()
-    End Sub
-
-    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
-        For Each f As Form In Me.MdiChildren
-            If f.Name = "frmEquipos" Then
-                f.Activate()
-                Exit Sub
-            End If
-        Next
-
-        Dim frmequipos As New frmEquipos
-        frmequipos.MdiParent = Me
-        frmequipos.WindowState = FormWindowState.Normal
-        frmequipos.Show()
-    End Sub
-
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
-        For Each f As Form In Me.MdiChildren
-            If f.Name = "frmFichas" Then
-                f.Activate()
-                Exit Sub
-            End If
-        Next
-
-        Dim frmFichas As New frmFichas
-        frmFichas.MdiParent = Me
-        frmFichas.WindowState = FormWindowState.Normal
-        frmFichas.Show()
     End Sub
 
     Private Sub ConexionBDToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConexionBDToolStripMenuItem.Click
@@ -95,5 +45,58 @@ Public Class frmPrincipal
         frmConexionBD.Show()
     End Sub
 
+    Private Sub tsbTerminados_Click(sender As Object, e As EventArgs) Handles tsbTerminados.Click
+        For Each f As Form In Me.MdiChildren
+            If f.Name = "frmTerminados" Then
+                f.Activate()
+                Exit Sub
+            End If
+        Next
 
+        Dim frmTerminados As New frmTerminados
+        frmTerminados.MdiParent = Me
+        frmTerminados.WindowState = FormWindowState.Normal
+        frmTerminados.Show()
+    End Sub
+
+    Private Sub tsnIngresos_Click(sender As Object, e As EventArgs) Handles tsnOrdenes.Click
+        For Each f As Form In Me.MdiChildren
+            If f.Name = "frmOrdenes" Then
+                f.Activate()
+                Exit Sub
+            End If
+        Next
+
+        Dim frmOrdenes As New frmOrdenes
+        frmOrdenes.MdiParent = Me
+        frmOrdenes.WindowState = FormWindowState.Normal
+        frmOrdenes.Show()
+    End Sub
+
+    Private Sub tsbEquiposVenta_Click(sender As Object, e As EventArgs) Handles tsbEquiposVenta.Click
+        For Each f As Form In Me.MdiChildren
+            If f.Name = "frmEquiposVenta" Then
+                f.Activate()
+                Exit Sub
+            End If
+        Next
+
+        Dim frmEquiposVenta As New frmEquiposVenta
+        frmEquiposVenta.MdiParent = Me
+        frmEquiposVenta.WindowState = FormWindowState.Normal
+        frmEquiposVenta.Show()
+    End Sub
+
+    Private Sub frmPrincipal_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
+
+    End Sub
+
+    Private Sub frmPrincipal_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
+
+    End Sub
+
+    Private Sub tmrStockEquipos_Tick(sender As Object, e As EventArgs) Handles tmrStockEquipos.Tick
+        lblEquiposEnVentas.Text = objLogicaOrdenes.ObtenerStockEquipos.stockVentas
+        lblEquiposEnTaller.Text = objLogicaOrdenes.ObtenerStockEquipos.stockTaller
+    End Sub
 End Class

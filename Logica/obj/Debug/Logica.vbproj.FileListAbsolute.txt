@@ -43,3 +43,27 @@ C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\Logica\obj\Debug\Logica.v
 C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\Logica\obj\Debug\Logica.vbproj.CopyComplete
 C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\Logica\obj\Debug\Logica.exe
 C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\Logica\obj\Debug\Logica.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\Logica.exe.config
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\Logica.exe
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\Logica.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\BaseDatos.exe
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\Entidades.exe
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\MySql.Data.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\ZstdNet.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\System.Memory.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\System.Buffers.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\BaseDatos.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\BaseDatos.exe.config
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\Entidades.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\Entidades.exe.config
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\obj\Debug\Logica.vbproj.AssemblyReference.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\obj\Debug\Logica.vbproj.SuggestedBindingRedirects.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\obj\Debug\Logica.exe.config
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\obj\Debug\Logica.vbproj.CoreCompileInputs.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\obj\Debug\Logica.vbproj.CopyComplete
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\obj\Debug\Logica.exe
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\obj\Debug\Logica.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Logica\bin\Debug\System.Numerics.Vectors.dll

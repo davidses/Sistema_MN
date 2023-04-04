@@ -48,6 +48,12 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>technical-support-2_icon-icons.com_52811.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Sub Main</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
@@ -56,9 +62,8 @@
     <Folder Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="nClientes.vb" />
-    <Compile Include="nEquipos.vb" />
-    <Compile Include="nFichas.vb" />
+    <Compile Include="nOrdenes.vb" />
+    <Compile Include="nTerminados.vb" />
     <Compile Include="nGeneral.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +81,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="technical-support-2_icon-icons.com_52811.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

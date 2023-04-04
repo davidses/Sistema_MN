@@ -29,4 +29,9 @@ Public Class nGeneral
     Public Function ObtenerConexion() As String
         Return objDatos.sConString
     End Function
+
+    Public Shared Sub Main()
+
+    End Sub
+
 End Class

@@ -37,125 +37,18 @@ Public Class BaseDatos
             Dim dr As MySqlDataReader = Nothing
             Using oCon As New MySqlConnection(sConString)
                 oCon.Open()
-                Using oCmd As New MySqlCommand("SELECT * FROM Clientes", oCon)
-                    oCmd.Connection = oCon
-                    oCmd.CommandType = CommandType.Text
-                    dr = oCmd.ExecuteReader
-                    dr.Read()
-
-                    If dr.Item("IdClientes") = Nothing Then
-                        Return False
-                    Else
-                        Return True
-                    End If
-
-                End Using
+                Return True
             End Using
         Catch ex As Exception
-
+            Return False
         End Try
     End Function
 
 
+    ' ---------------------------- T E R M I N A D O S ------------------------------------
 
-
-
-    '----------------------------- C L I E N T E S     -------------------------------------
-
-    Function Autocompletar_txtNombreCliente() As List(Of eClientes)   ' FUNCION DE AUTOCOMPLETADO DEL CAMPO  NOMBRE DE CLIENTES.
-        Try
-            Dim lista As New List(Of eClientes)
-            Dim dr As MySqlDataReader = Nothing
-            Using oCon As New MySqlConnection(sConString)
-                oCon.Open()
-                Using oCmd As New MySqlCommand("SELECT * FROM Clientes", oCon)
-                    oCmd.Connection = oCon
-                    oCmd.CommandType = CommandType.Text
-                    dr = oCmd.ExecuteReader
-                    While dr.Read
-                        Dim list As New Entidades.eClientes
-                        list.Id = dr.Item("IdClientes")
-                        list.Nombre = dr.Item("Nombre")
-                        list.Direccion = dr.Item("Direccion")
-                        list.Telefono = dr.Item("Telefono")
-                        list.Observaciones = dr.Item("Observaciones")
-                        lista.Add(list)
-                    End While
-                End Using
-            End Using
-
-            Return lista
-        Catch ex As Exception
-
-        End Try
-
-    End Function
-
-    Public Function BuscaCliente(Optional ByVal Id As String = "", Optional ByVal Nombre As String = "") As eClientes
-        Try
-            Dim lCliente As New eClientes
-            Dim dr As MySqlDataReader = Nothing
-
-            Using oCon As New MySqlConnection(sConString)
-                oCon.Open()
-                If Id <> "" Then    ' BUSCA EL CLIENTE POR ID
-                    Using oCmd As New MySqlCommand("SELECT * FROM Clientes WHERE IdClientes = " & Id, oCon)
-                        oCmd.Connection = oCon
-                        oCmd.CommandType = CommandType.Text
-                        dr = oCmd.ExecuteReader
-                        While dr.Read
-                            lCliente.Id = dr.Item("IdClientes")
-                            lCliente.Nombre = dr.Item("Nombre")
-                            lCliente.Direccion = dr.Item("Direccion")
-                            lCliente.Telefono = dr.Item("Telefono")
-                            lCliente.Observaciones = dr.Item("Observaciones")
-                        End While
-                    End Using
-
-                ElseIf Nombre <> "" Then  ' BUSCA EL CLIENTE POR NOMBRE
-                    Using oCmd As New MySqlCommand("SELECT * FROM Clientes WHERE Nombre = """ & Nombre & """", oCon)
-                        oCmd.Connection = oCon
-                        oCmd.CommandType = CommandType.Text
-                        dr = oCmd.ExecuteReader
-                        While dr.Read
-                            lCliente.Id = dr.Item("IdClientes")
-                            lCliente.Nombre = dr.Item("Nombre")
-                            lCliente.Direccion = dr.Item("Direccion")
-                            lCliente.Telefono = dr.Item("Telefono")
-                            lCliente.Observaciones = dr.Item("Observaciones")
-                        End While
-                    End Using
-                End If
-            End Using
-
-            Return lCliente
-
-        Catch ex As Exception
-
-        End Try
-
-    End Function
-
-
-    Public Function ObtenerClientes() As DataSet    ' FUNCION QUE DEVUELVE TODOS LOS CLIENTES
-        Try
-            Dim ds As New DataSet
-            Dim da As MySqlDataAdapter
-            Using oCon As New MySqlConnection(sConString)
-                oCon.Open()
-                da = New MySqlDataAdapter("SELECT IdClientes, Nombre FROM Clientes ORDER BY Nombre ASC", oCon)
-                da.Fill(ds, "Clientes")
-            End Using
-
-            Return ds
-        Catch ex As Exception
-
-        End Try
-
-    End Function
-
-    Public Function IngresarCliente(Cli As eClientes) As Boolean
-        If Cli Is Nothing Then      ' SI NO RECIBE DATOS CREA UNA EXCEPCION
+    Function IngresaTerminados(Terminado As eTerminados) As Boolean
+        If Terminado Is Nothing Then  ' SI NO RECIBE DATOS, CREA UNA EXCEPCION
             Throw New ArgumentException("No se recibieron datos en InsertarDatos")
         End If
 
@@ -165,397 +58,21 @@ Public Class BaseDatos
             Using oCon As New MySqlConnection(sConString)
                 oCon.Open()
                 oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using oCmd As New MySqlCommand("INSERT INTO Clientes (Nombre,Direccion,Telefono,Observaciones) VALUES (@nombre, @direccion, @telefono, @observaciones)", oCon, oTrans)
+                Using oCmd As New MySqlCommand("INSERT INTO egresos (Orden,Fecha,Cliente,marca_modelo,Trabajos,Importe,Tecnico,Estado) VALUES (@Orden, @Fecha, @Cliente, @marca_modelo, @Trabajos, @Importe, @Tecnico, @Estado)", oCon, oTrans)
                     oCmd.Transaction = oTrans
                     oCmd.CommandType = CommandType.Text
-                    oCmd.Parameters.AddWithValue("@nombre", Cli.Nombre)
-                    oCmd.Parameters.AddWithValue("@direccion", Cli.Direccion)
-                    oCmd.Parameters.AddWithValue("@telefono", Cli.Telefono)
-                    oCmd.Parameters.AddWithValue("@observaciones", Cli.Observaciones)
-
-                    If (oCmd.ExecuteNonQuery = 1) Then  ' EJECUTA LA CONSULTA Y VERIFICA QUE SE HAYA AFECTADO UN REGISTRO 
-                        oTrans.Commit()
-                        Return True
-                    Else
-                        Return False
-                    End If
-                End Using
-            End Using
-        Catch ex As Exception  ' CONTROLAMOS LA EXCEPCION DE ROLLBACK
-            Try
-                oTrans.Rollback()
-            Catch
-                ' Aca no escribimos nada.
-            End Try
-
-            Return False
-            'Throw New ArgumentException("Verificar InsertarDatos")
-        End Try
-    End Function
-
-    Public Function ModificarCliente(Cli As eClientes) As Boolean
-        If Cli Is Nothing Then    ' SI NO RECIBE DATOS, CREA UNA EXCEPCION
-            Throw New ArgumentException("no se recibieron datos en ModificarDatos")
-        End If
-
-        Dim oTrans As MySqlTransaction = Nothing
-
-        Try
-            Using oCon As New MySqlConnection(sConString)
-                oCon.Open()
-                oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using cmd As New MySqlCommand("UPDATE Clientes SET Nombre = '" & Cli.Nombre &
-                                              "', Direccion = '" & Cli.Direccion &
-                                              "', Telefono = '" & Cli.Telefono &
-                                              "', Observaciones = '" & Cli.Observaciones &
-                                              "' WHERE IdClientes = " & Cli.Id, oCon, oTrans)
-                    cmd.Transaction = oTrans
-                    cmd.CommandType = CommandType.Text
-
-                    If (cmd.ExecuteNonQuery = 1) Then
-                        oTrans.Commit()
-                        Return True
-                    Else
-                        Return False
-                    End If
-                End Using
-            End Using
-        Catch ex As Exception
-            Try
-                oTrans.Rollback()
-            Catch
-
-            End Try
-
-            Return False
-            Throw New ArgumentException("Verificar ModificarDatos")
-        End Try
-    End Function
-
-    Public Function EliminarCliente(ByVal id As String) As Boolean
-        Dim trans As MySqlTransaction = Nothing
-        Try
-            Using Sql As New MySqlConnection(sConString)
-                Sql.Open()
-                trans = Sql.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using cmd As New MySqlCommand("DELETE FROM Clientes WHERE IdClientes = " & id, Sql, trans)
-                    cmd.CommandType = CommandType.Text
-                    'cmd.Parameters.AddWithValue("@id", param)
-                    If (cmd.ExecuteNonQuery = 1) Then
-                        trans.Commit()
-                        Return True
-                    Else
-                        Return False
-                    End If
-                End Using
-            End Using
-        Catch ex As Exception
-            trans.Rollback()
-            'Throw New ArgumentException("Error en BorrarDatos")
-        End Try
-    End Function
-
-    '--------------------------------- FIN CLIENTES ------------------------------------------
-
-
-
-
-
-    ' ------------------------------- E Q U I P O S ------------------------------------------
-
-    Function LlenarComboClientes() As List(Of eClientes)
-        Try
-            Dim lista As New List(Of eClientes)
-            Dim dr As MySqlDataReader = Nothing
-            Using oCon As New MySqlConnection(sConString)
-                oCon.Open()
-                Using oCmd As New MySqlCommand("SELECT * FROM Clientes ORDER BY Nombre ASC", oCon)
-                    oCmd.Connection = oCon
-                    oCmd.CommandType = CommandType.Text
-                    dr = oCmd.ExecuteReader
-                    While dr.Read
-                        Dim list As New Entidades.eClientes
-                        list.Id = dr.Item("IdClientes")
-                        list.Nombre = dr.Item("Nombre")
-                        list.Direccion = dr.Item("Direccion")
-                        list.Telefono = dr.Item("Telefono")
-                        list.Observaciones = dr.Item("Observaciones")
-                        lista.Add(list)
-                    End While
-                End Using
-            End Using
-
-            Return lista
-        Catch ex As Exception
-
-        End Try
-    End Function
-
-
-    Public Function BuscaEquipo(ByVal Id As String) As eEquipos
-        Try
-            Dim lEquipo As New eEquipos
-            Dim drEquipo As MySqlDataReader = Nothing
-
-            Using oCon As New MySqlConnection(sConString)
-                oCon.Open()
-                If Id <> "" Then   ' BUSCA EL EQUIPO POR ID
-                    Using oCmd As New MySqlCommand("SELECT * FROM Equipos WHERE IdEquipos = " & Id, oCon)
-                        oCmd.Connection = oCon
-                        oCmd.CommandType = CommandType.Text
-                        drEquipo = oCmd.ExecuteReader
-                        While drEquipo.Read
-                            lEquipo.Id = drEquipo.Item("IdEquipos")
-                            lEquipo.IdCliente = drEquipo.Item("Clientes_IdClientes")
-                            lEquipo.Tipo = drEquipo.Item("Tipo")
-                            lEquipo.Nombre = drEquipo.Item("Nombre")
-                            lEquipo.Observaciones = drEquipo.Item("Observaciones")
-                        End While
-                    End Using
-                End If
-            End Using
-
-            Return lEquipo
-
-        Catch ex As Exception
-
-        End Try
-
-    End Function
-
-    Function IngresaEquipo(Equipo As eEquipos) As Boolean
-        If Equipo Is Nothing Then  ' SI NO RECIBE DATOS, CREA UNA EXCEPCION
-            Throw New ArgumentException("No se recibieron datos en InsertarDatos")
-        End If
-
-        Dim oTrans As MySqlTransaction = Nothing
-
-        Try
-            Using oCon As New MySqlConnection(sConString)
-                oCon.Open()
-                oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using oCmd As New MySqlCommand("INSERT INTO Equipos (IdEquipos,Clientes_IdClientes,Tipo,Nombre,Observaciones) VALUES (@idEquipos, @Clientes_IdClientes, @tipo, @nombre, @observaciones)", oCon, oTrans)
-                    oCmd.Transaction = oTrans
-                    oCmd.CommandType = CommandType.Text
-                    oCmd.Parameters.AddWithValue("@IdEquipos", Equipo.Id)
-                    oCmd.Parameters.AddWithValue("@Clientes_IdClientes", Equipo.IdCliente)
-                    oCmd.Parameters.AddWithValue("@Tipo", Equipo.Tipo)
-                    oCmd.Parameters.AddWithValue("@nombre", Equipo.Nombre)
-                    oCmd.Parameters.AddWithValue("@observaciones", Equipo.Observaciones)
-
-                    If (oCmd.ExecuteNonQuery = 1) Then  ' EJECUTA LA CONSULTA Y VERIFICA QUE SE HAYA AFECTADO UN REGISTRO
-                        oTrans.Commit()
-                        Return True
-                    Else
-                        Return False
-                    End If
-                End Using
-            End Using
-
-        Catch ex As Exception
-            Try ' Controlamos la excepcion del rollback
-                oTrans.Rollback()
-            Catch
-                ' Aca no escribimos nada.
-            End Try
-
-            Return False
-            'Throw New ArgumentException("Verificar InsertarDatos")
-        End Try
-    End Function
-
-    Public Function ModificaEquipo(Equipo As eEquipos) As Boolean
-
-        If Equipo Is Nothing Then ' Si no recibe datos, crea una excepcion
-            Throw New ArgumentException("no se recibieron datos en ModificarDatos")
-        End If
-
-        Dim oTrans As MySqlTransaction = Nothing
-
-        Try
-            Using oCon As New MySqlConnection(sConString)
-                oCon.Open()
-                oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using cmd As New MySqlCommand("UPDATE Equipos SET Nombre = '" & Equipo.Nombre &
-                                              "', Clientes_IdClientes = '" & Equipo.IdCliente &
-                                              "', Tipo = '" & Equipo.Tipo &
-                                              "', Observaciones = '" & Equipo.Observaciones &
-                                              "' WHERE idEquipos = " & Equipo.Id, oCon, oTrans)
-                    cmd.Transaction = oTrans
-                    cmd.CommandType = CommandType.Text
-
-                    If (cmd.ExecuteNonQuery = 1) Then
-                        oTrans.Commit()
-                        Return True
-                    Else
-                        Return False
-                    End If
-                End Using
-            End Using
-        Catch ex As Exception
-            Try
-                oTrans.Rollback()
-            Catch
-
-            End Try
-
-            Return False
-            Throw New ArgumentException("Verificar ModificarDatos")
-        End Try
-    End Function
-
-    Public Function EliminarEquipo(ByVal id As String) As Boolean
-        Dim trans As MySqlTransaction = Nothing
-        Try
-            Using Sql As New MySqlConnection(sConString)
-                Sql.Open()
-                trans = Sql.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using cmd As New MySqlCommand("DELETE FROM Equipos WHERE idEquipos = " & id, Sql, trans)
-                    cmd.CommandType = CommandType.Text
-                    If (cmd.ExecuteNonQuery = 1) Then
-                        trans.Commit()
-                        Return True
-                    Else
-                        Return False
-                    End If
-                End Using
-            End Using
-
-        Catch ex As Exception
-            trans.Rollback()
-            Return False
-            'Throw New ArgumentException("Error en BorrarDatos")
-        End Try
-    End Function
-
-    ' ------------------------------- FIN EQUIPOS ------------------------------------------
-
-
-
-
-
-    ' ------------------------------- F I C H A S ------------------------------------------
-
-    Public Function UltimoIdFicha() As eFichas
-        Try
-            Dim lFichas As New eFichas
-            Dim drFichas As MySqlDataReader = Nothing
-
-            Using oCon As New MySqlConnection(sConString)
-                oCon.Open()
-                Using oCmd As New MySqlCommand("SELECT idFichas FROM Fichas ORDER BY idFichas DESC", oCon)
-                    oCmd.Connection = oCon
-                    oCmd.CommandType = CommandType.Text
-                    drFichas = oCmd.ExecuteReader
-
-                    drFichas.Read()
-                    lFichas.Id = drFichas.Item("idFichas")
-                End Using
-            End Using
-
-            Return lFichas
-        Catch ex As Exception
-
-        End Try
-    End Function
-
-    Public Function BuscaFicha(ByVal Id As String) As eFichas
-        Try
-            Dim lFicha As New eFichas
-            Dim drFichas As MySqlDataReader = Nothing
-
-            Using oCon As New MySqlConnection(sConString)
-                oCon.Open()
-                If Id <> "" Then   ' BUSCA LA FICHA POR ID
-                    Using oCmd As New MySqlCommand("SELECT * FROM Fichas WHERE idFichas = " & Id, oCon)
-                        oCmd.Connection = oCon
-                        oCmd.CommandType = CommandType.Text
-                        drFichas = oCmd.ExecuteReader
-                        While drFichas.Read
-                            lFicha.Id = drFichas.Item("idFichas")
-                            lFicha.Fecha = drFichas.Item("Fecha")
-                            lFicha.Realizar = drFichas.Item("Realizar")
-                            lFicha.Realizado = drFichas.Item("Realizado")
-                            lFicha.Importe = drFichas.Item("Importe")
-                            lFicha.Observaciones = drFichas.Item("Observaciones")
-                            lFicha.Equipos_IdEquipos = drFichas.Item("Equipos_idEquipos")
-                            lFicha.Estado = drFichas.Item("Estado")
-                        End While
-                    End Using
-                End If
-            End Using
-
-            Return lFicha
-
-        Catch ex As Exception
-
-        End Try
-    End Function
-
-    Public Function BuscaFichaPorEquipo(ByVal IdEquipo As String) As List(Of eFichas)
-        Try
-            Dim lFichas As New List(Of eFichas)
-            Dim drFichas As MySqlDataReader = Nothing
-
-            Using oCon As New MySqlConnection(sConString)
-                oCon.Open()
-                If IdEquipo <> "" Then   ' BUSCA LAs FICHAS POR IDEQUIPO
-                    Using oCmd As New MySqlCommand("SELECT * FROM Fichas WHERE Equipos_idEquipos = " & IdEquipo, oCon)
-                        oCmd.Connection = oCon
-                        oCmd.CommandType = CommandType.Text
-                        drFichas = oCmd.ExecuteReader
-                        While drFichas.Read
-                            Dim Ficha As New eFichas
-
-                            Ficha.Id = drFichas.Item("idFichas")
-                            Ficha.Fecha = drFichas.Item("Fecha")
-                            Ficha.Realizar = drFichas.Item("Realizar")
-                            Ficha.Realizado = drFichas.Item("Realizado")
-                            Ficha.Importe = drFichas.Item("Importe")
-                            Ficha.Observaciones = drFichas.Item("Observaciones")
-                            Ficha.Equipos_IdEquipos = drFichas.Item("Equipos_idEquipos")
-                            Ficha.Estado = drFichas.Item("Estado")
-
-                            lFichas.Add(Ficha)
-                        End While
-                    End Using
-                End If
-            End Using
-
-            Return lFichas
-
-        Catch ex As Exception
-
-        End Try
-    End Function
-
-
-    Function IngresaFicha(Ficha As eFichas) As Boolean
-        If Ficha Is Nothing Then  ' SI NO RECIBE DATOS, CREA UNA EXCEPCION
-            Throw New ArgumentException("No se recibieron datos en InsertarDatos")
-        End If
-
-        Dim oTrans As MySqlTransaction = Nothing
-
-        Try
-            Using oCon As New MySqlConnection(sConString)
-                oCon.Open()
-                oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using oCmd As New MySqlCommand("INSERT INTO Fichas (IdFichas,Fecha,Realizar,Realizado,Importe,Observaciones,Equipos_IdEquipos,Estado) VALUES (@IdFichas, @Fecha, @Realizar, @Realizado, @Importe, @Observaciones, @Equipos_IdEquipos, @Estado)", oCon, oTrans)
-                    oCmd.Transaction = oTrans
-                    oCmd.CommandType = CommandType.Text
-                    oCmd.Parameters.AddWithValue("@IdFichas", Ficha.Id)
-                    oCmd.Parameters.AddWithValue("@Fecha", Ficha.Fecha)
-                    oCmd.Parameters.AddWithValue("@Realizar", Ficha.Realizar)
-                    oCmd.Parameters.AddWithValue("@Realizado", Ficha.Realizado)
-                    If Ficha.Importe = "" Then
+                    oCmd.Parameters.AddWithValue("@Orden", Terminado.Orden)
+                    oCmd.Parameters.AddWithValue("@Fecha", Terminado.Fecha)
+                    oCmd.Parameters.AddWithValue("@Cliente", Terminado.Cliente)
+                    oCmd.Parameters.AddWithValue("@marca_modelo", Terminado.MarcaModelo)
+                    oCmd.Parameters.AddWithValue("@Trabajos", Terminado.Trabajos)
+                    If Terminado.Importe = "" Then
                         oCmd.Parameters.AddWithValue("@Importe", "0")
                     Else
-                        oCmd.Parameters.AddWithValue("@Importe", Ficha.Importe)
+                        oCmd.Parameters.AddWithValue("@Importe", Terminado.Importe)
                     End If
-                    oCmd.Parameters.AddWithValue("@Observaciones", Ficha.Observaciones)
-                    oCmd.Parameters.AddWithValue("@Equipos_IdEquipos", Ficha.Equipos_IdEquipos)
-                    oCmd.Parameters.AddWithValue("@Estado", Ficha.Estado)
+                    oCmd.Parameters.AddWithValue("@Tecnico", Terminado.Tecnico)
+                    oCmd.Parameters.AddWithValue("@Estado", Terminado.Estado)
 
                     If (oCmd.ExecuteNonQuery = 1) Then  ' EJECUTA LA CONSULTA Y VERIFICA QUE SE HAYA AFECTADO UN REGISTRO
                         oTrans.Commit()
@@ -578,8 +95,42 @@ Public Class BaseDatos
         End Try
     End Function
 
-    Public Function ModificarFicha(Ficha As eFichas) As Boolean
-        If Ficha Is Nothing Then    ' SI NO RECIBE DATOS, CREA UNA EXCEPCION
+    Public Function BuscaOrden(ByVal Orden As String) As eTerminados
+        Try
+            Dim lOrden As New eTerminados
+            Dim drOrdenes As MySqlDataReader = Nothing
+
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                If Orden <> "" Then   ' BUSCA LA ORDEN
+                    Using oCmd As New MySqlCommand("SELECT * FROM egresos WHERE Orden = " & Orden, oCon)
+                        oCmd.Connection = oCon
+                        oCmd.CommandType = CommandType.Text
+                        drOrdenes = oCmd.ExecuteReader
+                        While drOrdenes.Read
+                            lOrden.Id = drOrdenes.Item("id")
+                            lOrden.Orden = drOrdenes.Item("orden")
+                            lOrden.Fecha = drOrdenes.Item("fecha")
+                            lOrden.Cliente = drOrdenes.Item("cliente")
+                            lOrden.MarcaModelo = drOrdenes.Item("marca_modelo")
+                            lOrden.Trabajos = drOrdenes.Item("trabajos")
+                            lOrden.Importe = drOrdenes.Item("importe")
+                            lOrden.Tecnico = drOrdenes.Item("tecnico")
+                            lOrden.Estado = drOrdenes.Item("estado")
+                        End While
+                    End Using
+                End If
+            End Using
+
+            Return lOrden
+
+        Catch ex As Exception
+
+        End Try
+    End Function
+
+    Public Function ModificarTerminado(Terminado As eTerminados) As Boolean
+        If Terminado Is Nothing Then    ' SI NO RECIBE DATOS, CREA UNA EXCEPCION
             Throw New ArgumentException("no se recibieron datos en ModificarDatos")
         End If
 
@@ -589,14 +140,14 @@ Public Class BaseDatos
             Using oCon As New MySqlConnection(sConString)
                 oCon.Open()
                 oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using cmd As New MySqlCommand("UPDATE Fichas SET Fecha = '" & Ficha.Fecha &
-                                              "', Realizar = '" & Ficha.Realizar &
-                                              "', Realizado = '" & Ficha.Realizado &
-                                              "', Importe = '" & Ficha.Importe &
-                                              "', Observaciones = '" & Ficha.Observaciones &
-                                              "', Equipos_idEquipos = '" & Ficha.Equipos_IdEquipos &
-                                              "', Estado = '" & Ficha.Estado &
-                                              "' WHERE idFichas = " & Ficha.Id, oCon, oTrans)
+                Using cmd As New MySqlCommand("UPDATE egresos SET Fecha = '" & Terminado.Fecha &
+                                              "', cliente = '" & Terminado.Cliente &
+                                              "', marca_modelo = '" & Terminado.MarcaModelo &
+                                              "', trabajos = '" & Terminado.Trabajos &
+                                              "', importe = '" & Terminado.Importe &
+                                              "', tecnico = '" & Terminado.Tecnico &
+                                              "', estado = '" & Terminado.Estado &
+                                              "' WHERE orden = " & Terminado.Orden, oCon, oTrans)
                     cmd.Transaction = oTrans
                     cmd.CommandType = CommandType.Text
 
@@ -621,13 +172,13 @@ Public Class BaseDatos
         End Try
     End Function
 
-    Public Function EliminarFicha(ByVal id As String) As Boolean
+    Public Function EliminarTerminado(ByVal Orden As String) As Boolean
         Dim trans As MySqlTransaction = Nothing
         Try
             Using Sql As New MySqlConnection(sConString)
                 Sql.Open()
                 trans = Sql.BeginTransaction(IsolationLevel.ReadCommitted)
-                Using cmd As New MySqlCommand("DELETE FROM fichas WHERE idFichas = " & id, Sql, trans)
+                Using cmd As New MySqlCommand("DELETE FROM egresos WHERE orden = " & Orden, Sql, trans)
                     cmd.CommandType = CommandType.Text
                     If (cmd.ExecuteNonQuery = 1) Then
                         trans.Commit()
@@ -645,27 +196,315 @@ Public Class BaseDatos
         End Try
     End Function
 
-    ' ------------------------------- FIN FICHAS ------------------------------------------
+    Public Function BuscaTerminadosMensual(mes As Integer, tecnico As String) As List(Of eTerminados)
+
+        Try
+            Dim lOrdenes As New List(Of eTerminados)
+            Dim drOrdenes As MySqlDataReader = Nothing
+
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                Using oCmd As New MySqlCommand("SELECT * FROM egresos WHERE MONTH(fecha) = """ & mes & """ AND tecnico = """ & tecnico & """")
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    drOrdenes = oCmd.ExecuteReader
+                    While drOrdenes.Read
+                        Dim Orden As New eTerminados
+
+                        Orden.Id = drOrdenes.Item("id")
+                        Orden.Orden = drOrdenes.Item("orden")
+                        If drOrdenes.Item("fecha") <> Nothing Then Orden.Fecha = drOrdenes.Item("fecha")
+                        Orden.Cliente = drOrdenes.Item("cliente")
+                        Orden.MarcaModelo = drOrdenes.Item("marca_modelo")
+                        Orden.Trabajos = drOrdenes.Item("trabajos")
+                        Orden.Importe = drOrdenes.Item("importe")
+                        Orden.Tecnico = drOrdenes.Item("tecnico")
+                        Orden.Estado = drOrdenes.Item("estado")
+
+                        lOrdenes.Add(Orden)
+                    End While
+                End Using
+            End Using
+
+            Return lOrdenes
+
+        Catch ex As Exception
+
+
+        End Try
+
+
+    End Function
+
+    ' ---------------------------------------- FIN TERMINADOS -----------------------------------------------
 
 
 
 
+    ' ---------------------------------------- O R D E N E S  -----------------------------------------------
 
-    ' ---------------------------- I N G R E S O S  ---------------------------------------
+    Public Function BuscaOrden2(ByVal Orden As String) As eOrdenes
+        Try
+            Dim lOrden As New eOrdenes
+            Dim drOrdenes As MySqlDataReader = Nothing
+
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                Using oCmd As New MySqlCommand("SELECT * FROM ordenes WHERE Orden = " & Orden, oCon)
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    drOrdenes = oCmd.ExecuteReader
+                    While drOrdenes.Read
+                        lOrden.Id = drOrdenes.Item("id")
+                        lOrden.Orden = drOrdenes.Item("orden")
+                        lOrden.Ubicacion = drOrdenes.Item("ubicacion")
+                        lOrden.Estado = drOrdenes.Item("estado")
+                        If drOrdenes.Item("fechaingreso") IsNot DBNull.Value Then lOrden.FechaIngreso = drOrdenes.Item("fechaingreso")
+                        lOrden.Propietario = drOrdenes.Item("propietario")
+                        lOrden.Domicilio = drOrdenes.Item("domicilio")
+                        lOrden.Telefono = drOrdenes.Item("telefono")
+                        lOrden.Email = drOrdenes.Item("email")
+                        lOrden.Equipo = drOrdenes.Item("equipo")
+                        lOrden.Diagnostico = drOrdenes.Item("diagnostico")
+                        If drOrdenes.Item("fechaterminado") IsNot DBNull.Value Then lOrden.FechaTerminado = drOrdenes.Item("fechaterminado")
+                        If drOrdenes.Item("trabajos") IsNot DBNull.Value Then lOrden.Trabajos = drOrdenes.Item("trabajos")
+                        If drOrdenes.Item("otros") IsNot DBNull.Value Then lOrden.Otros = drOrdenes.Item("otros")
+                        If drOrdenes.Item("importe") IsNot DBNull.Value Then lOrden.Importe = drOrdenes.Item("importe")
+                        If drOrdenes.Item("tecnico") IsNot DBNull.Value Then lOrden.Tecnico = drOrdenes.Item("tecnico")
+                    End While
+                End Using
+            End Using
+
+            Return lOrden
+
+        Catch ex As Exception
+
+        End Try
+
+    End Function
+
+    Function GuardaOrden(orden As eOrdenes) As Boolean
+
+        Dim oTrans As MySqlTransaction = Nothing
+
+        Try
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
+                Using oCmd As New MySqlCommand("INSERT INTO ordenes (orden,fechaingreso,propietario,domicilio,telefono,email,equipo,diagnostico,ubicacion,estado) VALUES (@Orden, @FechaIngreso, @Propietario, @Domicilio, @Telefono, @Email, @Equipo, @Diagnostico, @Ubicacion, @Estado)", oCon, oTrans)
+                    oCmd.Transaction = oTrans
+                    oCmd.CommandType = CommandType.Text
+                    oCmd.Parameters.AddWithValue("@Orden", orden.Orden)
+                    oCmd.Parameters.AddWithValue("@FechaIngreso", orden.FechaIngreso)
+                    oCmd.Parameters.AddWithValue("@Propietario", orden.Propietario)
+                    oCmd.Parameters.AddWithValue("@Domicilio", orden.Domicilio)
+                    oCmd.Parameters.AddWithValue("@Telefono", orden.Telefono)
+                    oCmd.Parameters.AddWithValue("@Email", orden.Email)
+                    oCmd.Parameters.AddWithValue("@Equipo", orden.Equipo)
+                    oCmd.Parameters.AddWithValue("@Diagnostico", orden.Diagnostico)
+                    oCmd.Parameters.AddWithValue("@Ubicacion", orden.Ubicacion)
+                    oCmd.Parameters.AddWithValue("@Estado", orden.Estado)
+
+                    If (oCmd.ExecuteNonQuery = 1) Then  ' EJECUTA LA CONSULTA Y VERIFICA QUE SE HAYA AFECTADO UN REGISTRO
+                        oTrans.Commit()
+                        Return True
+                    Else
+                        Return False
+                    End If
+                End Using
+            End Using
+
+        Catch ex As Exception
+            Try ' Controlamos la excepcion del rollback
+                oTrans.Rollback()
+            Catch
+                ' Aca no escribimos nada.
+            End Try
+
+            Return False
+        End Try
+    End Function
+
+    Public Function ModificaOrden(orden As eOrdenes) As Boolean
+
+        Dim oTrans As MySqlTransaction = Nothing
+
+        Try
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
+                Using cmd As New MySqlCommand("UPDATE ordenes SET fechaingreso = '" & orden.FechaIngreso &
+                                              "', propietario = '" & orden.Propietario &
+                                              "', domicilio = '" & orden.Domicilio &
+                                              "', telefono = '" & orden.Telefono &
+                                              "', email = '" & orden.Email &
+                                              "', equipo = '" & orden.Equipo &
+                                              "', diagnostico = '" & orden.Diagnostico &
+                                              "', ubicacion = '" & orden.Ubicacion &
+                                              "', estado = '" & orden.Estado &
+                                              "' WHERE orden = " & orden.Orden, oCon, oTrans)
+                    cmd.Transaction = oTrans
+                    cmd.CommandType = CommandType.Text
+
+                    If (cmd.ExecuteNonQuery = 1) Then
+                        oTrans.Commit()
+                        Return True
+                    Else
+                        Return False
+                    End If
+                End Using
+            End Using
+
+        Catch ex As Exception
+            Try
+                oTrans.Rollback()
+            Catch
+
+            End Try
+
+            Return False
+            Throw New ArgumentException("Verificar ModificarDatos")
+        End Try
+    End Function
+
+    Public Function ModificaOrdenST(orden As eOrdenes) As Boolean
+
+        Dim oTrans As MySqlTransaction = Nothing
+
+        Try
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
+                Using cmd As New MySqlCommand("UPDATE ordenes SET fechaterminado = '" & orden.FechaTerminado &
+                                              "', trabajos = '" & orden.Trabajos &
+                                              "', importe = '" & orden.Importe &
+                                              "', tecnico = '" & orden.Tecnico &
+                                              "', ubicacion = '" & orden.Ubicacion &
+                                              "', estado = '" & orden.Estado &
+                                              "' WHERE orden = " & orden.Orden, oCon, oTrans)
+                    cmd.Transaction = oTrans
+                    cmd.CommandType = CommandType.Text
+
+                    If (cmd.ExecuteNonQuery = 1) Then
+                        oTrans.Commit()
+                        Return True
+                    Else
+                        Return False
+                    End If
+                End Using
+            End Using
+
+        Catch ex As Exception
+            Try
+                oTrans.Rollback()
+            Catch
+
+            End Try
+
+            Return False
+            Throw New ArgumentException("Verificar ModificarDatos")
+        End Try
+    End Function
+
+    Public Function ObtenerStockEquipos() As (List(Of eOrdenes), List(Of eOrdenes))
+
+        Try
+            Dim lOrden As New List(Of eOrdenes)
+            Dim lOrden2 As New List(Of eOrdenes)
+            Dim drOrdenes As MySqlDataReader = Nothing
+
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '1 - VENTAS' AND estado <> '8 - ENTREGADO'", oCon)
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    drOrdenes = oCmd.ExecuteReader
+                    While drOrdenes.Read
+                        Dim orden As New eOrdenes
+
+                        orden.Id = drOrdenes.Item("id")
+                        orden.Orden = drOrdenes.Item("orden")
+
+                        lOrden.Add(orden)
+                    End While
+                End Using
+                oCon.Close()
+                oCon.Open()
+
+                Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '2 - TALLER' AND estado <> '8 - ENTREGADO'", oCon)
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    drOrdenes = oCmd.ExecuteReader
+                    While drOrdenes.Read
+                        Dim orden As New eOrdenes
+
+                        orden.Id = drOrdenes.Item("id")
+                        orden.Orden = drOrdenes.Item("orden")
+
+                        lOrden2.Add(orden)
+                    End While
+                End Using
+
+            End Using
+
+            Return (lOrden, lOrden2)
+
+        Catch ex As Exception
+
+        End Try
+
+    End Function
+
+    Function ObtenerPresupuestados() As List(Of eOrdenes)
+        Try
+            Dim lOrdenes As New List(Of eOrdenes)
+            Dim drOrdenes As MySqlDataReader = Nothing
+
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                Using oCmd As New MySqlCommand("SELECT * FROM ordenes WHERE estado = '2 - PRESUPUESTADO'", oCon)
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    drOrdenes = oCmd.ExecuteReader
+                    While drOrdenes.Read
+                        Dim Orden As New eOrdenes
+
+                        Orden.Id = drOrdenes.Item("id")
+                        Orden.Orden = drOrdenes.Item("orden")
+                        Orden.Ubicacion = drOrdenes.Item("ubicacion")
+                        Orden.Estado = drOrdenes.Item("estado")
+                        If drOrdenes.Item("fechaingreso") IsNot DBNull.Value Then Orden.FechaIngreso = drOrdenes.Item("fechaingreso")
+                        Orden.Propietario = drOrdenes.Item("propietario")
+                        Orden.Domicilio = drOrdenes.Item("domicilio")
+                        Orden.Telefono = drOrdenes.Item("telefono")
+                        Orden.Email = drOrdenes.Item("email")
+                        Orden.Equipo = drOrdenes.Item("equipo")
+                        Orden.Diagnostico = drOrdenes.Item("diagnostico")
+                        If drOrdenes.Item("fechaterminado") IsNot DBNull.Value Then Orden.FechaTerminado = drOrdenes.Item("fechaterminado")
+                        Orden.Trabajos = drOrdenes.Item("trabajos")
+                        If drOrdenes.Item("otros") IsNot DBNull.Value Then Orden.Otros = drOrdenes.Item("otros")
+                        Orden.Importe = drOrdenes.Item("importe")
+                        Orden.Tecnico = drOrdenes.Item("tecnico")
+
+                        lOrdenes.Add(Orden)
+                    End While
+                End Using
+            End Using
+
+            Return lOrdenes
+
+        Catch ex As Exception
 
 
+        End Try
 
-
-
-
+    End Function
 
 
 
 
     Public Shared Sub Main()
 
-
     End Sub
-
 
 End Class

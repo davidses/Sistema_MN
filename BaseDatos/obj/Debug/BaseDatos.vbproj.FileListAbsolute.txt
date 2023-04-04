@@ -36,3 +36,23 @@ C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\BaseDatos\obj\Debug\BaseD
 C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\BaseDatos\obj\Debug\BaseDatos.vbproj.CopyComplete
 C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\BaseDatos\obj\Debug\BaseDatos.exe
 C:\Users\Adrian\Source\Repos\Admin_Empresa_informatica\BaseDatos\obj\Debug\BaseDatos.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\BaseDatos.exe.config
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\BaseDatos.exe
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\BaseDatos.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\Entidades.exe
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\ZstdNet.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\System.Memory.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\System.Buffers.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\Entidades.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\Entidades.exe.config
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\obj\Debug\BaseDatos.vbproj.AssemblyReference.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\obj\Debug\BaseDatos.vbproj.SuggestedBindingRedirects.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\obj\Debug\BaseDatos.exe.config
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\obj\Debug\BaseDatos.vbproj.CoreCompileInputs.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\obj\Debug\BaseDatos.vbproj.CopyComplete
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\obj\Debug\BaseDatos.exe
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\obj\Debug\BaseDatos.pdb
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\BaseDatos\bin\Debug\System.Numerics.Vectors.dll

@@ -8,11 +8,26 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>Vista.My.MyApplication</StartupObject>
     <RootNamespace>Vista</RootNamespace>
-    <AssemblyName>Sistema de control ELCATECH</AssemblyName>
+    <AssemblyName>Sistema de control MN</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -21,7 +36,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Sistema de control ELCATECH.xml</DocumentationFile>
+    <DocumentationFile>Sistema de control MN.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -31,7 +46,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>..\</OutputPath>
-    <DocumentationFile>Sistema de control ELCATECH.xml</DocumentationFile>
+    <DocumentationFile>Sistema de control MN.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -49,6 +64,9 @@
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>technical-support-2_icon-icons.com_52811.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -61,6 +79,8 @@
     <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
+    <Import Include="Microsoft.Reporting.WebForms" />
+    <Import Include="Microsoft.Reporting.WebForms.Internal.Soap.ReportingServices2005.Execution" />
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
     <Import Include="System.Collections" />
@@ -74,46 +94,58 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmClientes.Designer.vb">
-      <DependentUpon>frmClientes.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmClientes.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmConexionBD.Designer.vb">
       <DependentUpon>frmConexionBD.vb</DependentUpon>
     </Compile>
     <Compile Include="frmConexionBD.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEquipos.Designer.vb">
-      <DependentUpon>frmEquipos.vb</DependentUpon>
+    <Compile Include="frmEquiposVenta.Designer.vb">
+      <DependentUpon>frmEquiposVenta.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmEquipos.vb">
+    <Compile Include="frmEquiposVenta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFichas.Designer.vb">
-      <DependentUpon>frmFichas.vb</DependentUpon>
+    <Compile Include="frmIngreso2.Designer.vb">
+      <DependentUpon>frmIngreso2.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmFichas.vb">
+    <Compile Include="frmIngreso2.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmIngreso.designer.vb">
-      <DependentUpon>frmIngreso.vb</DependentUpon>
+    <Compile Include="frmOrdenes.Designer.vb">
+      <DependentUpon>frmOrdenes.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmIngreso.vb">
+    <Compile Include="frmOrdenes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmIngresos.Designer.vb">
-      <DependentUpon>frmIngresos.vb</DependentUpon>
+    <Compile Include="frmPresupuestados.Designer.vb">
+      <DependentUpon>frmPresupuestados.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmIngresos.vb">
+    <Compile Include="frmPresupuestados.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPrincipal.designer.vb">
       <DependentUpon>frmPrincipal.vb</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteOrden.Designer.vb">
+      <DependentUpon>frmReporteOrden.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteOrden.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTerminados.Designer.vb">
+      <DependentUpon>frmTerminados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTerminados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTerminadosListados.Designer.vb">
+      <DependentUpon>frmTerminadosListados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTerminadosListados.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -134,26 +166,32 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmClientes.resx">
-      <DependentUpon>frmClientes.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmConexionBD.resx">
       <DependentUpon>frmConexionBD.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEquipos.resx">
-      <DependentUpon>frmEquipos.vb</DependentUpon>
+    <EmbeddedResource Include="frmEquiposVenta.resx">
+      <DependentUpon>frmEquiposVenta.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFichas.resx">
-      <DependentUpon>frmFichas.vb</DependentUpon>
+    <EmbeddedResource Include="frmIngreso2.resx">
+      <DependentUpon>frmIngreso2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmIngreso.resx">
-      <DependentUpon>frmIngreso.vb</DependentUpon>
+    <EmbeddedResource Include="frmOrdenes.resx">
+      <DependentUpon>frmOrdenes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmIngresos.resx">
-      <DependentUpon>frmIngresos.vb</DependentUpon>
+    <EmbeddedResource Include="frmPresupuestados.resx">
+      <DependentUpon>frmPresupuestados.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteOrden.resx">
+      <DependentUpon>frmReporteOrden.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTerminados.resx">
+      <DependentUpon>frmTerminados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTerminadosListados.resx">
+      <DependentUpon>frmTerminadosListados.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -161,6 +199,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="rptOrden.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\app.manifest" />
@@ -184,6 +223,24 @@
       <Project>{ccf25917-246f-48a8-9eb9-59c73e115e9c}</Project>
       <Name>Logica</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="technical-support-2_icon-icons.com_52811.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
