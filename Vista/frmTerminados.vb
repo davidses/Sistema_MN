@@ -70,6 +70,7 @@ Public Class frmTerminados
         Me.txtOrden.Text = ""
         Me.lblCliente.Text = ""
         Me.lblEquipo.Text = ""
+        Me.lblDiagnostico.Text = ""
         Me.txtTrabajos.Text = ""
         Me.txtImporte.Text = ""
         Me.cboTecnico.Text = ""
@@ -99,6 +100,7 @@ Public Class frmTerminados
 
         lblCliente.Text = datos.Propietario
         lblEquipo.Text = datos.Equipo
+        lblDiagnostico.Text = datos.Diagnostico
         txtTrabajos.Text = datos.Trabajos
         txtImporte.Text = datos.Importe
         cboTecnico.Text = datos.Tecnico

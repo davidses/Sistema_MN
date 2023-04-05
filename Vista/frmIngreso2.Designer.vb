@@ -299,7 +299,7 @@ Partial Class frmIngreso2
         Me.cboEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboEstado.ForeColor = System.Drawing.Color.DodgerBlue
         Me.cboEstado.FormattingEnabled = True
-        Me.cboEstado.Items.AddRange(New Object() {"1 - INGRESO", "2 - PRESUPUESTADO", "3 - AVISADO", "4 - CONFIRMADO", "5 - NO CONFIRMA", "6 - REPARADO", "7 - SIN REPARACION", "8 - ENTREGADO"})
+        Me.cboEstado.Items.AddRange(New Object() {"1 - INGRESO", "2 - PRESUPUESTADO", "3 - AVISADO", "3a - ESPERANDO CONF.", "4 - CONFIRMADO", "5 - NO CONFIRMA", "6 - REPARADO", "7 - SIN REPARACION", "8 - ENTREGADO"})
         Me.cboEstado.Location = New System.Drawing.Point(382, 452)
         Me.cboEstado.Name = "cboEstado"
         Me.cboEstado.Size = New System.Drawing.Size(182, 23)

@@ -118,3 +118,4 @@ C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Siste
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Sistema de control MN.pdb
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Vista.frmReporteOrden.resources
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Vista.frmPresupuestados.resources
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Vista.frmOrdenesBusqueda.resources

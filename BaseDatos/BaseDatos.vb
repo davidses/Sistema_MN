@@ -455,6 +455,116 @@ Public Class BaseDatos
 
     End Function
 
+    Public Function ObtenerUbicacionEstado() As Array
+        Dim cantidadEquipos(7) As Integer
+        Dim drOrdenes As MySqlDataReader = Nothing
+
+        Using oCon As New MySqlConnection(sConString)
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { VENTAS - INGRESADOS }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '1 - VENTAS' AND estado = '1 - INGRESO'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(0) += 1
+                End While
+            End Using
+            oCon.Close()
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { VENTAS - PRESUPUESTADOS }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '1 - VENTAS' AND estado = '2 - PRESUPUESTADO'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(1) += 1
+                End While
+            End Using
+            oCon.Close()
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { VENTAS - TERMINADOS }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '1 - VENTAS' AND (estado = '5 - NO CONFIRMA' OR estado = '6 - REPARADO' OR estado = '7 - SIN REPARACION')", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(2) += 1
+                End While
+            End Using
+            oCon.Close()
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { TALLER - INGRESADOS }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '2 - TALLER' AND estado = '1 - INGRESO'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(3) += 1
+                End While
+            End Using
+            oCon.Close()
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { TALLER - PRESUPUESTADOS }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '2 - TALLER' AND estado = '2 - PRESUPUESTADO'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(4) += 1
+                End While
+            End Using
+            oCon.Close()
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { TALLER - TERMINADOS }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '2 - TALLER' AND (estado = '5 - NO CONFIRMA' OR estado = '6 - REPARADO' OR estado = '7 - SIN REPARACION')", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    Dim orden As New eOrdenes
+
+                    orden.Id = drOrdenes.Item("id")
+                    cantidadEquipos(5) += 1
+                End While
+            End Using
+            oCon.Close()
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { VENTAS }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '1 - VENTAS'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(6) += 1
+                End While
+            End Using
+            oCon.Close()
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { TALLER }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '2 - TALLER'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(7) += 1
+                End While
+            End Using
+            oCon.Close()
+
+        End Using
+
+        Return cantidadEquipos
+
+    End Function
+
     Function ObtenerPresupuestados() As List(Of eOrdenes)
         Try
             Dim lOrdenes As New List(Of eOrdenes)
@@ -499,6 +609,99 @@ Public Class BaseDatos
         End Try
 
     End Function
+
+    Function BuscarPorNombre(nombre As String) As List(Of eOrdenes)
+        Try
+            Dim lOrdenes As New List(Of eOrdenes)
+            Dim drOrdenes As MySqlDataReader = Nothing
+
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                Using oCmd As New MySqlCommand("SELECT * FROM ordenes WHERE propietario LIKE '%" & nombre & "%'", oCon)
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    drOrdenes = oCmd.ExecuteReader
+                    While drOrdenes.Read
+                        Dim Orden As New eOrdenes
+
+                        Orden.Id = drOrdenes.Item("id")
+                        Orden.Orden = drOrdenes.Item("orden")
+                        Orden.Ubicacion = drOrdenes.Item("ubicacion")
+                        Orden.Estado = drOrdenes.Item("estado")
+                        If drOrdenes.Item("fechaingreso") IsNot DBNull.Value Then Orden.FechaIngreso = drOrdenes.Item("fechaingreso")
+                        Orden.Propietario = drOrdenes.Item("propietario")
+                        Orden.Domicilio = drOrdenes.Item("domicilio")
+                        Orden.Telefono = drOrdenes.Item("telefono")
+                        Orden.Email = drOrdenes.Item("email")
+                        Orden.Equipo = drOrdenes.Item("equipo")
+                        Orden.Diagnostico = drOrdenes.Item("diagnostico")
+                        If drOrdenes.Item("fechaterminado") IsNot DBNull.Value Then Orden.FechaTerminado = drOrdenes.Item("fechaterminado")
+                        Orden.Trabajos = drOrdenes.Item("trabajos")
+                        If drOrdenes.Item("otros") IsNot DBNull.Value Then Orden.Otros = drOrdenes.Item("otros")
+                        Orden.Importe = drOrdenes.Item("importe")
+                        Orden.Tecnico = drOrdenes.Item("tecnico")
+
+                        lOrdenes.Add(Orden)
+                    End While
+                End Using
+            End Using
+
+            Return lOrdenes
+
+        Catch ex As Exception
+
+        End Try
+
+    End Function
+
+    Function BuscarOrdenPorEstado(estado As String) As List(Of eOrdenes)
+        Try
+            Dim lOrdenes As New List(Of eOrdenes)
+            Dim drOrdenes As MySqlDataReader = Nothing
+
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                Using oCmd As New MySqlCommand("SELECT * FROM ordenes WHERE estado = '" & estado & "'", oCon)
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    drOrdenes = oCmd.ExecuteReader
+                    While drOrdenes.Read
+                        Dim Orden As New eOrdenes
+
+                        Orden.Id = drOrdenes.Item("id")
+                        Orden.Orden = drOrdenes.Item("orden")
+                        Orden.Ubicacion = drOrdenes.Item("ubicacion")
+                        Orden.Estado = drOrdenes.Item("estado")
+                        If drOrdenes.Item("fechaingreso") IsNot DBNull.Value Then Orden.FechaIngreso = drOrdenes.Item("fechaingreso")
+                        Orden.Propietario = drOrdenes.Item("propietario")
+                        Orden.Domicilio = drOrdenes.Item("domicilio")
+                        Orden.Telefono = drOrdenes.Item("telefono")
+                        Orden.Email = drOrdenes.Item("email")
+                        Orden.Equipo = drOrdenes.Item("equipo")
+                        Orden.Diagnostico = drOrdenes.Item("diagnostico")
+                        If drOrdenes.Item("fechaterminado") IsNot DBNull.Value Then Orden.FechaTerminado = drOrdenes.Item("fechaterminado")
+                        Orden.Trabajos = drOrdenes.Item("trabajos")
+                        If drOrdenes.Item("otros") IsNot DBNull.Value Then Orden.Otros = drOrdenes.Item("otros")
+                        Orden.Importe = drOrdenes.Item("importe")
+                        Orden.Tecnico = drOrdenes.Item("tecnico")
+
+                        lOrdenes.Add(Orden)
+                    End While
+                End Using
+            End Using
+
+            Return lOrdenes
+
+        Catch ex As Exception
+
+        End Try
+
+    End Function
+
+
+
+
+
 
 
 

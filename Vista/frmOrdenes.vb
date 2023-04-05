@@ -108,4 +108,7 @@ Public Class frmOrdenes
         End If
     End Sub
 
+    Private Sub F4BUSCARPORToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles F4BUSCARPORToolStripMenuItem.Click
+        frmOrdenesBusqueda.Show()
+    End Sub
 End Class

@@ -47,6 +47,8 @@ Partial Class frmTerminados
         Me.lblEquipo = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.cboUbicacion = New System.Windows.Forms.ComboBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblDiagnostico = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -125,7 +127,7 @@ Partial Class frmTerminados
         Me.txtTrabajos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTrabajos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTrabajos.ForeColor = System.Drawing.SystemColors.MenuHighlight
-        Me.txtTrabajos.Location = New System.Drawing.Point(103, 182)
+        Me.txtTrabajos.Location = New System.Drawing.Point(98, 309)
         Me.txtTrabajos.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTrabajos.MaxLength = 1000
         Me.txtTrabajos.Multiline = True
@@ -137,7 +139,7 @@ Partial Class frmTerminados
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(33, 185)
+        Me.Label3.Location = New System.Drawing.Point(28, 312)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(62, 16)
@@ -149,7 +151,7 @@ Partial Class frmTerminados
         Me.txtImporte.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtImporte.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtImporte.ForeColor = System.Drawing.SystemColors.MenuHighlight
-        Me.txtImporte.Location = New System.Drawing.Point(103, 326)
+        Me.txtImporte.Location = New System.Drawing.Point(98, 453)
         Me.txtImporte.Margin = New System.Windows.Forms.Padding(4)
         Me.txtImporte.MaxLength = 6
         Me.txtImporte.Name = "txtImporte"
@@ -160,7 +162,7 @@ Partial Class frmTerminados
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(43, 329)
+        Me.Label4.Location = New System.Drawing.Point(38, 456)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(52, 16)
@@ -171,7 +173,7 @@ Partial Class frmTerminados
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(39, 359)
+        Me.Label7.Location = New System.Drawing.Point(34, 486)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(56, 16)
@@ -182,7 +184,7 @@ Partial Class frmTerminados
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(45, 393)
+        Me.Label8.Location = New System.Drawing.Point(40, 520)
         Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(50, 16)
@@ -191,7 +193,7 @@ Partial Class frmTerminados
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(532, 457)
+        Me.btnSalir.Location = New System.Drawing.Point(527, 584)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 8
@@ -200,7 +202,7 @@ Partial Class frmTerminados
         '
         'btnGuardar
         '
-        Me.btnGuardar.Location = New System.Drawing.Point(278, 438)
+        Me.btnGuardar.Location = New System.Drawing.Point(273, 565)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(75, 42)
         Me.btnGuardar.TabIndex = 7
@@ -212,8 +214,8 @@ Partial Class frmTerminados
         Me.cboTecnico.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboTecnico.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.cboTecnico.FormattingEnabled = True
-        Me.cboTecnico.Items.AddRange(New Object() {"ADRIAN", "FERNANDO"})
-        Me.cboTecnico.Location = New System.Drawing.Point(103, 358)
+        Me.cboTecnico.Items.AddRange(New Object() {"ADRIAN", "FERNANDO", "JOAQUIN"})
+        Me.cboTecnico.Location = New System.Drawing.Point(98, 485)
         Me.cboTecnico.Name = "cboTecnico"
         Me.cboTecnico.Size = New System.Drawing.Size(133, 23)
         Me.cboTecnico.TabIndex = 4
@@ -223,8 +225,8 @@ Partial Class frmTerminados
         Me.cboEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboEstado.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.cboEstado.FormattingEnabled = True
-        Me.cboEstado.Items.AddRange(New Object() {"1 - INGRESO", "2 - PRESUPUESTADO", "3 - AVISADO", "4 - CONFIRMADO", "5 - NO CONFIRMA", "6 - REPARADO", "7 - SIN REPARACION", "8 - ENTREGADO"})
-        Me.cboEstado.Location = New System.Drawing.Point(103, 390)
+        Me.cboEstado.Items.AddRange(New Object() {"1 - INGRESO", "2 - PRESUPUESTADO", "3 - AVISADO", "3a - ESPERANDO CONF.", "4 - CONFIRMADO", "5 - NO CONFIRMA", "6 - REPARADO", "7 - SIN REPARACION", "8 - ENTREGADO"})
+        Me.cboEstado.Location = New System.Drawing.Point(98, 517)
         Me.cboEstado.Name = "cboEstado"
         Me.cboEstado.Size = New System.Drawing.Size(199, 23)
         Me.cboEstado.TabIndex = 5
@@ -296,7 +298,7 @@ Partial Class frmTerminados
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(333, 393)
+        Me.Label10.Location = New System.Drawing.Point(328, 520)
         Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(68, 16)
@@ -309,17 +311,39 @@ Partial Class frmTerminados
         Me.cboUbicacion.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.cboUbicacion.FormattingEnabled = True
         Me.cboUbicacion.Items.AddRange(New Object() {"1 - VENTAS", "2 - TALLER"})
-        Me.cboUbicacion.Location = New System.Drawing.Point(408, 390)
+        Me.cboUbicacion.Location = New System.Drawing.Point(403, 517)
         Me.cboUbicacion.Name = "cboUbicacion"
         Me.cboUbicacion.Size = New System.Drawing.Size(199, 23)
         Me.cboUbicacion.TabIndex = 6
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(16, 187)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(79, 16)
+        Me.Label11.TabIndex = 63
+        Me.Label11.Text = "Diagnostico"
+        '
+        'lblDiagnostico
+        '
+        Me.lblDiagnostico.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDiagnostico.Location = New System.Drawing.Point(102, 187)
+        Me.lblDiagnostico.Name = "lblDiagnostico"
+        Me.lblDiagnostico.Size = New System.Drawing.Size(500, 118)
+        Me.lblDiagnostico.TabIndex = 64
+        Me.lblDiagnostico.Text = "Label11"
         '
         'frmTerminados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Button1
-        Me.ClientSize = New System.Drawing.Size(620, 490)
+        Me.ClientSize = New System.Drawing.Size(620, 619)
+        Me.Controls.Add(Me.lblDiagnostico)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.cboUbicacion)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.lblEquipo)
@@ -381,4 +405,6 @@ Partial Class frmTerminados
     Friend WithEvents lblEquipo As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents cboUbicacion As ComboBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents lblDiagnostico As Label
 End Class

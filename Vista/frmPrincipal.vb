@@ -26,8 +26,7 @@ Public Class frmPrincipal
             tssInfoDB.ForeColor = Color.Red
         End If
 
-        lblEquiposEnVentas.Text = objLogicaOrdenes.ObtenerStockEquipos.stockVentas
-        lblEquiposEnTaller.Text = objLogicaOrdenes.ObtenerStockEquipos.stockTaller
+        Call ActualizaUbicacionEstado()
 
     End Sub
 
@@ -87,16 +86,23 @@ Public Class frmPrincipal
         frmEquiposVenta.Show()
     End Sub
 
-    Private Sub frmPrincipal_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
-
-    End Sub
-
-    Private Sub frmPrincipal_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
-
-    End Sub
-
     Private Sub tmrStockEquipos_Tick(sender As Object, e As EventArgs) Handles tmrStockEquipos.Tick
-        lblEquiposEnVentas.Text = objLogicaOrdenes.ObtenerStockEquipos.stockVentas
-        lblEquiposEnTaller.Text = objLogicaOrdenes.ObtenerStockEquipos.stockTaller
+
+        Call ActualizaUbicacionEstado()
+    End Sub
+
+    Private Sub ActualizaUbicacionEstado()
+        Dim UbicacionesEstados As Array = objLogicaOrdenes.ObtenerUbicacionEstado
+
+        lblEquiposVentasIngresados.Text = UbicacionesEstados(0)
+        lblEquiposVentasPresu.Text = UbicacionesEstados(1)
+        lblEquiposVentasTerm.Text = UbicacionesEstados(2)
+
+        lblEquiposTallerIngresados.Text = UbicacionesEstados(3)
+        lblEquiposTallerPresu.Text = UbicacionesEstados(4)
+        lblEquiposTallerTerm.Text = UbicacionesEstados(5)
+
+        lblEquiposEnVentas.Text = UbicacionesEstados(6)
+        lblEquiposEnTaller.Text = UbicacionesEstados(7)
     End Sub
 End Class

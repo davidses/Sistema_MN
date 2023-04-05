@@ -54,4 +54,16 @@ Public Class nOrdenes
         Return objDatos.ObtenerPresupuestados()
     End Function
 
+    Public Function ObtenerUbicacionEstado() As Array
+        Return objDatos.ObtenerUbicacionEstado
+    End Function
+
+    Public Function BuscarPorNombre(nombre As String) As List(Of eOrdenes)
+        Return objDatos.BuscarPorNombre(nombre)
+    End Function
+
+    Public Function BuscarOrdenPorEstado(estado As String) As List(Of eOrdenes)
+        Return objDatos.BuscarOrdenPorEstado(estado)
+    End Function
+
 End Class

@@ -21,25 +21,20 @@ Public Class frmPresupuestados
 
         For Each item As eOrdenes In objPresupuestados
             If item.Id <> Nothing Then
-                dgvPresupuestados.Rows.Add(item.Orden, item.Propietario, item.Equipo, item.Telefono)
+                dgvPresupuestados.Rows.Add(item.Orden, item.Propietario, item.Equipo, item.Telefono, item.Trabajos)
             Else
                 MessageBox.Show("Error al carga los datos")
             End If
         Next
 
+    End Sub
 
-        'Dim objFichas As New List(Of eFichas)
+    Private Sub dgvPresupuestados_SelectionChanged(sender As Object, e As EventArgs) Handles dgvPresupuestados.SelectionChanged
 
-        'objFichas = objLogica.BuscaFichasPorEquipo(txtIdEquipo.Text)
+        ' String Nombre = dgvPersonas .CurrentRow.Cells[0].Value.ToString(); 
 
-        'Me.dgvFichasPorEquipo.Rows.Clear()
+        txtTrabajos.Text = dgvPresupuestados.CurrentRow.Cells(4).Value.ToString
 
-        'For Each item As eFichas In objFichas
-        'If item.Id <> Nothing Then
-        'dgvFichasPorEquipo.Rows.Add(item.Id, item.Realizar, item.Realizado, item.Fecha)
-        'Else
-        'MessageBox.Show("Error al mostrar las Fichas.")
-        'End If
-        'Next
+
     End Sub
 End Class
