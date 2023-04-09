@@ -25,6 +25,7 @@ Public Class frmIngreso2
                 Me.txtDiagnostico.Enabled = False
                 Me.cboEstado.Enabled = False
                 Me.cboUbicacion.Enabled = False
+                Me.btnImprimir.Enabled = False
                 Me.btnGuardar.Enabled = False
                 Me.btnEliminar.Enabled = False
                 Call limpiaTxt()
@@ -42,6 +43,7 @@ Public Class frmIngreso2
                 Me.cboEstado.Text = "1 - INGRESO"
                 Me.cboUbicacion.Enabled = True
                 Me.cboUbicacion.Text = "1 - VENTAS"
+                Me.btnImprimir.Enabled = False
                 Me.btnGuardar.Enabled = True
                 Me.btnGuardar.Text = "Guardar"
                 Me.btnEliminar.Enabled = False
@@ -57,6 +59,7 @@ Public Class frmIngreso2
                 Me.txtDiagnostico.Enabled = True
                 Me.cboEstado.Enabled = True
                 Me.cboUbicacion.Enabled = True
+                Me.btnImprimir.Enabled = True
                 Me.btnGuardar.Enabled = True
                 Me.btnGuardar.Text = "Modificar"
                 Me.btnEliminar.Enabled = True
@@ -140,6 +143,9 @@ Public Class frmIngreso2
         orden.Estado = Trim(cboEstado.Text)
 
         If objLogicaOrdenes.GuardaOrden(orden) Then
+            If MessageBox.Show("¿Desea imprimir la ORDEN de ingreso?", "Impresion de orden", MessageBoxButtons.YesNo) = vbYes Then
+                Call ImprimeOrden()
+            End If
             Call Estado("NADA")
         Else
             MessageBox.Show("Ocurrio un problema al ingresar los datos", "Ingresar datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -187,4 +193,32 @@ Public Class frmIngreso2
         End If
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
+        Call ImprimeOrden()
+    End Sub
+
+    Sub ImprimeOrden()
+        frmReporteOrden.pNumOrden = txtOrden.Text
+        frmReporteOrden.pFecha = dtpFecha.Text
+        frmReporteOrden.pPropietario = txtPropietario.Text
+        If txtDomicilio.Text = "" Then
+            frmReporteOrden.pDomicilio = " "
+        Else
+            frmReporteOrden.pDomicilio = txtDomicilio.Text
+        End If
+        If txtTelefono.Text = "" Then
+            frmReporteOrden.pTelefono = " "
+        Else
+            frmReporteOrden.pTelefono = txtTelefono.Text
+        End If
+        If txtEmail.Text = "" Then
+            frmReporteOrden.pEmail = " "
+        Else
+            frmReporteOrden.pEmail = txtEmail.Text
+        End If
+        frmReporteOrden.pEquipo = txtEquipo.Text
+        frmReporteOrden.pDiagnostico = txtDiagnostico.Text
+
+        frmReporteOrden.ShowDialog()
+    End Sub
 End Class

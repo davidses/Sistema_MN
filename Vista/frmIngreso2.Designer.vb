@@ -48,6 +48,7 @@ Partial Class frmIngreso2
         Me.cboUbicacion = New System.Windows.Forms.ComboBox()
         Me.cboEstado = New System.Windows.Forms.ComboBox()
         Me.btnLimpiar = New System.Windows.Forms.Button()
+        Me.btnImprimir = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -315,6 +316,15 @@ Partial Class frmIngreso2
         Me.btnLimpiar.Text = "LIMPIAR"
         Me.btnLimpiar.UseVisualStyleBackColor = True
         '
+        'btnImprimir
+        '
+        Me.btnImprimir.Location = New System.Drawing.Point(33, 499)
+        Me.btnImprimir.Name = "btnImprimir"
+        Me.btnImprimir.Size = New System.Drawing.Size(75, 42)
+        Me.btnImprimir.TabIndex = 19
+        Me.btnImprimir.Text = "Imprimir"
+        Me.btnImprimir.UseVisualStyleBackColor = True
+        '
         'frmIngreso2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -322,6 +332,7 @@ Partial Class frmIngreso2
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.CancelButton = Me.btnLimpiar
         Me.ClientSize = New System.Drawing.Size(586, 554)
+        Me.Controls.Add(Me.btnImprimir)
         Me.Controls.Add(Me.cboEstado)
         Me.Controls.Add(Me.cboUbicacion)
         Me.Controls.Add(Me.Label11)
@@ -346,7 +357,6 @@ Partial Class frmIngreso2
         Me.Name = "frmIngreso2"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ORDENES - INGRESO DE EQUIPOS"
-        Me.TopMost = True
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
@@ -380,4 +390,5 @@ Partial Class frmIngreso2
     Friend WithEvents cboUbicacion As ComboBox
     Friend WithEvents cboEstado As ComboBox
     Friend WithEvents btnLimpiar As Button
+    Friend WithEvents btnImprimir As Button
 End Class

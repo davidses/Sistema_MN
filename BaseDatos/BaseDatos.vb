@@ -591,10 +591,10 @@ Public Class BaseDatos
                         Orden.Equipo = drOrdenes.Item("equipo")
                         Orden.Diagnostico = drOrdenes.Item("diagnostico")
                         If drOrdenes.Item("fechaterminado") IsNot DBNull.Value Then Orden.FechaTerminado = drOrdenes.Item("fechaterminado")
-                        Orden.Trabajos = drOrdenes.Item("trabajos")
+                        If drOrdenes.Item("trabajos") IsNot DBNull.Value Then Orden.Trabajos = drOrdenes.Item("trabajos")
                         If drOrdenes.Item("otros") IsNot DBNull.Value Then Orden.Otros = drOrdenes.Item("otros")
-                        Orden.Importe = drOrdenes.Item("importe")
-                        Orden.Tecnico = drOrdenes.Item("tecnico")
+                        If drOrdenes.Item("importe") IsNot DBNull.Value Then Orden.Importe = drOrdenes.Item("importe")
+                        If drOrdenes.Item("tecnico") IsNot DBNull.Value Then Orden.Tecnico = drOrdenes.Item("tecnico")
 
                         lOrdenes.Add(Orden)
                     End While
@@ -636,10 +636,10 @@ Public Class BaseDatos
                         Orden.Equipo = drOrdenes.Item("equipo")
                         Orden.Diagnostico = drOrdenes.Item("diagnostico")
                         If drOrdenes.Item("fechaterminado") IsNot DBNull.Value Then Orden.FechaTerminado = drOrdenes.Item("fechaterminado")
-                        Orden.Trabajos = drOrdenes.Item("trabajos")
+                        If drOrdenes.Item("trabajos") IsNot DBNull.Value Then Orden.Trabajos = drOrdenes.Item("trabajos")
                         If drOrdenes.Item("otros") IsNot DBNull.Value Then Orden.Otros = drOrdenes.Item("otros")
-                        Orden.Importe = drOrdenes.Item("importe")
-                        Orden.Tecnico = drOrdenes.Item("tecnico")
+                        If drOrdenes.Item("importe") IsNot DBNull.Value Then Orden.Importe = drOrdenes.Item("importe")
+                        If drOrdenes.Item("tecnico") IsNot DBNull.Value Then Orden.Tecnico = drOrdenes.Item("tecnico")
 
                         lOrdenes.Add(Orden)
                     End While
@@ -680,10 +680,10 @@ Public Class BaseDatos
                         Orden.Equipo = drOrdenes.Item("equipo")
                         Orden.Diagnostico = drOrdenes.Item("diagnostico")
                         If drOrdenes.Item("fechaterminado") IsNot DBNull.Value Then Orden.FechaTerminado = drOrdenes.Item("fechaterminado")
-                        Orden.Trabajos = drOrdenes.Item("trabajos")
+                        If drOrdenes.Item("trabajos") IsNot DBNull.Value Then Orden.Trabajos = drOrdenes.Item("trabajos")
                         If drOrdenes.Item("otros") IsNot DBNull.Value Then Orden.Otros = drOrdenes.Item("otros")
-                        Orden.Importe = drOrdenes.Item("importe")
-                        Orden.Tecnico = drOrdenes.Item("tecnico")
+                        If drOrdenes.Item("importe") IsNot DBNull.Value Then Orden.Importe = drOrdenes.Item("importe")
+                        If drOrdenes.Item("tecnico") IsNot DBNull.Value Then Orden.Tecnico = drOrdenes.Item("tecnico")
 
                         lOrdenes.Add(Orden)
                     End While
@@ -697,13 +697,6 @@ Public Class BaseDatos
         End Try
 
     End Function
-
-
-
-
-
-
-
 
 
     Public Shared Sub Main()
