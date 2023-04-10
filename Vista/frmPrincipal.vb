@@ -92,17 +92,39 @@ Public Class frmPrincipal
     End Sub
 
     Private Sub ActualizaUbicacionEstado()
+        '(0) TOTAL VENTAS
+        '(1) V-INGRESADOS
+        '(2) V-PRESUPUESTADOS
+        '(3) V-AVISADOS
+        '(4) V-ESPERANDO
+        '(5) V-CONFIRMADO
+        '(6) V-TERMINADOS
+        '(7) TOTAL TALLER
+        '(8) T-INGRESADOS
+        '(9) T-PRESUPUESTADOS
+        '(10) T-AVISADOS
+        '(11) T-ESPERANDO
+        '(12) T-CONFIRMADO
+        '(13) T-TERMINADOS
+
+
         Dim UbicacionesEstados As Array = objLogicaOrdenes.ObtenerUbicacionEstado
 
-        lblEquiposVentasIngresados.Text = UbicacionesEstados(0)
-        lblEquiposVentasPresu.Text = UbicacionesEstados(1)
-        lblEquiposVentasTerm.Text = UbicacionesEstados(2)
+        lblEquiposEnVentas.Text = UbicacionesEstados(0)
+        lblEquiposVentasIngresados.Text = UbicacionesEstados(1)
+        lblEquiposVentasPresu.Text = UbicacionesEstados(2)
+        lblEquiposVentasAvisados.Text = UbicacionesEstados(3)
+        lblEquiposVentasEsperando.Text = UbicacionesEstados(4)
+        lblEquiposVentasConfirmados.Text = UbicacionesEstados(5)
+        lblEquiposVentasTerm.Text = UbicacionesEstados(6)
 
-        lblEquiposTallerIngresados.Text = UbicacionesEstados(3)
-        lblEquiposTallerPresu.Text = UbicacionesEstados(4)
-        lblEquiposTallerTerm.Text = UbicacionesEstados(5)
-
-        lblEquiposEnVentas.Text = UbicacionesEstados(6)
         lblEquiposEnTaller.Text = UbicacionesEstados(7)
+        lblEquiposTallerIngresados.Text = UbicacionesEstados(8)
+        lblEquiposTallerPresu.Text = UbicacionesEstados(9)
+        lblEquiposTallerAvisados.Text = UbicacionesEstados(10)
+        lblEquiposTallerEsperando.Text = UbicacionesEstados(11)
+        lblEquiposTallerConfirmados.Text = UbicacionesEstados(12)
+        lblEquiposTallerTerm.Text = UbicacionesEstados(13)
+
     End Sub
 End Class

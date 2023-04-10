@@ -456,10 +456,38 @@ Public Class BaseDatos
     End Function
 
     Public Function ObtenerUbicacionEstado() As Array
-        Dim cantidadEquipos(7) As Integer
+        Dim cantidadEquipos(13) As Integer
         Dim drOrdenes As MySqlDataReader = Nothing
 
+        '(0) TOTAL VENTAS
+        '(1) V-INGRESADOS
+        '(2) V-PRESUPUESTADOS
+        '(3) V-AVISADOS
+        '(4) V-ESPERANDO
+        '(5) V-CONFIRMADO
+        '(6) V-TERMINADOS
+        '(7) TOTAL TALLER
+        '(8) T-INGRESADOS
+        '(9) T-PRESUPUESTADOS
+        '(10) T-AVISADOS
+        '(11) T-ESPERANDO
+        '(12) T-CONFIRMADO
+        '(13) T-TERMINADOS
+
         Using oCon As New MySqlConnection(sConString)
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { TOTAL VENTAS }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '1 - VENTAS' AND estado <> '8 - ENTREGADO'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(0) += 1
+                End While
+            End Using
+            oCon.Close()
+
             ' OBTENEMOS EL NUMERO DE EQUIPOS { VENTAS - INGRESADOS }
             oCon.Open()
             Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '1 - VENTAS' AND estado = '1 - INGRESO'", oCon)
@@ -467,7 +495,7 @@ Public Class BaseDatos
                 oCmd.CommandType = CommandType.Text
                 drOrdenes = oCmd.ExecuteReader
                 While drOrdenes.Read
-                    cantidadEquipos(0) += 1
+                    cantidadEquipos(1) += 1
                 End While
             End Using
             oCon.Close()
@@ -479,7 +507,41 @@ Public Class BaseDatos
                 oCmd.CommandType = CommandType.Text
                 drOrdenes = oCmd.ExecuteReader
                 While drOrdenes.Read
-                    cantidadEquipos(1) += 1
+                    cantidadEquipos(2) += 1
+                End While
+            End Using
+            oCon.Close()
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { VENTAS - AVISADOS }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '1 - VENTAS' AND estado = '3 - AVISADO'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(3) += 1
+                End While
+            End Using
+            oCon.Close()
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { VENTAS - ESPERANDO }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '1 - VENTAS' AND estado = '3a - ESPERANDO CONF.'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(4) += 1
+                End While
+            End Using
+            oCon.Close()
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { VENTAS - CONFIRMADOS }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '1 - VENTAS' AND estado = '4 - CONFIRMADO'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(5) += 1
                 End While
             End Using
             oCon.Close()
@@ -491,7 +553,19 @@ Public Class BaseDatos
                 oCmd.CommandType = CommandType.Text
                 drOrdenes = oCmd.ExecuteReader
                 While drOrdenes.Read
-                    cantidadEquipos(2) += 1
+                    cantidadEquipos(6) += 1
+                End While
+            End Using
+            oCon.Close()
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { TOTAL TALLER }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '2 - TALLER' AND estado <> '8 - ENTREGADO'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(7) += 1
                 End While
             End Using
             oCon.Close()
@@ -503,7 +577,7 @@ Public Class BaseDatos
                 oCmd.CommandType = CommandType.Text
                 drOrdenes = oCmd.ExecuteReader
                 While drOrdenes.Read
-                    cantidadEquipos(3) += 1
+                    cantidadEquipos(8) += 1
                 End While
             End Using
             oCon.Close()
@@ -515,7 +589,43 @@ Public Class BaseDatos
                 oCmd.CommandType = CommandType.Text
                 drOrdenes = oCmd.ExecuteReader
                 While drOrdenes.Read
-                    cantidadEquipos(4) += 1
+                    cantidadEquipos(9) += 1
+                End While
+            End Using
+            oCon.Close()
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { TALLER - AVISADOS }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '2 - TALLER' AND estado = '3 - AVISADO'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(10) += 1
+                End While
+            End Using
+            oCon.Close()
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { TALLER - ESPERANDO }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '2 - TALLER' AND estado = '3a - ESPERANDO CONF.'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(11) += 1
+                End While
+            End Using
+            oCon.Close()
+
+            ' OBTENEMOS EL NUMERO DE EQUIPOS { TALLER - CONFIRMADOS }
+            oCon.Open()
+            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '2 - TALLER' AND estado = '4 - CONFIRMADO'", oCon)
+                oCmd.Connection = oCon
+                oCmd.CommandType = CommandType.Text
+                drOrdenes = oCmd.ExecuteReader
+                While drOrdenes.Read
+                    cantidadEquipos(12) += 1
                 End While
             End Using
             oCon.Close()
@@ -530,31 +640,7 @@ Public Class BaseDatos
                     Dim orden As New eOrdenes
 
                     orden.Id = drOrdenes.Item("id")
-                    cantidadEquipos(5) += 1
-                End While
-            End Using
-            oCon.Close()
-
-            ' OBTENEMOS EL NUMERO DE EQUIPOS { VENTAS }
-            oCon.Open()
-            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '1 - VENTAS'", oCon)
-                oCmd.Connection = oCon
-                oCmd.CommandType = CommandType.Text
-                drOrdenes = oCmd.ExecuteReader
-                While drOrdenes.Read
-                    cantidadEquipos(6) += 1
-                End While
-            End Using
-            oCon.Close()
-
-            ' OBTENEMOS EL NUMERO DE EQUIPOS { TALLER }
-            oCon.Open()
-            Using oCmd As New MySqlCommand("SELECT id, orden FROM ordenes WHERE Ubicacion = '2 - TALLER'", oCon)
-                oCmd.Connection = oCon
-                oCmd.CommandType = CommandType.Text
-                drOrdenes = oCmd.ExecuteReader
-                While drOrdenes.Read
-                    cantidadEquipos(7) += 1
+                    cantidadEquipos(13) += 1
                 End While
             End Using
             oCon.Close()

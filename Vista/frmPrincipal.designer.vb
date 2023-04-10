@@ -68,6 +68,18 @@ Partial Class frmPrincipal
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tmrStockEquipos = New System.Windows.Forms.Timer(Me.components)
+        Me.lblEquiposTallerAvisados = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lblEquiposTallerEsperando = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lblEquiposTallerConfirmados = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.lblEquiposVentasAvisados = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblEquiposVentasEsperando = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.lblEquiposVentasConfirmados = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -301,6 +313,18 @@ Partial Class frmPrincipal
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel2.Controls.Add(Me.lblEquiposVentasConfirmados)
+        Me.Panel2.Controls.Add(Me.Label17)
+        Me.Panel2.Controls.Add(Me.lblEquiposVentasEsperando)
+        Me.Panel2.Controls.Add(Me.Label15)
+        Me.Panel2.Controls.Add(Me.lblEquiposVentasAvisados)
+        Me.Panel2.Controls.Add(Me.Label11)
+        Me.Panel2.Controls.Add(Me.lblEquiposTallerConfirmados)
+        Me.Panel2.Controls.Add(Me.Label14)
+        Me.Panel2.Controls.Add(Me.lblEquiposTallerEsperando)
+        Me.Panel2.Controls.Add(Me.Label12)
+        Me.Panel2.Controls.Add(Me.lblEquiposTallerAvisados)
+        Me.Panel2.Controls.Add(Me.Label10)
         Me.Panel2.Controls.Add(Me.lblEquiposTallerTerm)
         Me.Panel2.Controls.Add(Me.lblEquiposTallerPresu)
         Me.Panel2.Controls.Add(Me.lblEquiposTallerIngresados)
@@ -327,7 +351,7 @@ Partial Class frmPrincipal
         '
         Me.lblEquiposTallerTerm.AutoSize = True
         Me.lblEquiposTallerTerm.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEquiposTallerTerm.Location = New System.Drawing.Point(194, 263)
+        Me.lblEquiposTallerTerm.Location = New System.Drawing.Point(194, 346)
         Me.lblEquiposTallerTerm.Name = "lblEquiposTallerTerm"
         Me.lblEquiposTallerTerm.Size = New System.Drawing.Size(17, 16)
         Me.lblEquiposTallerTerm.TabIndex = 15
@@ -337,7 +361,7 @@ Partial Class frmPrincipal
         '
         Me.lblEquiposTallerPresu.AutoSize = True
         Me.lblEquiposTallerPresu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEquiposTallerPresu.Location = New System.Drawing.Point(194, 238)
+        Me.lblEquiposTallerPresu.Location = New System.Drawing.Point(194, 262)
         Me.lblEquiposTallerPresu.Name = "lblEquiposTallerPresu"
         Me.lblEquiposTallerPresu.Size = New System.Drawing.Size(17, 16)
         Me.lblEquiposTallerPresu.TabIndex = 14
@@ -347,7 +371,7 @@ Partial Class frmPrincipal
         '
         Me.lblEquiposTallerIngresados.AutoSize = True
         Me.lblEquiposTallerIngresados.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEquiposTallerIngresados.Location = New System.Drawing.Point(194, 215)
+        Me.lblEquiposTallerIngresados.Location = New System.Drawing.Point(194, 241)
         Me.lblEquiposTallerIngresados.Name = "lblEquiposTallerIngresados"
         Me.lblEquiposTallerIngresados.Size = New System.Drawing.Size(17, 16)
         Me.lblEquiposTallerIngresados.TabIndex = 13
@@ -357,7 +381,7 @@ Partial Class frmPrincipal
         '
         Me.lblEquiposVentasTerm.AutoSize = True
         Me.lblEquiposVentasTerm.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEquiposVentasTerm.Location = New System.Drawing.Point(194, 98)
+        Me.lblEquiposVentasTerm.Location = New System.Drawing.Point(195, 158)
         Me.lblEquiposVentasTerm.Name = "lblEquiposVentasTerm"
         Me.lblEquiposVentasTerm.Size = New System.Drawing.Size(17, 16)
         Me.lblEquiposVentasTerm.TabIndex = 12
@@ -377,7 +401,7 @@ Partial Class frmPrincipal
         '
         Me.lblEquiposVentasIngresados.AutoSize = True
         Me.lblEquiposVentasIngresados.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEquiposVentasIngresados.Location = New System.Drawing.Point(194, 51)
+        Me.lblEquiposVentasIngresados.Location = New System.Drawing.Point(194, 53)
         Me.lblEquiposVentasIngresados.Name = "lblEquiposVentasIngresados"
         Me.lblEquiposVentasIngresados.Size = New System.Drawing.Size(17, 16)
         Me.lblEquiposVentasIngresados.TabIndex = 10
@@ -386,7 +410,7 @@ Partial Class frmPrincipal
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(94, 265)
+        Me.Label6.Location = New System.Drawing.Point(95, 346)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(79, 13)
         Me.Label6.TabIndex = 9
@@ -395,7 +419,7 @@ Partial Class frmPrincipal
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(63, 241)
+        Me.Label7.Location = New System.Drawing.Point(63, 262)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(110, 13)
         Me.Label7.TabIndex = 8
@@ -404,7 +428,7 @@ Partial Class frmPrincipal
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(95, 218)
+        Me.Label8.Location = New System.Drawing.Point(95, 241)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(78, 13)
         Me.Label8.TabIndex = 7
@@ -413,7 +437,7 @@ Partial Class frmPrincipal
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(94, 100)
+        Me.Label5.Location = New System.Drawing.Point(94, 158)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(79, 13)
         Me.Label5.TabIndex = 6
@@ -422,7 +446,7 @@ Partial Class frmPrincipal
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(63, 76)
+        Me.Label4.Location = New System.Drawing.Point(63, 74)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(110, 13)
         Me.Label4.TabIndex = 5
@@ -441,7 +465,7 @@ Partial Class frmPrincipal
         '
         Me.lblEquiposEnTaller.AutoSize = True
         Me.lblEquiposEnTaller.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEquiposEnTaller.Location = New System.Drawing.Point(193, 180)
+        Me.lblEquiposEnTaller.Location = New System.Drawing.Point(193, 206)
         Me.lblEquiposEnTaller.Name = "lblEquiposEnTaller"
         Me.lblEquiposEnTaller.Size = New System.Drawing.Size(21, 20)
         Me.lblEquiposEnTaller.TabIndex = 3
@@ -451,7 +475,7 @@ Partial Class frmPrincipal
         '
         Me.lblEquiposEnVentas.AutoSize = True
         Me.lblEquiposEnVentas.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEquiposEnVentas.Location = New System.Drawing.Point(193, 18)
+        Me.lblEquiposEnVentas.Location = New System.Drawing.Point(193, 21)
         Me.lblEquiposEnVentas.Name = "lblEquiposEnVentas"
         Me.lblEquiposEnVentas.Size = New System.Drawing.Size(21, 20)
         Me.lblEquiposEnVentas.TabIndex = 2
@@ -471,7 +495,7 @@ Partial Class frmPrincipal
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(13, 185)
+        Me.Label1.Location = New System.Drawing.Point(13, 208)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(160, 15)
         Me.Label1.TabIndex = 0
@@ -481,6 +505,120 @@ Partial Class frmPrincipal
         '
         Me.tmrStockEquipos.Enabled = True
         Me.tmrStockEquipos.Interval = 300000
+        '
+        'lblEquiposTallerAvisados
+        '
+        Me.lblEquiposTallerAvisados.AutoSize = True
+        Me.lblEquiposTallerAvisados.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEquiposTallerAvisados.Location = New System.Drawing.Point(194, 283)
+        Me.lblEquiposTallerAvisados.Name = "lblEquiposTallerAvisados"
+        Me.lblEquiposTallerAvisados.Size = New System.Drawing.Size(17, 16)
+        Me.lblEquiposTallerAvisados.TabIndex = 17
+        Me.lblEquiposTallerAvisados.Text = "--"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(112, 283)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(61, 13)
+        Me.Label10.TabIndex = 16
+        Me.Label10.Text = "AVISADOS"
+        '
+        'lblEquiposTallerEsperando
+        '
+        Me.lblEquiposTallerEsperando.AutoSize = True
+        Me.lblEquiposTallerEsperando.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEquiposTallerEsperando.Location = New System.Drawing.Point(194, 304)
+        Me.lblEquiposTallerEsperando.Name = "lblEquiposTallerEsperando"
+        Me.lblEquiposTallerEsperando.Size = New System.Drawing.Size(17, 16)
+        Me.lblEquiposTallerEsperando.TabIndex = 19
+        Me.lblEquiposTallerEsperando.Text = "--"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(64, 304)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(109, 13)
+        Me.Label12.TabIndex = 18
+        Me.Label12.Text = "ESPERANDO CONF."
+        '
+        'lblEquiposTallerConfirmados
+        '
+        Me.lblEquiposTallerConfirmados.AutoSize = True
+        Me.lblEquiposTallerConfirmados.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEquiposTallerConfirmados.Location = New System.Drawing.Point(194, 325)
+        Me.lblEquiposTallerConfirmados.Name = "lblEquiposTallerConfirmados"
+        Me.lblEquiposTallerConfirmados.Size = New System.Drawing.Size(17, 16)
+        Me.lblEquiposTallerConfirmados.TabIndex = 21
+        Me.lblEquiposTallerConfirmados.Text = "--"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(87, 325)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(86, 13)
+        Me.Label14.TabIndex = 20
+        Me.Label14.Text = "CONFIRMADOS"
+        '
+        'lblEquiposVentasAvisados
+        '
+        Me.lblEquiposVentasAvisados.AutoSize = True
+        Me.lblEquiposVentasAvisados.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEquiposVentasAvisados.Location = New System.Drawing.Point(194, 95)
+        Me.lblEquiposVentasAvisados.Name = "lblEquiposVentasAvisados"
+        Me.lblEquiposVentasAvisados.Size = New System.Drawing.Size(17, 16)
+        Me.lblEquiposVentasAvisados.TabIndex = 23
+        Me.lblEquiposVentasAvisados.Text = "--"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(112, 95)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(61, 13)
+        Me.Label11.TabIndex = 22
+        Me.Label11.Text = "AVISADOS"
+        '
+        'lblEquiposVentasEsperando
+        '
+        Me.lblEquiposVentasEsperando.AutoSize = True
+        Me.lblEquiposVentasEsperando.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEquiposVentasEsperando.Location = New System.Drawing.Point(194, 116)
+        Me.lblEquiposVentasEsperando.Name = "lblEquiposVentasEsperando"
+        Me.lblEquiposVentasEsperando.Size = New System.Drawing.Size(17, 16)
+        Me.lblEquiposVentasEsperando.TabIndex = 25
+        Me.lblEquiposVentasEsperando.Text = "--"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(53, 116)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(120, 13)
+        Me.Label15.TabIndex = 24
+        Me.Label15.Text = "ESPERANDO CONFIG."
+        '
+        'lblEquiposVentasConfirmados
+        '
+        Me.lblEquiposVentasConfirmados.AutoSize = True
+        Me.lblEquiposVentasConfirmados.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEquiposVentasConfirmados.Location = New System.Drawing.Point(195, 137)
+        Me.lblEquiposVentasConfirmados.Name = "lblEquiposVentasConfirmados"
+        Me.lblEquiposVentasConfirmados.Size = New System.Drawing.Size(17, 16)
+        Me.lblEquiposVentasConfirmados.TabIndex = 27
+        Me.lblEquiposVentasConfirmados.Text = "--"
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(87, 137)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(86, 13)
+        Me.Label17.TabIndex = 26
+        Me.Label17.Text = "CONFIRMADOS"
         '
         'frmPrincipal
         '
@@ -553,4 +691,16 @@ Partial Class frmPrincipal
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents lblEquiposTallerConfirmados As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents lblEquiposTallerEsperando As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents lblEquiposTallerAvisados As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents lblEquiposVentasConfirmados As Label
+    Friend WithEvents Label17 As Label
+    Friend WithEvents lblEquiposVentasEsperando As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents lblEquiposVentasAvisados As Label
+    Friend WithEvents Label11 As Label
 End Class
