@@ -807,6 +807,51 @@ Public Class BaseDatos
 
     End Function
 
+    Function BuscarOrdenPorUbicacion(ubicacion As String) As List(Of eOrdenes)
+        Try
+            Dim lOrdenes As New List(Of eOrdenes)
+            Dim drOrdenes As MySqlDataReader = Nothing
+
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                Using oCmd As New MySqlCommand("SELECT * FROM ordenes WHERE ubicacion = '" & ubicacion & "' AND estado <> '8 - ENTREGADO'", oCon)
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    drOrdenes = oCmd.ExecuteReader
+                    While drOrdenes.Read
+                        Dim Orden As New eOrdenes
+
+                        Orden.Id = drOrdenes.Item("id")
+                        Orden.Orden = drOrdenes.Item("orden")
+                        Orden.Ubicacion = drOrdenes.Item("ubicacion")
+                        Orden.Estado = drOrdenes.Item("estado")
+                        If drOrdenes.Item("fechaingreso") IsNot DBNull.Value Then Orden.FechaIngreso = drOrdenes.Item("fechaingreso")
+                        Orden.Propietario = drOrdenes.Item("propietario")
+                        Orden.Domicilio = drOrdenes.Item("domicilio")
+                        Orden.Telefono = drOrdenes.Item("telefono")
+                        Orden.Email = drOrdenes.Item("email")
+                        Orden.Equipo = drOrdenes.Item("equipo")
+                        Orden.Diagnostico = drOrdenes.Item("diagnostico")
+                        If drOrdenes.Item("fechaterminado") IsNot DBNull.Value Then Orden.FechaTerminado = drOrdenes.Item("fechaterminado")
+                        If drOrdenes.Item("trabajos") IsNot DBNull.Value Then Orden.Trabajos = drOrdenes.Item("trabajos")
+                        If drOrdenes.Item("otros") IsNot DBNull.Value Then Orden.Otros = drOrdenes.Item("otros")
+                        If drOrdenes.Item("importe") IsNot DBNull.Value Then Orden.Importe = drOrdenes.Item("importe")
+                        If drOrdenes.Item("tecnico") IsNot DBNull.Value Then Orden.Tecnico = drOrdenes.Item("tecnico")
+
+                        lOrdenes.Add(Orden)
+                    End While
+                End Using
+            End Using
+
+            Return lOrdenes
+
+        Catch ex As Exception
+
+        End Try
+
+    End Function
+
+
 
     Public Shared Sub Main()
 

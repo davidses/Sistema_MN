@@ -101,8 +101,8 @@ Public Class frmIngreso2
         If objOrden.Id <> "" Then ' SE ENCONTRO LA ORDEN
             Estado("EDITANDO")
             Call CargaDatosOrden(objOrden)
-        Else ' NO SE ENCONTRO LA FICHA
-            Estado("NUEVO")
+            'Else ' NO SE ENCONTRO LA FICHA
+            '   Estado("NUEVO")
         End If
     End Sub
 

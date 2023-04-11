@@ -53,4 +53,12 @@ Public Class frmOrdenesBusqueda
             e.Handled = True
         End If
     End Sub
+
+    Private Sub btnBuscaPorUbicacion_Click(sender As Object, e As EventArgs) Handles btnBuscaPorUbicacion.Click
+        Dim objBuscados As New List(Of eOrdenes)
+        objBuscados = objLogicaOrdenes.BuscaOrdenPorUbicacion(cboUbicaciones.Text)
+
+        If objBuscados IsNot Nothing Then Call Cargadatos(objBuscados)
+
+    End Sub
 End Class

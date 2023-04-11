@@ -22,7 +22,7 @@ Partial Class frmOrdenesBusqueda
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabPorNombre = New System.Windows.Forms.TabPage()
@@ -31,6 +31,9 @@ Partial Class frmOrdenesBusqueda
         Me.tabPorEstado = New System.Windows.Forms.TabPage()
         Me.btnBuscarEstado = New System.Windows.Forms.Button()
         Me.cboEstado = New System.Windows.Forms.ComboBox()
+        Me.tabPorUbicacion = New System.Windows.Forms.TabPage()
+        Me.btnBuscaPorUbicacion = New System.Windows.Forms.Button()
+        Me.cboUbicaciones = New System.Windows.Forms.ComboBox()
         Me.dgvBuscados = New System.Windows.Forms.DataGridView()
         Me.colOt = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -41,6 +44,7 @@ Partial Class frmOrdenesBusqueda
         Me.TabControl1.SuspendLayout()
         Me.tabPorNombre.SuspendLayout()
         Me.tabPorEstado.SuspendLayout()
+        Me.tabPorUbicacion.SuspendLayout()
         CType(Me.dgvBuscados, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -57,6 +61,7 @@ Partial Class frmOrdenesBusqueda
         '
         Me.TabControl1.Controls.Add(Me.tabPorNombre)
         Me.TabControl1.Controls.Add(Me.tabPorEstado)
+        Me.TabControl1.Controls.Add(Me.tabPorUbicacion)
         Me.TabControl1.Location = New System.Drawing.Point(191, 21)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -124,6 +129,38 @@ Partial Class frmOrdenesBusqueda
         Me.cboEstado.Size = New System.Drawing.Size(319, 23)
         Me.cboEstado.TabIndex = 98
         '
+        'tabPorUbicacion
+        '
+        Me.tabPorUbicacion.Controls.Add(Me.btnBuscaPorUbicacion)
+        Me.tabPorUbicacion.Controls.Add(Me.cboUbicaciones)
+        Me.tabPorUbicacion.Location = New System.Drawing.Point(4, 22)
+        Me.tabPorUbicacion.Name = "tabPorUbicacion"
+        Me.tabPorUbicacion.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabPorUbicacion.Size = New System.Drawing.Size(514, 70)
+        Me.tabPorUbicacion.TabIndex = 2
+        Me.tabPorUbicacion.Text = "POR UBICACION"
+        Me.tabPorUbicacion.UseVisualStyleBackColor = True
+        '
+        'btnBuscaPorUbicacion
+        '
+        Me.btnBuscaPorUbicacion.Location = New System.Drawing.Point(377, 24)
+        Me.btnBuscaPorUbicacion.Name = "btnBuscaPorUbicacion"
+        Me.btnBuscaPorUbicacion.Size = New System.Drawing.Size(112, 23)
+        Me.btnBuscaPorUbicacion.TabIndex = 101
+        Me.btnBuscaPorUbicacion.Text = "Buscar"
+        Me.btnBuscaPorUbicacion.UseVisualStyleBackColor = True
+        '
+        'cboUbicaciones
+        '
+        Me.cboUbicaciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboUbicaciones.FormattingEnabled = True
+        Me.cboUbicaciones.Items.AddRange(New Object() {"1 - VENTAS", "2 - TALLER"})
+        Me.cboUbicaciones.Location = New System.Drawing.Point(26, 24)
+        Me.cboUbicaciones.Name = "cboUbicaciones"
+        Me.cboUbicaciones.Size = New System.Drawing.Size(319, 23)
+        Me.cboUbicaciones.TabIndex = 100
+        Me.cboUbicaciones.Text = "1 - VENTAS"
+        '
         'dgvBuscados
         '
         Me.dgvBuscados.AllowUserToAddRows = False
@@ -132,14 +169,14 @@ Partial Class frmOrdenesBusqueda
         Me.dgvBuscados.AllowUserToResizeRows = False
         Me.dgvBuscados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvBuscados.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colOt, Me.colCliente, Me.colEquipo, Me.colTelefono, Me.colTrabajos, Me.colEstado})
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(254, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.YellowGreen
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvBuscados.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(254, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.YellowGreen
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvBuscados.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvBuscados.Location = New System.Drawing.Point(15, 137)
         Me.dgvBuscados.MultiSelect = False
         Me.dgvBuscados.Name = "dgvBuscados"
@@ -217,6 +254,7 @@ Partial Class frmOrdenesBusqueda
         Me.tabPorNombre.ResumeLayout(False)
         Me.tabPorNombre.PerformLayout()
         Me.tabPorEstado.ResumeLayout(False)
+        Me.tabPorUbicacion.ResumeLayout(False)
         CType(Me.dgvBuscados, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -237,4 +275,7 @@ Partial Class frmOrdenesBusqueda
     Friend WithEvents colTelefono As DataGridViewTextBoxColumn
     Friend WithEvents colTrabajos As DataGridViewTextBoxColumn
     Friend WithEvents colEstado As DataGridViewTextBoxColumn
+    Friend WithEvents tabPorUbicacion As TabPage
+    Friend WithEvents btnBuscaPorUbicacion As Button
+    Friend WithEvents cboUbicaciones As ComboBox
 End Class

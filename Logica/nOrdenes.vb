@@ -70,4 +70,8 @@ Public Class nOrdenes
         Return objDatos.UltimaOrden
     End Function
 
+    Public Function BuscaOrdenPorUbicacion(ubicacion As String) As List(Of eOrdenes)
+        Return objDatos.BuscarOrdenPorUbicacion(ubicacion)
+    End Function
+
 End Class
