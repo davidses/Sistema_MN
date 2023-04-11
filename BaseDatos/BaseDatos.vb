@@ -233,7 +233,6 @@ Public Class BaseDatos
 
         End Try
 
-
     End Function
 
     ' ---------------------------------------- FIN TERMINADOS -----------------------------------------------
@@ -242,7 +241,31 @@ Public Class BaseDatos
 
 
     ' ---------------------------------------- O R D E N E S  -----------------------------------------------
+    Public Function UltimaOrden() As Integer
 
+        Try
+            Dim lOrden As New eOrdenes
+            Dim drOrdenes As MySqlDataReader = Nothing
+
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                Using oCmd As New MySqlCommand("SELECT orden FROM ordenes ORDER BY orden DESC", oCon)
+                    oCmd.Connection = oCon
+                    oCmd.CommandType = CommandType.Text
+                    drOrdenes = oCmd.ExecuteReader
+
+                    drOrdenes.Read()
+                    lOrden.Orden = drOrdenes.Item("orden")
+
+                End Using
+            End Using
+
+            Return lOrden.Orden
+
+        Catch ex As Exception
+
+        End Try
+    End Function
     Public Function BuscaOrden2(ByVal Orden As String) As eOrdenes
         Try
             Dim lOrden As New eOrdenes

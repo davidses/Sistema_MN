@@ -82,13 +82,18 @@ Public Class frmIngreso2
 
     Private Sub txtOrden_KeyDown(sender As Object, e As KeyEventArgs) Handles txtOrden.KeyDown
         If e.KeyCode = 13 Then
-            If txtOrden.Text <> "" Then
+            If txtOrden.Text = "" Then
+                Call OrdenNueva()
+            Else
                 Call BuscaOrden()
             End If
         End If
-
-
     End Sub
+    Sub OrdenNueva()
+        txtOrden.Text = objLogicaOrdenes.BuscaUltimaOrden + 1
+        Estado("NUEVO")
+    End Sub
+
     Sub BuscaOrden()
         Dim objOrden As New eOrdenes
         objOrden = objLogicaOrdenes.BuscaOrden2(txtOrden.Text)
@@ -100,6 +105,8 @@ Public Class frmIngreso2
             Estado("NUEVO")
         End If
     End Sub
+
+
 
     Private Sub CargaDatosOrden(ByVal datos As eOrdenes)
         Dim fecha As Date = datos.FechaIngreso
@@ -221,4 +228,6 @@ Public Class frmIngreso2
 
         frmReporteOrden.ShowDialog()
     End Sub
+
+
 End Class

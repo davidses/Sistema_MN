@@ -66,4 +66,8 @@ Public Class nOrdenes
         Return objDatos.BuscarOrdenPorEstado(estado)
     End Function
 
+    Public Function BuscaUltimaOrden() As Integer
+        Return objDatos.UltimaOrden
+    End Function
+
 End Class
