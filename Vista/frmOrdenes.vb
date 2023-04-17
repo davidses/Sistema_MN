@@ -113,7 +113,10 @@ Public Class frmOrdenes
     End Sub
 
     Private Sub REPORTESToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
         frmReporteOrden.Show()
+    End Sub
+
+    Private Sub F10CAMBNIODEUBIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles F10CAMBNIODEUBIToolStripMenuItem.Click
+        frmCambioUbiOrdenes.ShowDialog()
     End Sub
 End Class

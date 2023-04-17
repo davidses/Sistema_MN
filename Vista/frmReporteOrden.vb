@@ -37,7 +37,7 @@ Public Class frmReporteOrden
         Dim rparamDiagnostico As ReportParameter = New ReportParameter
 
         rparamNumOrden = New ReportParameter("ParamNumOrden", pNumOrden)
-        rparamNumOrdenBarra = New ReportParameter("ParamNumOrdenBarra", pNumOrden)
+        rparamNumOrdenBarra = New ReportParameter("ParamNumOrdenBarra", "*" & pNumOrden & "*")
         rparamFecha = New ReportParameter("ParamFecha", pFecha)
         rparamPropietario = New ReportParameter("ParamPropietario", pPropietario)
         rparamDomicilio = New ReportParameter("ParamDomicilio", pDomicilio)

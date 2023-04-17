@@ -176,3 +176,4 @@ C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\bin\Debug\AxInt
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Interop.RDPCOMAPILib.dll
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\AxInterop.RDPCOMAPILib.dll
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Vista.vbproj.ResolveComReference.cache
+C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Vista.frmCambioUbiOrdenes.resources

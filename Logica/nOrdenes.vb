@@ -39,6 +39,14 @@ Public Class nOrdenes
         End If
     End Function
 
+    Public Function ModificaUbiOrden(orden As String, ubi As String) As Boolean
+        If orden Is Nothing Then
+            Return Nothing
+        Else
+            Return objDatos.ModificaUbiOrden(orden, ubi)
+        End If
+    End Function
+
     Public Function ObtenerStockEquipos() As (stockVentas As Integer, stockTaller As Integer)
         Dim sVentas As Integer
         Dim sTaller As Integer

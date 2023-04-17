@@ -737,9 +737,9 @@ El equipo entregado al Servicion Tecnico para ser diagnositcado, presupuestado o
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>16.36613cm</Top>
-            <Left>10.85258cm</Left>
+            <Left>9.8207cm</Left>
             <Height>0.6cm</Height>
-            <Width>8.57749cm</Width>
+            <Width>9.60936cm</Width>
             <ZIndex>16</ZIndex>
             <Style>
               <Border>
@@ -1445,9 +1445,9 @@ El equipo entregado al Servicion Tecnico para ser diagnositcado, presupuestado o
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>1.20692cm</Top>
-              <Left>10.93819cm</Left>
+              <Left>9.8207cm</Left>
               <Height>0.6cm</Height>
-              <Width>8.57749cm</Width>
+              <Width>9.69498cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>

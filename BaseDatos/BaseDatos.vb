@@ -429,6 +429,41 @@ Public Class BaseDatos
         End Try
     End Function
 
+    Public Function ModificaUbiOrden(orden As String, ubi As String) As Boolean
+
+        Dim oTrans As MySqlTransaction = Nothing
+
+        Try
+            Using oCon As New MySqlConnection(sConString)
+                oCon.Open()
+                oTrans = oCon.BeginTransaction(IsolationLevel.ReadCommitted)
+                Using cmd As New MySqlCommand("UPDATE ordenes SET ubicacion = '" & ubi &
+                                              "' WHERE orden = " & orden, oCon, oTrans)
+                    cmd.Transaction = oTrans
+                    cmd.CommandType = CommandType.Text
+
+                    If (cmd.ExecuteNonQuery = 1) Then
+                        oTrans.Commit()
+                        Return True
+                    Else
+                        Return False
+                    End If
+                End Using
+            End Using
+
+        Catch ex As Exception
+            Try
+                oTrans.Rollback()
+            Catch
+
+            End Try
+
+            Return False
+            Throw New ArgumentException("Verificar ModificarDatos")
+        End Try
+    End Function
+
+
     Public Function ObtenerStockEquipos() As (List(Of eOrdenes), List(Of eOrdenes))
 
         Try
@@ -848,7 +883,6 @@ Public Class BaseDatos
         Catch ex As Exception
 
         End Try
-
     End Function
 
 

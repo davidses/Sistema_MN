@@ -63,6 +63,7 @@ Partial Class frmOrdenes
         Me.lblEstado = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.btnLimpia = New System.Windows.Forms.Button()
+        Me.F10CAMBNIODEUBIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.grbIngreso.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -459,7 +460,7 @@ Partial Class frmOrdenes
         '
         'mnsPrincipal
         '
-        Me.mnsPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuIngreso, Me.mnuServicioTecnico, Me.F3PRESUPUESTADOSToolStripMenuItem, Me.F4BUSCARPORToolStripMenuItem})
+        Me.mnsPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuIngreso, Me.mnuServicioTecnico, Me.F3PRESUPUESTADOSToolStripMenuItem, Me.F4BUSCARPORToolStripMenuItem, Me.F10CAMBNIODEUBIToolStripMenuItem})
         Me.mnsPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.mnsPrincipal.Name = "mnsPrincipal"
         Me.mnsPrincipal.Size = New System.Drawing.Size(1031, 24)
@@ -539,6 +540,13 @@ Partial Class frmOrdenes
         Me.btnLimpia.TabIndex = 98
         Me.btnLimpia.Text = "LIMPIA"
         Me.btnLimpia.UseVisualStyleBackColor = True
+        '
+        'F10CAMBNIODEUBIToolStripMenuItem
+        '
+        Me.F10CAMBNIODEUBIToolStripMenuItem.Name = "F10CAMBNIODEUBIToolStripMenuItem"
+        Me.F10CAMBNIODEUBIToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10
+        Me.F10CAMBNIODEUBIToolStripMenuItem.Size = New System.Drawing.Size(132, 20)
+        Me.F10CAMBNIODEUBIToolStripMenuItem.Text = "F10 - CAMBIO DE UBI"
         '
         'frmOrdenes
         '
@@ -620,4 +628,5 @@ Partial Class frmOrdenes
     Friend WithEvents btnLimpia As Button
     Friend WithEvents F3PRESUPUESTADOSToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents F4BUSCARPORToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents F10CAMBNIODEUBIToolStripMenuItem As ToolStripMenuItem
 End Class
