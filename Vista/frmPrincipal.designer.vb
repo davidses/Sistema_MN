@@ -27,6 +27,7 @@ Partial Class frmPrincipal
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.Informacion = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ESPACIADO = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tssVersion = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssInfoDB = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsnOrdenes = New System.Windows.Forms.ToolStripButton()
@@ -80,7 +81,6 @@ Partial Class frmPrincipal
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tmrStockEquipos = New System.Windows.Forms.Timer(Me.components)
-        Me.tssVersion = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -108,6 +108,12 @@ Partial Class frmPrincipal
         Me.ESPACIADO.AutoSize = False
         Me.ESPACIADO.Name = "ESPACIADO"
         Me.ESPACIADO.Size = New System.Drawing.Size(900, 17)
+        '
+        'tssVersion
+        '
+        Me.tssVersion.Name = "tssVersion"
+        Me.tssVersion.Size = New System.Drawing.Size(50, 17)
+        Me.tssVersion.Text = "Ver. 1.10"
         '
         'tssInfoDB
         '
@@ -620,12 +626,6 @@ Partial Class frmPrincipal
         '
         Me.tmrStockEquipos.Enabled = True
         Me.tmrStockEquipos.Interval = 300000
-        '
-        'tssVersion
-        '
-        Me.tssVersion.Name = "tssVersion"
-        Me.tssVersion.Size = New System.Drawing.Size(50, 17)
-        Me.tssVersion.Text = "Ver. 1.05"
         '
         'frmPrincipal
         '

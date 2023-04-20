@@ -709,14 +709,15 @@ Public Class BaseDatos
 
     End Function
 
-    Function ObtenerPresupuestados() As List(Of eOrdenes)
+    Function ObtenerAvisar() As List(Of eOrdenes)
+
         Try
             Dim lOrdenes As New List(Of eOrdenes)
             Dim drOrdenes As MySqlDataReader = Nothing
 
             Using oCon As New MySqlConnection(sConString)
                 oCon.Open()
-                Using oCmd As New MySqlCommand("SELECT * FROM ordenes WHERE estado = '2 - PRESUPUESTADO'", oCon)
+                Using oCmd As New MySqlCommand("SELECT * FROM ordenes WHERE estado = '2 - PRESUPUESTADO' OR estado = '5 - NO CONFIRMA' OR estado = '6 - REPARADO' OR estado = '7 - SIN REPARACION' ORDER BY estado ASC", oCon)
                     oCmd.Connection = oCon
                     oCmd.CommandType = CommandType.Text
                     drOrdenes = oCmd.ExecuteReader

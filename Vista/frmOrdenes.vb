@@ -95,7 +95,7 @@ Public Class frmOrdenes
         End If
     End Sub
 
-    Private Sub F3PRESUPUESTADOSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles F3PRESUPUESTADOSToolStripMenuItem.Click
+    Private Sub F3PRESUPUESTADOSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles mnuAvisar.Click
         frmPresupuestados.Show()
     End Sub
     Sub SoloNumeros(ByRef e As System.Windows.Forms.KeyPressEventArgs)

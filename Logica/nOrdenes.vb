@@ -58,8 +58,8 @@ Public Class nOrdenes
 
     End Function
 
-    Public Function ObtenerPresupuestados() As List(Of eOrdenes)
-        Return objDatos.ObtenerPresupuestados()
+    Public Function ObtenerAvisar() As List(Of eOrdenes)
+        Return objDatos.ObtenerAvisar()
     End Function
 
     Public Function ObtenerUbicacionEstado() As Array

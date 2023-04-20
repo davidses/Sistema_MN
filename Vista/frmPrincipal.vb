@@ -127,4 +127,8 @@ Public Class frmPrincipal
         lblEquiposTallerTerm.Text = UbicacionesEstados(13)
 
     End Sub
+
+    Private Sub tssVersion_Click(sender As Object, e As EventArgs) Handles tssVersion.Click
+
+    End Sub
 End Class

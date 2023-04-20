@@ -95,7 +95,6 @@ C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\bin\Debug\Logic
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\bin\Debug\BaseDatos.pdb
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\bin\Debug\BaseDatos.exe.config
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Vista.vbproj.AssemblyReference.cache
-C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Vista.vbproj.SuggestedBindingRedirects.cache
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Vista.frmConexionBD.resources
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Vista.frmPrincipal.resources
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Vista.frmTerminados.resources
@@ -112,7 +111,6 @@ C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\bin\Debug\Siste
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\bin\Debug\Sistema de control MN.exe
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\bin\Debug\Sistema de control MN.pdb
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\bin\Debug\Sistema de control MN.xml
-C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Sistema de control MN.exe.config
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Sistema de control MN.exe
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Sistema de control MN.xml
 C:\Users\Adrian\source\repos\Admin_Empresa_informatica _MN\Vista\obj\Debug\Sistema de control MN.pdb

@@ -57,13 +57,13 @@ Partial Class frmOrdenes
         Me.mnsPrincipal = New System.Windows.Forms.MenuStrip()
         Me.mnuIngreso = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuServicioTecnico = New System.Windows.Forms.ToolStripMenuItem()
-        Me.F3PRESUPUESTADOSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuAvisar = New System.Windows.Forms.ToolStripMenuItem()
         Me.F4BUSCARPORToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.F10CAMBNIODEUBIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblUbicacion = New System.Windows.Forms.Label()
         Me.lblEstado = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.btnLimpia = New System.Windows.Forms.Button()
-        Me.F10CAMBNIODEUBIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.grbIngreso.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -460,7 +460,7 @@ Partial Class frmOrdenes
         '
         'mnsPrincipal
         '
-        Me.mnsPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuIngreso, Me.mnuServicioTecnico, Me.F3PRESUPUESTADOSToolStripMenuItem, Me.F4BUSCARPORToolStripMenuItem, Me.F10CAMBNIODEUBIToolStripMenuItem})
+        Me.mnsPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuIngreso, Me.mnuServicioTecnico, Me.mnuAvisar, Me.F4BUSCARPORToolStripMenuItem, Me.F10CAMBNIODEUBIToolStripMenuItem})
         Me.mnsPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.mnsPrincipal.Name = "mnsPrincipal"
         Me.mnsPrincipal.Size = New System.Drawing.Size(1031, 24)
@@ -481,12 +481,12 @@ Partial Class frmOrdenes
         Me.mnuServicioTecnico.Size = New System.Drawing.Size(143, 20)
         Me.mnuServicioTecnico.Text = "F2 - SERVICIO TECNICO"
         '
-        'F3PRESUPUESTADOSToolStripMenuItem
+        'mnuAvisar
         '
-        Me.F3PRESUPUESTADOSToolStripMenuItem.Name = "F3PRESUPUESTADOSToolStripMenuItem"
-        Me.F3PRESUPUESTADOSToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3
-        Me.F3PRESUPUESTADOSToolStripMenuItem.Size = New System.Drawing.Size(139, 20)
-        Me.F3PRESUPUESTADOSToolStripMenuItem.Text = "F3 - PRESUPUESTADOS"
+        Me.mnuAvisar.Name = "mnuAvisar"
+        Me.mnuAvisar.ShortcutKeys = System.Windows.Forms.Keys.F3
+        Me.mnuAvisar.Size = New System.Drawing.Size(80, 20)
+        Me.mnuAvisar.Text = "F3 - AVISAR"
         '
         'F4BUSCARPORToolStripMenuItem
         '
@@ -494,6 +494,13 @@ Partial Class frmOrdenes
         Me.F4BUSCARPORToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4
         Me.F4BUSCARPORToolStripMenuItem.Size = New System.Drawing.Size(102, 20)
         Me.F4BUSCARPORToolStripMenuItem.Text = "F4 - BUSQUEDA"
+        '
+        'F10CAMBNIODEUBIToolStripMenuItem
+        '
+        Me.F10CAMBNIODEUBIToolStripMenuItem.Name = "F10CAMBNIODEUBIToolStripMenuItem"
+        Me.F10CAMBNIODEUBIToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10
+        Me.F10CAMBNIODEUBIToolStripMenuItem.Size = New System.Drawing.Size(132, 20)
+        Me.F10CAMBNIODEUBIToolStripMenuItem.Text = "F10 - CAMBIO DE UBI"
         '
         'lblUbicacion
         '
@@ -540,13 +547,6 @@ Partial Class frmOrdenes
         Me.btnLimpia.TabIndex = 98
         Me.btnLimpia.Text = "LIMPIA"
         Me.btnLimpia.UseVisualStyleBackColor = True
-        '
-        'F10CAMBNIODEUBIToolStripMenuItem
-        '
-        Me.F10CAMBNIODEUBIToolStripMenuItem.Name = "F10CAMBNIODEUBIToolStripMenuItem"
-        Me.F10CAMBNIODEUBIToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10
-        Me.F10CAMBNIODEUBIToolStripMenuItem.Size = New System.Drawing.Size(132, 20)
-        Me.F10CAMBNIODEUBIToolStripMenuItem.Text = "F10 - CAMBIO DE UBI"
         '
         'frmOrdenes
         '
@@ -626,7 +626,7 @@ Partial Class frmOrdenes
     Friend WithEvents lblEstado As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents btnLimpia As Button
-    Friend WithEvents F3PRESUPUESTADOSToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuAvisar As ToolStripMenuItem
     Friend WithEvents F4BUSCARPORToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents F10CAMBNIODEUBIToolStripMenuItem As ToolStripMenuItem
 End Class
